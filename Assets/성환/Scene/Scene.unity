@@ -432,7 +432,6 @@ MonoBehaviour:
   inf: {fileID: 595652008}
   text_log: {fileID: 677726562}
   text_player: {fileID: 748809006}
-  btn: {fileID: 0}
 --- !u!4 &133503509
 Transform:
   m_ObjectHideFlags: 0

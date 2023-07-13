@@ -11,7 +11,6 @@ public class PhotonTest : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_InputField inf;
     [SerializeField] private TMP_Text text_log;
     [SerializeField] private TMP_Text text_player;
-    [SerializeField] private Button btn;
 
     void Start()
     {
@@ -59,6 +58,7 @@ public class PhotonTest : MonoBehaviourPunCallbacks
     }
     void UpdatePlayer()
     {
+        text_player.text = string.Empty;
         for(int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
         {
             text_player.text += $"{PhotonNetwork.PlayerList[i].NickName}\n";
