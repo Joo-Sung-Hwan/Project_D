@@ -7,24 +7,25 @@ using UnityEngine.SceneManagement;
 
 public class Nickname : MonoBehaviour
 {
-    public InputField inputField;
-    [SerializeField] private TMP_Text nickname;
+    private InputField inputField;
+    [SerializeField] private TMP_Text playerNametxt;
 
-    string playerNames;
+    string playername;
+    string playerset;
 
     private void Start()
     {
-        //playerNames = inputField.GetComponent<InputField>().text;
+        playername = playerNametxt.text;
     }
-    public void OnNicknameSetting()
+    public void OnEndNicknameSetting() // 닉네임 데이터 저장
     {
-        playerNames = inputField.text;
-        Debug.Log($"{playerNames}");
+        playerset = $"{playername}";
+        Debug.Log(playerset);
     }
 
     public void OnButton()
     {
         //SceneManager.LoadScene("Lobby");
-        Debug.Log("닉네임이 설정되었습니다.");
+        
     }
 }
