@@ -6,6 +6,7 @@ public class MovableObj : MonoBehaviour
 {
     RaycastHit rayHit;
     Vector3 dis;
+    Vector3 prePos;
 
     // Start is called before the first frame update
     void Start()
@@ -14,15 +15,15 @@ public class MovableObj : MonoBehaviour
     }
 
     // Update is called once per frame
+    
     void Update()
     {
-        
+
     }
 
     private void OnMouseDrag()
     {
         int layer_Movable = 1 << LayerMask.NameToLayer("Movable");
-        int layer_Ground = 1 << LayerMask.NameToLayer("Ground");
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -36,11 +37,20 @@ public class MovableObj : MonoBehaviour
             
             transform.position = new Vector3(rayHit.point.x, y, rayHit.point.z) + dis;
         }
-        Debug.Log(rayHit.point);
+    }
+
+    private void OnMouseDown()
+    {
+        prePos = transform.position;
     }
 
     private void OnMouseUp()
     {
         dis = Vector3.zero;
+
+        int layer_Ground = 1 << LayerMask.NameToLayer("Ground");
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        transform.position = !Physics.Raycast(ray, out rayHit, Mathf.Infinity, layer_Ground) ? 
+            prePos: rayHit.collider.transform.position + Vector3.up * 0.25f;
     }
 }
