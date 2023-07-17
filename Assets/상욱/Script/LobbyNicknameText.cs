@@ -9,7 +9,7 @@ public class LobbyNicknameText : MonoBehaviour
     private static Nickname nickname;
     [SerializeField] private TMP_Text nicknameTxt;
 
-    string str = nickname.playersetName;
+    //string str = nickname.playersetName;
 
     public void Start()
     {
@@ -17,7 +17,7 @@ public class LobbyNicknameText : MonoBehaviour
     }
     public void NicknameTxt()
     {
-        nicknameTxt.text = str;
+        //nicknameTxt.text = str;
         //Debug.Log(nicknameTxt.text);
     }
 }
