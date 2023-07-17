@@ -10,4 +10,9 @@ public class SceneChangeScirpt : MonoBehaviour
         SceneManager.LoadScene("2.PlayerName_Setting(UI)");
         Debug.Log("버튼눌림");
     }
+    public void OnPlayerName_Setting_UIBtn()
+    {
+        SceneManager.LoadScene("3.Lobby");
+        Debug.Log("버튼눌림");
+    }
 }

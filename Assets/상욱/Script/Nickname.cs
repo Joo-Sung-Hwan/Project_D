@@ -9,25 +9,38 @@ public class Nickname : MonoBehaviour
 {
     [SerializeField] private TMP_InputField playerNametxt;
     [SerializeField] private Image imageUI;
-    //[SerializeField] private TMP_Text playerSettxt;
-    string playerset = "";
-    //string playernameset = "";
+    // imageUI 이미지안에 있는 텍스트
+    [SerializeField] private TMP_Text playerLasttxt; // playerNametxt에 쓴 닉네임을 입력
+    // 마지막 질문 텍스트
+    [SerializeField] private TMP_Text Questionstxt;
+
+    public string playersetName;
+    string playerLast;
+
     void Start()
     {
         imageUI.transform.gameObject.SetActive(false);
+
     }
 
-
-    public void OnEndNicknameSetting() // 닉네임설정
+    public void OnNicknameSetting() // 닉네임설정
     {
-        playerset = $"{playerNametxt.text}";
-        Debug.Log(playerset);
-        //if(Input.GetKeyDown(KeyCode.E))
+        playersetName = $"{playerNametxt.text}";
+        Debug.Log(playersetName);
     }
 
+    public void Imagetext()
+    {
+        playerLast = $"{playersetName}";
+        Debug.Log(playerLast);
+        playerLasttxt.text = $"캐릭터 이름 : {playerLast}";
+        Questionstxt.text = $"캐릭터 이름은 {playerLast} 입니다. 이대로 진행하시겠습니까?";
+    }
+
+    // 마지막 닉네임imageUI 나오기전 확인버튼
     public void OnButton()
     {
-        //SceneManager.LoadScene("Lobby");
-        
+        imageUI.transform.gameObject.SetActive(true);
+        Imagetext();
     }
 }
