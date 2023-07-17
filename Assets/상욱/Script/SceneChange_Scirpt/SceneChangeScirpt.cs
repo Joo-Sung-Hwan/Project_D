@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SceneChangeScirpt : MonoBehaviour
@@ -15,4 +16,15 @@ public class SceneChangeScirpt : MonoBehaviour
         SceneManager.LoadScene("3.Lobby");
         Debug.Log("버튼눌림");
     }
+    
+    public void OnInGameUI()
+    {
+        SceneManager.LoadScene("4.InGameUI");
+    }
+ 
+    public void OnScene() // 인게임신전환버튼
+    {
+        SceneManager.LoadScene("Scene");
+    }
+
 }
