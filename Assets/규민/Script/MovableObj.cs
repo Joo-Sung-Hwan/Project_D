@@ -8,6 +8,8 @@ public class MovableObj : MonoBehaviour
     Vector3 dis;
     Vector3 prePos;
 
+    bool isWave = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,17 +25,17 @@ public class MovableObj : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        int layer_Movable = 1 << LayerMask.NameToLayer("Movable");
+        int layer_DragBox = 1 << LayerMask.NameToLayer("Movable");
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out rayHit, Mathf.Infinity, layer_Movable))
+        if (Physics.Raycast(ray, out rayHit, Mathf.Infinity, layer_DragBox))
         {
             float y = transform.position.y;
+
+            //dis = 클릭한 마우스 위치와 클릭된 오브젝트 위치의 차이
             if (dis == Vector3.zero)
-            {
                 dis = new Vector3(transform.position.x - rayHit.point.x, 0, transform.position.z - rayHit.point.z);
-            }
             
             transform.position = new Vector3(rayHit.point.x, y, rayHit.point.z) + dis;
         }
@@ -53,4 +55,5 @@ public class MovableObj : MonoBehaviour
         transform.position = !Physics.Raycast(ray, out rayHit, Mathf.Infinity, layer_Ground) ? 
             prePos: rayHit.collider.transform.position + Vector3.up * 0.25f;
     }
+
 }
