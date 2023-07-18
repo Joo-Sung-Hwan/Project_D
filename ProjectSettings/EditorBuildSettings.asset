@@ -51,13 +51,13 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/\uC131\uD658/Scene/Scene.unity"
     guid: 4e485e8833f216d488992bf236d80147
-  - enabled: 0
+  - enabled: 1
     path: "Assets/\uC0C1\uC6B1/Scene/1.Loading_UI.unity"
     guid: b3c27aeb7a706a446aeb3b8593db3962
-  - enabled: 0
+  - enabled: 1
     path: "Assets/\uC0C1\uC6B1/Scene/2.PlayerName_Setting(UI).unity"
     guid: 1cb4dc29b6f84b143a89f1f3ff562a54
-  - enabled: 0
+  - enabled: 1
     path: "Assets/\uC0C1\uC6B1/Scene/3.Lobby.unity"
     guid: 9a6660ce8d96e87419f2511e10da8863
   m_configObjects: {}
