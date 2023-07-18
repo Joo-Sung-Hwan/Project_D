@@ -17,7 +17,7 @@ public class SceneChangeScirpt : MonoBehaviour
         Debug.Log("버튼눌림");
     }
     
-    public void OnInGameUI()
+    public void OnInGameUI() // 임시 인게임UI신 전환
     {
         SceneManager.LoadScene("4.InGameUI");
     }

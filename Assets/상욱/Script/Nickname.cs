@@ -43,7 +43,7 @@ public class Nickname : MonoBehaviour
         imageUI.transform.gameObject.SetActive(true);
         Imagetext();
     }
-
+    // 
     public void OnOffNickNameUI()
     {
         imageUI.transform.gameObject.SetActive(false);
