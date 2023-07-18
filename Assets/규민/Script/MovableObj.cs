@@ -26,9 +26,7 @@ public class MovableObj : MonoBehaviour
     private void OnMouseDrag()
     {
         int layer_DragBox = 1 << LayerMask.NameToLayer("Movable");
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
         if (Physics.Raycast(ray, out rayHit, Mathf.Infinity, layer_DragBox))
         {
             float y = transform.position.y;
@@ -49,7 +47,6 @@ public class MovableObj : MonoBehaviour
     private void OnMouseUp()
     {
         dis = Vector3.zero;
-
         int layer_Ground = 1 << LayerMask.NameToLayer("Ground");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         transform.position = !Physics.Raycast(ray, out rayHit, Mathf.Infinity, layer_Ground) ? 

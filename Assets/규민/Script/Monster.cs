@@ -50,12 +50,16 @@ public class Monster : MonoBehaviour
             case 3:
                 transform.Translate(Vector3.forward * speed * Time.deltaTime);
                 if (transform.position.z <= 2)
-                    Destroy(gameObject);
+                {
+                    //Destroy(gameObject);
+                    //몬스터 종류에 따라 enqueue
+                    //MapManager.instance.monsterManager.
+                }
                 break;
             default:
                 transform.Rotate(new Vector3(0, -1, 0) * 120 * Time.deltaTime) ;
                 rotated += 120 * Time.deltaTime;
-                if (rotated >=90)
+                if (rotated >= 90)
                 {
                     index = preIndex + 1;
                     rotated = 0;
