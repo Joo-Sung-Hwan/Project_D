@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    float first;
+    float first = 0;
+    float atk = 30;
 
     // Start is called before the first frame update
     void Start()
@@ -17,18 +18,25 @@ public class Unit : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F1))
         {
+            first = 0;
             Collider[] monsters = Physics.OverlapSphere(transform.position, 2);
-            Monster first_mob;
+            Monster first_mob = null;
             foreach (var item in monsters)
             {
                 Monster mob;
                 if (mob = item.GetComponent<Monster>())
                 {
-                    first = first > mob.moved ? first : mob.moved;
-                    first_mob = mob;
+                    if (first <= mob.moved)
+                    {
+                        first = mob.moved;
+                        first_mob = mob;
+                    }
                 }
             }
-            //first_mob.md.curHP = 
+            if (first_mob == null) 
+                return;
+
+            first_mob.Damaged(atk);
         }
     }
 

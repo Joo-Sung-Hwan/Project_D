@@ -87,10 +87,18 @@ public abstract class Monster : MonoBehaviour
     {
         transform.rotation = Quaternion.Euler(0, 90, 0);
         transform.position = mm_trans.position;
+        Init();
         index = 0;
         preIndex = 0;
         rotated = 0;
         moved = 0;
+    }
+
+    public void Damaged(float damage)
+    {
+        md.curHP -= damage;
+        if (md.curHP<=0)
+            Dead();
     }
 
     private void OnMouseDown()
