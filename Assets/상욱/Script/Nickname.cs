@@ -14,7 +14,7 @@ public class Nickname : MonoBehaviour
     // 마지막 질문 텍스트
     [SerializeField] private TMP_Text Questionstxt;
 
-    public string playersetName;
+    [HideInInspector] public string playersetName;
     string playerLast;
 
     void Start()
@@ -23,16 +23,10 @@ public class Nickname : MonoBehaviour
 
     }
 
-    public void OnNicknameSetting() // 닉네임설정
-    {
-        playersetName = $"{playerNametxt.text}";
-        Debug.Log(playersetName);
-    }
 
     public void Imagetext()
     {
-        playerLast = $"{playersetName}";
-        Debug.Log(playerLast);
+        playerLast = playersetName;
         playerLasttxt.text = $"캐릭터 이름 : {playerLast}";
         Questionstxt.text = $"캐릭터 이름은 {playerLast} 입니다. 이대로 진행하시겠습니까?";
     }
@@ -40,6 +34,7 @@ public class Nickname : MonoBehaviour
     // 마지막 닉네임imageUI 나오기전 확인버튼
     public void OnButton()
     {
+        playersetName = playerNametxt.text;
         imageUI.transform.gameObject.SetActive(true);
         Imagetext();
     }
