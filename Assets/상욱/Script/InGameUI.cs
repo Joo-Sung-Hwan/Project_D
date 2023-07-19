@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InGameUI : MonoBehaviour
 {
@@ -16,7 +17,12 @@ public class InGameUI : MonoBehaviour
 
     }
 
-    public void OnAgain()
+    public void OnLevelUP()
+    {
+        Debug.Log("레벨업");
+    }
+
+    public void OnRefresh() // 새로고침
     {
         Debug.Log("새로고침");
     }
