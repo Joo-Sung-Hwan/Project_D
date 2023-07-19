@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Monsters_Index
+{
+    skeleton,
+    archer
+}
+
 public class MonsterManager : MonoBehaviour
 {
-    public enum Monsters_Index
-    {
-        skeleton,
-        archer
-    }
-
     public List<Monster> monsters;
     //pool[index] = [(Monsters_Index)index]종류의 몬스터 List 
     public Queue<Monster> pool_monster = new Queue<Monster>();
@@ -29,18 +29,10 @@ public class MonsterManager : MonoBehaviour
 
     }
 
-    /*
-    //2타입 이상 연속소환 템플릿
-    IEnumerator C_Multi_Spawn()
-    {
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.archer, 3, 0.5f));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 3, 1f));
-    }
-    */
-
     void PoolInit(Monster monster)
     {
         monster.gameObject.SetActive(true);
+        monster.transform.rotation = Quaternion.Euler(0, 90, 0);
         monster.transform.position = transform.position;
     }
 
@@ -50,22 +42,21 @@ public class MonsterManager : MonoBehaviour
         {
             //Instantiate(monsters[index], transform);
             Monster temp_monster;
+            Monsters_Index mi = (Monsters_Index)index;
 
-            if (!d_monsters.ContainsKey((Monsters_Index)index))
-                d_monsters.Add((Monsters_Index)index, new Queue<Monster>());
+            if (!d_monsters.ContainsKey(mi))
+                d_monsters.Add(mi, new Queue<Monster>());
 
-            if(d_monsters[(Monsters_Index)index].TryDequeue(out temp_monster))
+            if(d_monsters[mi].TryDequeue(out temp_monster))
             {
-                PoolInit(temp_monster);
+                temp_monster.gameObject.SetActive(true);
+                temp_monster.PoolInit(transform);
             }
             else
             {
-                //d_monsters[(Monsters_Index)index].Enqueue(Instantiate(monsters[index], transform));
+                //d_monsters[mi].Enqueue(Instantiate(monsters[index], transform));
                 Instantiate(monsters[index], transform);
             }
-
-
-
 
             yield return new WaitForSeconds(delay);
         }
