@@ -8,7 +8,7 @@ public class MovableObj : MonoBehaviour
     Vector3 dis;
     Vector3 prePos;
 
-    bool isWave = true;
+    [SerializeField] public UnitBlocks block;
 
     // Start is called before the first frame update
     void Start()
@@ -20,11 +20,17 @@ public class MovableObj : MonoBehaviour
     
     void Update()
     {
-
+        
     }
 
     private void OnMouseDrag()
     {
+        if (!block.isWaiting && MapManager.instance.monsterManager.isWave)
+        {
+            transform.position = prePos;
+            return;
+        }
+
         int layer_DragBox = 1 << LayerMask.NameToLayer("Movable");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out rayHit, Mathf.Infinity, layer_DragBox))
@@ -46,11 +52,27 @@ public class MovableObj : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (!block.isWaiting && MapManager.instance.monsterManager.isWave)
+            return;
+
         dis = Vector3.zero;
         int layer_Ground = 1 << LayerMask.NameToLayer("Ground");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        transform.position = !Physics.Raycast(ray, out rayHit, Mathf.Infinity, layer_Ground) ? 
-            prePos: rayHit.collider.transform.position + Vector3.up * 0.25f;
-    }
 
+        if (Physics.Raycast(ray, out rayHit, Mathf.Infinity, layer_Ground))
+        {
+            if (!rayHit.collider.GetComponent<UnitBlocks>().isWaiting && MapManager.instance.monsterManager.isWave)
+                transform.position = prePos;
+            else
+            {
+                transform.position = rayHit.collider.transform.position + Vector3.up * 0.25f;
+                block = rayHit.collider.GetComponent<UnitBlocks>();
+            }
+        }
+        else
+        {
+            transform.position = prePos;
+        }
+
+    }
 }

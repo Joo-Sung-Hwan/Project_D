@@ -37,12 +37,12 @@ public abstract class Monster : MonoBehaviour
         {
             case 0:
                 transform.Translate(Vector3.forward * md.speed * Time.deltaTime);
-                if (transform.position.x >= 7)
+                if (transform.localPosition.x >= 6)
                     index = -1;
                 break;
             case 1:
                 transform.Translate(Vector3.forward * md.speed * Time.deltaTime);
-                if (transform.position.z >= 7)
+                if (transform.localPosition.z >= 6)
                 {
                     index = -1;
                     preIndex = 1;
@@ -50,7 +50,7 @@ public abstract class Monster : MonoBehaviour
                 break;
             case 2:
                 transform.Translate(Vector3.forward * md.speed * Time.deltaTime);
-                if (transform.position.x <= 1)
+                if (transform.localPosition.x <= 0)
                 {
                     index = -1;
                     preIndex = 2;
@@ -58,7 +58,7 @@ public abstract class Monster : MonoBehaviour
                 break;
             case 3:
                 transform.Translate(Vector3.forward * md.speed * Time.deltaTime);
-                if (transform.position.z <= 2)
+                if (transform.localPosition.z <= 1)
                     Dead();
                 break;
             default:

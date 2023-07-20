@@ -11,9 +11,9 @@ public enum Monsters_Index
 public class MonsterManager : MonoBehaviour
 {
     public List<Monster> monsters;
-    //pool[index] = [(Monsters_Index)index]종류의 몬스터 List 
     public Queue<Monster> pool_monster = new Queue<Monster>();
     public Dictionary<Monsters_Index, Queue<Monster>> d_monsters = new Dictionary<Monsters_Index, Queue<Monster>>();
+    public bool isWave = false;
 
     private Coroutine c_wait;
 
@@ -26,21 +26,13 @@ public class MonsterManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    void PoolInit(Monster monster)
-    {
-        monster.gameObject.SetActive(true);
-        monster.transform.rotation = Quaternion.Euler(0, 90, 0);
-        monster.transform.position = transform.position;
+        Test();
     }
 
     IEnumerator C_Spawn(int index, int num, float delay)
     {
         for (int i = 0; i < num; i++)
         {
-            //Instantiate(monsters[index], transform);
             Monster temp_monster;
             Monsters_Index mi = (Monsters_Index)index;
 
@@ -53,10 +45,7 @@ public class MonsterManager : MonoBehaviour
                 temp_monster.PoolInit(transform);
             }
             else
-            {
-                //d_monsters[mi].Enqueue(Instantiate(monsters[index], transform));
                 Instantiate(monsters[index], transform);
-            }
 
             yield return new WaitForSeconds(delay);
         }
@@ -64,6 +53,7 @@ public class MonsterManager : MonoBehaviour
 
     IEnumerator C_Wave_1()
     {
+        isWave = true;
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 5, 1f));
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.archer, 5, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
@@ -81,6 +71,14 @@ public class MonsterManager : MonoBehaviour
                 break;
             time += Time.deltaTime;
             yield return new WaitForEndOfFrame();
+        }
+    }
+
+    private void Test()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            isWave = !isWave;
         }
     }
 }
