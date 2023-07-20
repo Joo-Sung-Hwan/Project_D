@@ -8,9 +8,19 @@ using UnityEngine.UI;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
-    public TMP_InputField input_id;
+    public static PhotonManager instance = null;
+    [HideInInspector] public TMP_Text userList;
+    [HideInInspector] public TMP_InputField input_id;
     string user_ID;
+    [HideInInspector] public bool isEnterRoom;
 
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -21,28 +31,30 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             GameManager.instance.isConnect = true;
         }
 
-        Screen.SetResolution(1920, 1080, true);
 
         if (input_id == null)
         {
             return;
         }
         input_id = GameObject.Find("Canvas/!_BG_NameSetting(Image)/!_BG/NameSetting_IF").GetComponent<TMP_InputField>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        
         //Debug.Log(input_id.text);
     }
 
     public override void OnConnectedToMaster()
     {
-        RoomOptions options = new RoomOptions();
-        options.MaxPlayers = 4;
-
-        // 방이 있으면 바로 입장, 없으면 생성 후 입장
-        PhotonNetwork.JoinOrCreateRoom("Room1", options, null);
+        if(isEnterRoom == true)
+        {
+            // 방이 있으면 바로 입장, 없으면 생성 후 입장
+            PhotonNetwork.JoinOrCreateRoom("Room", new RoomOptions { MaxPlayers = 4 }, null);
+        }
     }
 
     public override void OnCreatedRoom()
@@ -52,21 +64,19 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        //UpdatePlayer();
         Debug.Log($"{PhotonNetwork.LocalPlayer.NickName} 입장");
     }
 
-    public override void OnJoinedLobby()
-    {
-
-    }
+   
     public void OnclickToLobby()
     {
+        isEnterRoom = true;
+        OnConnectedToMaster();
         PhotonNetwork.NickName = input_id.text;
-        if (PhotonNetwork.IsMasterClient)
-        {
-            PhotonNetwork.LoadLevel("3.Lobby");
-        }
-        PhotonNetwork.JoinLobby();
+        PhotonNetwork.LoadLevel("3.Lobby");
         input_id = null;
     }
+
+    
 }

@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class InGameUI : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -17,7 +18,7 @@ public class InGameUI : MonoBehaviour
 
     }
 
-    public void OnLevelUP()
+    public void OnLevelUP() 
     {
         Debug.Log("·¹º§¾÷");
     }
