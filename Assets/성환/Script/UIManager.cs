@@ -35,4 +35,9 @@ public class UIManager : MonoBehaviour
     {
         userName.text = PhotonNetwork.NickName;
     }
+
+    public void OnClickToInGame()
+    {
+        PhotonNetwork.LoadLevel("4.InGameUI");
+    }
 }

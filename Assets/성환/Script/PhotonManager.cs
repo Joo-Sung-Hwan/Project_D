@@ -79,10 +79,4 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void OnClickToInGame()
-    {
-        PhotonNetwork.LoadLevel("4.InGameUI");
-    }
-
-    
 }
