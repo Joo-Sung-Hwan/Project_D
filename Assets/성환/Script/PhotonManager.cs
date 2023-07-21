@@ -76,6 +76,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.NickName = input_id.text;
         PhotonNetwork.LoadLevel("3.Lobby");
         input_id = null;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void OnClickToInGame()
