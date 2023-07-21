@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skeleton : Monster
+public class Ghost : Monster
 {
     public override void Init()
     {
         md.type = Monsters_Index.ghost;
-        md.type = Monsters_Index.skeleton;
         md.maxHP = 50;
         md.curHP = md.maxHP;
         md.speed = 1;

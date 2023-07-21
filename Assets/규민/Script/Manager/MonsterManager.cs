@@ -5,11 +5,14 @@ using UnityEngine;
 public enum Monsters_Index
 {
     skeleton,
-    archer
+    archer,
+    ghost
 }
 
 public class MonsterManager : MonoBehaviour
 {
+    [SerializeField] public Canvas canvas_Hp;
+
     public List<Monster> monsters;
     public Queue<Monster> pool_monster = new Queue<Monster>();
     public Dictionary<Monsters_Index, Queue<Monster>> d_monsters = new Dictionary<Monsters_Index, Queue<Monster>>();
@@ -50,11 +53,10 @@ public class MonsterManager : MonoBehaviour
             yield return new WaitForSeconds(delay);
         }
     }
-
     IEnumerator C_Wave_1()
     {
         isWave = true;
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 5, 1f));
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.archer, 5, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 5, 1f));

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Monster : MonoBehaviour
 {
@@ -15,11 +16,12 @@ public abstract class Monster : MonoBehaviour
 
     int index = 0;
     int preIndex = 0;
-    
+
+    Image hpBar;
     float rotated = 0;
     public float moved = 0;
 
-    // Update is called once per frame
+
     void Update()
     {
         Move();
@@ -63,6 +65,7 @@ public abstract class Monster : MonoBehaviour
                 break;
             default:
                 transform.Rotate(new Vector3(0, -1, 0) * 120 * Time.deltaTime) ;
+              //  hpBarPrf.transform.localEulerAngles = new Vector3(0, 90 - transform.rotation.eulerAngles.y, 0);
                 rotated += 120 * Time.deltaTime;
                 if (rotated >= 90)
                 {
@@ -92,11 +95,13 @@ public abstract class Monster : MonoBehaviour
         preIndex = 0;
         rotated = 0;
         moved = 0;
+       // hpBar.fillAmount = 1;
     }
 
     public void Damaged(float damage)
     {
         md.curHP -= damage;
+       // hpBar.fillAmount = md.curHP / md.maxHP;
         if (md.curHP<=0)
             Dead();
     }
