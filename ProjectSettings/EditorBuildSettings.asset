@@ -60,4 +60,7 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/\uC0C1\uC6B1/Scene/3.Lobby.unity"
     guid: 9a6660ce8d96e87419f2511e10da8863
+  - enabled: 1
+    path: "Assets/\uC0C1\uC6B1/Scene/4.InGameUI.unity"
+    guid: 8fb65e727ea33fb4694f1739ad04065f
   m_configObjects: {}
