@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 
-public class Nickname : MonoBehaviour
+public class StartSettingManager : MonoBehaviour
 {
     [SerializeField] private TMP_InputField playerNametxt;
     [SerializeField] private Image imageUI;
