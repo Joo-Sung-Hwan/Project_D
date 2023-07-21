@@ -14,11 +14,15 @@ public class StartSettingManager : MonoBehaviour
     [SerializeField] private TMP_Text Questionstxt;
 
     [HideInInspector] public string playersetName;
+    // 号持失 UI
+    [SerializeField] private Image roomCreate;
+
     string playerLast;
 
     void Start()
     {
         imageUI.transform.gameObject.SetActive(false);
+        roomCreate.transform.gameObject.SetActive(false);
 
     }
 
@@ -37,9 +41,20 @@ public class StartSettingManager : MonoBehaviour
         imageUI.transform.gameObject.SetActive(true);
         Imagetext();
     }
-    // 
+
     public void OnOffNickNameUI()
     {
         imageUI.transform.gameObject.SetActive(false);
+    }
+
+    // 号持失獄動
+    public void OnRoomCreate()
+    {
+        roomCreate.transform.gameObject.SetActive(true);
+    }
+
+    public void OnRoomCreateOff()
+    {
+        roomCreate.transform.gameObject.SetActive(false);
     }
 }
