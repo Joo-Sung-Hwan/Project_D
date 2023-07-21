@@ -23,7 +23,6 @@ public class StartSettingManager : MonoBehaviour
     {
         imageUI.transform.gameObject.SetActive(false);
         roomCreate.transform.gameObject.SetActive(false);
-
     }
 
 
@@ -53,6 +52,7 @@ public class StartSettingManager : MonoBehaviour
         roomCreate.transform.gameObject.SetActive(true);
     }
 
+    // 规积己UI 啊府绰 滚瓢
     public void OnRoomCreateOff()
     {
         roomCreate.transform.gameObject.SetActive(false);
