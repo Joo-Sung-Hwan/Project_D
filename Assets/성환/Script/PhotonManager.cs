@@ -9,10 +9,11 @@ using UnityEngine.UI;
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
     public static PhotonManager instance = null;
-    [HideInInspector] public TMP_Text userList;
-    [HideInInspector] public TMP_InputField input_id;
-    string user_ID;
+    [SerializeField] private TMP_InputField input_id;
+    [SerializeField] private TMP_InputField create_room_name;
     [HideInInspector] public bool isEnterRoom;
+    [HideInInspector] public bool isCreate = true;
+    string join_room_name;
 
     private void Awake()
     {
@@ -30,14 +31,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             PhotonNetwork.ConnectUsingSettings();
             GameManager.instance.isConnect = true;
         }
-
-
-        if (input_id == null)
-        {
-            return;
-        }
-        input_id = GameObject.Find("Canvas/!_BG_NameSetting(Image)/!_BG/NameSetting_IF").GetComponent<TMP_InputField>();
-        
     }
 
     // Update is called once per frame
@@ -50,16 +43,27 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        if(isEnterRoom == true)
+        if(isEnterRoom == true && isCreate == true)
         {
-            // 방이 있으면 바로 입장, 없으면 생성 후 입장
-            PhotonNetwork.JoinOrCreateRoom("Room", new RoomOptions { MaxPlayers = 4 }, null);
+            PhotonNetwork.CreateRoom(create_room_name.text, new RoomOptions { MaxPlayers = 4 }, null);
+        }
+        else if(isEnterRoom == true && isCreate == false)
+        {
+            PhotonNetwork.JoinRoom(GetRoomName(), null);
+        }
+        else
+        {
+            return;
         }
     }
 
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        Debug.Log("방 인원이 최대입니다. 다른 방을 선택해주세요.");
+    }
     public override void OnCreatedRoom()
     {
-
+        Debug.Log("방생성");
     }
 
     public override void OnJoinedRoom()
@@ -68,15 +72,29 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         Debug.Log($"{PhotonNetwork.LocalPlayer.NickName} 입장");
     }
 
+    public void OnClickCreateRoom()
+    {
+        isEnterRoom = true;
+        isCreate = true;
+        OnConnectedToMaster();
+        PhotonNetwork.NickName = input_id.text;
+        PhotonNetwork.LoadLevel("3.Lobby");
+        DontDestroyOnLoad(this.gameObject);
+    }
    
     public void OnclickToLobby()
     {
         isEnterRoom = true;
+        isCreate = false;
         OnConnectedToMaster();
         PhotonNetwork.NickName = input_id.text;
         PhotonNetwork.LoadLevel("3.Lobby");
-        input_id = null;
         DontDestroyOnLoad(this.gameObject);
     }
 
+    public string GetRoomName()
+    {
+        join_room_name = gameObject.GetComponent<TMP_Text>().text;
+        return join_room_name;
+    }
 }
