@@ -724,6 +724,8 @@ MonoBehaviour:
   playersetName: 
   roomCreate: {fileID: 1308924182}
   nickNameCheck: {fileID: 1773482476}
+  prefab: {fileID: 506060924332812450, guid: 5bf5637357498904f8b43483f723f56a, type: 3}
+  parent: {fileID: 712623045}
 --- !u!1 &200762228
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,8 +1275,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input_id: {fileID: 1273400929}
-  create_room_name: {fileID: 0}
-  isEnterRoom: 0
+  create_room_id: {fileID: 60987380}
+  create_name: {fileID: 941881765}
   isCreate: 1
 --- !u!1 &317646542
 GameObject:
@@ -5693,9 +5695,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 304104089}
-        m_TargetAssemblyTypeName: PhotonManager, Assembly-CSharp
-        m_MethodName: OnclickToLobby
+      - m_Target: {fileID: 135894169}
+        m_TargetAssemblyTypeName: StartSettingManager, Assembly-CSharp
+        m_MethodName: OnClickFinalBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

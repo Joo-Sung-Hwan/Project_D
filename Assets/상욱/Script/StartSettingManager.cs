@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class StartSettingManager : MonoBehaviour
 {
@@ -19,6 +21,9 @@ public class StartSettingManager : MonoBehaviour
     [SerializeField] private Image roomCreate;
     // 닉네임 비교UI
     [SerializeField] private Image nickNameCheck;
+
+    [SerializeField] private GameObject prefab;
+    [SerializeField] private Transform parent;
 
     bool isCreatecheck = false;
 
@@ -82,5 +87,22 @@ public class StartSettingManager : MonoBehaviour
     public void SetRoomText()
     {
        
+    }
+
+    public void OnClickFinalBtn()
+    {
+        if(isCreatecheck == true)
+        {
+            PhotonManager.instance.OnClickCreateRoom();
+            Debug.Log("방 생성11111");
+            GameObject sc = Instantiate(prefab, parent);
+            Debug.Log(sc);
+            Debug.Log(PhotonManager.instance.GetRoomName());
+            sc.transform.GetChild(4).GetComponent<TMP_Text>().text = PhotonManager.instance.GetRoomName();
+        }
+        else
+        {
+            PhotonManager.instance.OnclickToLobby();
+        }
     }
 }
