@@ -17,6 +17,8 @@ public class UnitUnion : MonoBehaviour
     [SerializeField] MovableObj movable;
 
     bool canAttack = true;
+    bool union;
+    public int level = 0;
     float first = 0;
     float atk = 30;
     float atkDelay = 1f;
@@ -24,14 +26,15 @@ public class UnitUnion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        level = 1;
+        uType = UnitTpye.Fire;
     }
 
     // Update is called once per frame
     void Update()
     {
         //if (movable.block.isWaiting || !MapManager.instance.monsterManager.isWave)
-            //return;
+        //return;
 
         if (canAttack)
             StartCoroutine(Attack());
@@ -89,4 +92,37 @@ public class UnitUnion : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, 2);
     }
+
+    private void OnMouseDown()
+    {
+        union = false;
+    }
+    private void OnMouseUp()
+    {
+        union = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (union == true)
+        {
+            switch (uType)
+            {
+                case UnitTpye.Fire:
+                    if (other.gameObject.GetComponent<UnitUnion>().uType == UnitTpye.Fire && level == 1)
+                    {
+                        level = 2;
+                        Destroy(other.gameObject);
+                    }
+                    break;
+                case UnitTpye.Wind:
+                    break;
+                case UnitTpye.Earth:
+                    break;
+                case UnitTpye.Water:
+                    break;
+            }
+        }
+    }
 }
+
