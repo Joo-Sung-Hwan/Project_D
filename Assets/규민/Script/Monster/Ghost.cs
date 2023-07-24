@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Ghost : Monster
 {
+
     public override void Init()
     {
-        md.type = Monsters_Index.ghost;
+        base.Init();
+        md.index = Monsters_Index.ghost;
         md.maxHP = 50;
         md.curHP = md.maxHP;
         md.speed = 1;
+        md.armor = 25;
     }
 
     void Start()

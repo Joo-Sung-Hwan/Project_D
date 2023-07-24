@@ -2,13 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Monsters_Index
-{
-    skeleton,
-    archer,
-    ghost
-}
-
 public class MonsterManager : MonoBehaviour
 {
     [SerializeField] public Canvas canvas_Hp;
@@ -17,7 +10,10 @@ public class MonsterManager : MonoBehaviour
     public Queue<Monster> pool_monster = new Queue<Monster>();
     public Dictionary<Monsters_Index, Queue<Monster>> d_monsters = new Dictionary<Monsters_Index, Queue<Monster>>();
     public bool isWave = false;
+    public int killed = 0;
 
+    private int spawned = 0;
+    private bool canClear = false;
     private Coroutine c_wait;
 
     // Start is called before the first frame update
@@ -30,6 +26,7 @@ public class MonsterManager : MonoBehaviour
     void Update()
     {
         Test();
+        WaveClear();
     }
 
     IEnumerator C_Spawn(int index, int num, float delay)
@@ -50,17 +47,20 @@ public class MonsterManager : MonoBehaviour
             else
                 Instantiate(monsters[index], transform);
 
+            spawned++;
             yield return new WaitForSeconds(delay);
         }
     }
     IEnumerator C_Wave_1()
     {
         isWave = true;
+        canClear = false;
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 5, 1f));
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.archer, 5, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 5, 1f));
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.archer, 5, 1f));
+        canClear = true;
     }
 
     IEnumerator C_WaitTime(float second)
@@ -69,10 +69,22 @@ public class MonsterManager : MonoBehaviour
         while (time < second)
         {
             //wave 대기시간 강제 종료
-            if (Input.GetKey(KeyCode.F1))
+            if (Input.GetKey(KeyCode.F3))
                 break;
             time += Time.deltaTime;
             yield return new WaitForEndOfFrame();
+        }
+    }
+
+    void WaveClear()
+    {
+        if (canClear && spawned == killed)
+        {
+            Debug.Log("Wave Clear!");
+            isWave = false;
+            canClear = false;
+            spawned = 0;
+            killed = 0;
         }
     }
 
@@ -81,6 +93,10 @@ public class MonsterManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F1))
         {
             isWave = !isWave;
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 1, 1));
         }
     }
 }

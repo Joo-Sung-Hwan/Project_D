@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8104caeb7e6402a4499b9ffb360a1892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpBarPrf: {fileID: 1384442519599633949, guid: db50f2c00d0cfc741b5987d92a17c0e2, type: 3}
+  hpBar_Prf: {fileID: 2208916345214765374, guid: daefbd967b7f3514abd58e30f46c5138, type: 3}
   moved: 0
 --- !u!65 &5612703825797892099
 BoxCollider:

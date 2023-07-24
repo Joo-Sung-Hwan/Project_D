@@ -6,6 +6,7 @@ public class MapManager : MonoBehaviour
 {
     public static MapManager instance;
     [SerializeField] public MonsterManager monsterManager;
+    [SerializeField] public InGameUIManager uiManager_ingame;
 
     void Start()
     {

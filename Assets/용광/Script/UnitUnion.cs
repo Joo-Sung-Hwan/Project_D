@@ -83,7 +83,7 @@ public class UnitUnion : MonoBehaviour
         {
             Monster mob;
             if (mob = item.GetComponent<Monster>())
-                mob.Damaged(atk);
+                mob.Damaged(atk, Damage_Type.physic);
         }
     }
 

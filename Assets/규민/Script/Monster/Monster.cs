@@ -7,17 +7,19 @@ public abstract class Monster : MonoBehaviour
 {
     public struct monster_Data
     {
-        public Monsters_Index type;
+        public Monsters_Index index;
         public float maxHP;
         public float curHP;
         public float speed;
+        public float armor;
     }
     public monster_Data md;
 
     int index = 0;
     int preIndex = 0;
 
-    Image hpBar;
+    [SerializeField] Hp_Bar hpBar_Prf;
+    protected Hp_Bar hpBar;
     float rotated = 0;
     public float moved = 0;
 
@@ -27,7 +29,12 @@ public abstract class Monster : MonoBehaviour
         Move();
     }
 
-    public abstract void Init();
+    public virtual void Init()
+    {
+        if (hpBar == null)
+            hpBar = Instantiate(hpBar_Prf, MapManager.instance.uiManager_ingame.canvas_hp.transform);
+        hpBar.monster = this;
+    }
 
     private void Move()
     {
@@ -80,10 +87,12 @@ public abstract class Monster : MonoBehaviour
     {
         gameObject.SetActive(false);
         Dictionary<Monsters_Index, Queue<Monster>> dm = MapManager.instance.monsterManager.d_monsters;
-        if (!dm.ContainsKey(md.type))
-            dm.Add(md.type, new Queue<Monster>());
+        if (!dm.ContainsKey(md.index))
+            dm.Add(md.index, new Queue<Monster>());
 
-        dm[md.type].Enqueue(this);
+        dm[md.index].Enqueue(this);
+        hpBar.gameObject.SetActive(false);
+        MapManager.instance.monsterManager.killed++;
     }
 
     public void PoolInit(Transform mm_trans)
@@ -95,13 +104,25 @@ public abstract class Monster : MonoBehaviour
         preIndex = 0;
         rotated = 0;
         moved = 0;
-       // hpBar.fillAmount = 1;
+        hpBar.gameObject.SetActive(true);
+        hpBar.hpbar.fillAmount = 1;
     }
 
-    public void Damaged(float damage)
+    public void Damaged(float damage , Damage_Type type)
     {
-        md.curHP -= damage;
-       // hpBar.fillAmount = md.curHP / md.maxHP;
+        switch (type)
+        {
+            case Damage_Type.physic:
+                md.curHP -= damage > md.armor ? damage - md.armor : 0;
+                break;
+            case Damage_Type.magic:
+                md.curHP -= damage;
+                break;
+            default:
+                break;
+        }
+        
+        hpBar.hpbar.fillAmount = md.curHP / md.maxHP;
         if (md.curHP<=0)
             Dead();
     }

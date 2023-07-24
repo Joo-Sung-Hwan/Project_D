@@ -6,11 +6,13 @@ public class Skeleton : Monster
 {
     public override void Init()
     {
-        md.type = Monsters_Index.ghost;
-        md.type = Monsters_Index.skeleton;
+        base.Init();
+        md.index = Monsters_Index.ghost;
+        md.index = Monsters_Index.skeleton;
         md.maxHP = 50;
         md.curHP = md.maxHP;
         md.speed = 1;
+        md.armor = 5;
     }
 
     void Start()

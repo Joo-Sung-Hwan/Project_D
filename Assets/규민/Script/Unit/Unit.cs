@@ -2,34 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+public abstract class  Unit : MonoBehaviour
 {
+    public struct unit_Data
+    {
+        public Unit_Type unit_type;
+        public Attack_Type atk_type;
+        public float atkDelay;
+        public float attack;
+    }
+
+    public unit_Data ud;
+
     [SerializeField] MovableObj movable;
 
-    bool canAttack = true;
-    float first = 0;
-    float atk = 30;
-    float atkDelay = 1f;
+    protected bool canAttack = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    protected abstract void Init();
 
     // Update is called once per frame
     void Update()
     {
+        Test_ColorChange_isWave();
+
         if (movable.block.isWaiting || !MapManager.instance.monsterManager.isWave)
             return;
 
         if (canAttack)
-            StartCoroutine(Attack());
+            StartCoroutine(Attack(ud.atk_type));
     }
 
-    IEnumerator Attack()
+    IEnumerator Attack(Attack_Type type)
     {
-        first = 0;
+        float first = 0;
         Collider[] monsters = Physics.OverlapSphere(transform.position, 2);
         Monster first_mob = null;
         foreach (var item in monsters)
@@ -47,20 +52,36 @@ public class Unit : MonoBehaviour
         if (first_mob == null)
             yield break;
 
-        //first_mob.Damaged(atk);
-        SplashAttack(first_mob);
-
+        switch (type)
+        {
+            case Attack_Type.normal:
+                first_mob.Damaged(ud.attack, Damage_Type.physic);
+                break;
+            case Attack_Type.splash:
+                SplashAttack(first_mob);
+                break;
+            default:
+                break;
+        }
         canAttack = false;
-        StartCoroutine(ColorChange());
-        yield return new WaitForSeconds(atkDelay);
+        StartCoroutine(Test_ColorChange());
+        yield return new WaitForSeconds(ud.atkDelay);
         canAttack = true;
     }
 
-    IEnumerator ColorChange()
+    IEnumerator Test_ColorChange()
     {
         GetComponent<Renderer>().material.color = Color.red;
         yield return new WaitForSeconds(0.2f);
         GetComponent<Renderer>().material.color = Color.white;
+    }
+
+    void Test_ColorChange_isWave()
+    {
+        if (GetComponent<Renderer>().material.color!=Color.red)
+        {
+            GetComponent<Renderer>().material.color = MapManager.instance.monsterManager.isWave ? Color.green : Color.white;
+        }
     }
 
     void SplashAttack(Monster target)
@@ -70,7 +91,7 @@ public class Unit : MonoBehaviour
         {
             Monster mob;
             if (mob = item.GetComponent<Monster>())
-                mob.Damaged(atk);
+                mob.Damaged(ud.attack, Damage_Type.physic);
         }
     }
 
