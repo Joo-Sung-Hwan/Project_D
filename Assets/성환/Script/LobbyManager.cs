@@ -37,4 +37,13 @@ public class LobbyManager : MonoBehaviour
     {
         userList.transform.gameObject.SetActive(false);
     }
+
+    public void OnOpoptionsSettingBG()
+    {
+        optionsSettingBG.transform.gameObject.SetActive(true);
+    }
+    public void OnOpoptionsSettingBG_Off()
+    {
+        optionsSettingBG.transform.gameObject.SetActive(false);
+    }
 }
