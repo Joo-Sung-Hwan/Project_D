@@ -14,8 +14,6 @@ public class LobbyManager : MonoBehaviour
     void Start()
     {
         photonview = GetComponent<PhotonView>();
-        userList.transform.gameObject.SetActive(false);
-        optionsSettingBG.transform.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,21 +27,4 @@ public class LobbyManager : MonoBehaviour
 
     }
 
-    public void OnUserList()
-    {
-        userList.transform.gameObject.SetActive(true);
-    }
-    public void OnOffUserList()
-    {
-        userList.transform.gameObject.SetActive(false);
-    }
-
-    public void OnOpoptionsSettingBG()
-    {
-        optionsSettingBG.transform.gameObject.SetActive(true);
-    }
-    public void OnOpoptionsSettingBG_Off()
-    {
-        optionsSettingBG.transform.gameObject.SetActive(false);
-    }
 }

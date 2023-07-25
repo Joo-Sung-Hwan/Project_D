@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &59342163
 RectTransform:
   m_ObjectHideFlags: 0
@@ -639,10 +639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76c427647854464fb790fa942ece63f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNametxt: {fileID: 1273400929}
-  c_playerNametext: {fileID: 941881765}
-  Questionstxt: {fileID: 1176612793}
-  playersetName: 
   roomCreate: {fileID: 1308924182}
   prefab: {fileID: 506060924332812450, guid: 5bf5637357498904f8b43483f723f56a, type: 3}
   parent: {fileID: 712623045}
@@ -1195,9 +1191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input_id: {fileID: 1273400929}
-  create_room_id: {fileID: 60987380}
-  create_name: {fileID: 941881765}
-  isCreate: 1
+  room_name: {fileID: 0}
 --- !u!1 &317646542
 GameObject:
   m_ObjectHideFlags: 0
@@ -4543,7 +4537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1555985502
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5195,9 +5189,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 135894169}
-        m_TargetAssemblyTypeName: StartSettingManager, Assembly-CSharp
-        m_MethodName: OnButton
+      - m_Target: {fileID: 304104089}
+        m_TargetAssemblyTypeName: PhotonManager, Assembly-CSharp
+        m_MethodName: OnClickToChannelSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

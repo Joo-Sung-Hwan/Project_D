@@ -40,7 +40,7 @@ public class StartSettingManager : MonoBehaviour
     {
        
     }
-
+    /*
     public void OnClickFinalBtn()
     {
         if(isCreatecheck == true)
@@ -57,4 +57,5 @@ public class StartSettingManager : MonoBehaviour
             PhotonManager.instance.OnclickToLobby();
         }
     }
+    */
 }
