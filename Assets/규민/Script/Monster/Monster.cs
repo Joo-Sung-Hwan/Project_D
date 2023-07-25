@@ -22,6 +22,12 @@ public abstract class Monster : MonoBehaviour
     protected Hp_Bar hpBar;
     float rotated = 0;
     public float moved = 0;
+    public Coroutine slowCor;
+    public Coroutine stunCor;
+    public Coroutine burnCor;
+    public float slowTime = 0;
+    public float stunTime = 0;
+    public float burnTime = 0;
 
 
     void Update()
@@ -118,6 +124,9 @@ public abstract class Monster : MonoBehaviour
             case Damage_Type.magic:
                 md.curHP -= damage;
                 break;
+            case Damage_Type.trueType:
+                md.curHP -= damage;
+                break;
             default:
                 break;
         }
@@ -130,5 +139,42 @@ public abstract class Monster : MonoBehaviour
     private void OnMouseDown()
     {
         Dead();
+    }
+
+    /*
+    public IEnumerator C_Debuff_Slow(float time ,float percent)
+    {
+        md.speed /= (100 - percent) / 100f;
+        
+    }
+    */
+
+    public void Debuff_Stun(float time)
+    {
+        stunTime = time;
+        if (stunCor == null) 
+            stunCor = StartCoroutine(C_Debuff_Stun());
+    }
+
+    public IEnumerator C_Debuff_Stun()
+    {
+        Debug.Log("Stun");
+        while (stunTime <= 0)
+        {
+            md.speed = 0;
+            yield return new WaitForEndOfFrame();
+            stunTime -= Time.deltaTime;
+        }
+    }
+        
+    public IEnumerator C_Debuff_Burn(float time, float dps)
+    {
+        burnTime = time;
+        while (burnTime <= 0) 
+        {
+            yield return new WaitForEndOfFrame();
+            Damaged(dps, Damage_Type.trueType);
+            burnTime -= Time.deltaTime;
+        }
     }
 }

@@ -60,6 +60,10 @@ public abstract class  Unit : MonoBehaviour
             case Attack_Type.splash:
                 SplashAttack(first_mob);
                 break;
+            case Attack_Type.stun:
+                first_mob.Damaged(ud.attack, Damage_Type.physic);
+                first_mob.Debuff_Stun(1f);
+                break;
             default:
                 break;
         }

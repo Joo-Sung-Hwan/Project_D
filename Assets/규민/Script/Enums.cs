@@ -20,11 +20,20 @@ public enum Unit_Type
 public enum Attack_Type
 {
     normal,
-    splash
+    splash,
+    stun
 }
 
 public enum Damage_Type
 {
     physic,
-    magic
+    magic,
+    trueType
+}
+
+public enum Debuff_Type
+{
+    slow,
+    stun,
+    burn
 }
