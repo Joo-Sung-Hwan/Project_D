@@ -11,9 +11,12 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public static PhotonManager instance = null;
     [SerializeField] private TMP_InputField input_id;
     [HideInInspector] public TMP_InputField room_name;
+    [SerializeField] private GameObject serverprefab;
+    [SerializeField] private Transform parent;
 
-    bool isroom_name = false;
+    [HideInInspector] public string join_room_name;
     bool name_ischeck = false;
+    bool isCreate = false;
     PhotonView photonview;
 
 
@@ -40,13 +43,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         }
         photonview = GetComponent<PhotonView>();
 
-        if(isroom_name == true)
-        {
-            room_name = GameObject.Find("").GetComponent<TMP_InputField>();
-            isroom_name = true;
-            return;
-        }
-        // inputfield 경로 지정해야함!!!
         
     }
 
@@ -59,21 +55,36 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("마스터 서버 연결");
+        if(isCreate == false)
+        {
+            return;
+        }
+        else
+        {
+            room_name = GameObject.Find("Canvas/RoomCreate_BG/InputField (TMP)").GetComponent<TMP_InputField>();
+            PhotonNetwork.CreateRoom(room_name.text, new RoomOptions { MaxPlayers = 4 }, null);
+        }
     }
     
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         Debug.Log("방 인원이 최대입니다. 다른 방을 선택해주세요.");
     }
+
+    public override void OnJoinedLobby()
+    {
+        Debug.Log($"{PhotonNetwork.NickName} 입장");
+    }
+
     public override void OnCreatedRoom()
     {
-        Debug.Log("방생성");
+        Debug.Log($"{room_name.text} 방생성");
     }
 
     public override void OnJoinedRoom()
     {
         //UpdatePlayer();
-        Debug.Log($"{PhotonNetwork.LocalPlayer.NickName} 입장");
+        Debug.Log($"{PhotonNetwork.NickName} 입장");
     }
 
     public void OnClickToChannelSelect()
@@ -88,6 +99,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         }
         if(name_ischeck == false)
         {
+            PhotonNetwork.NickName = input_id.text;
+            PhotonNetwork.JoinLobby();
             PhotonNetwork.LoadLevel("3.Lobby");
             DontDestroyOnLoad(this.gameObject);
         }
@@ -95,11 +108,24 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void OnClickToCreateRoom()
     {
-        PhotonNetwork.CreateRoom(room_name.text, new RoomOptions { MaxPlayers = 4 }, null);
+        isCreate = true;
+        PhotonNetwork.LoadLevel("4.InGameUI");
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void OnClickToJoinRoom()
     {
-        //PhotonNetwork.JoinRoom()
+        PhotonNetwork.JoinRoom(join_room_name, null);
+        
+    }
+
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        for(int i = 0; i < roomList.Count; i++)
+        {
+            GameObject roomlist = Instantiate(serverprefab, parent);
+            roomlist.GetComponent<TMP_Text>().text = roomList[i].Name;
+        }
+        Debug.Log(roomList.Count);
     }
 }

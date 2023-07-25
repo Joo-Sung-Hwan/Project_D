@@ -6,14 +6,14 @@ using TMPro;
 
 public class RoomList : MonoBehaviour
 {
-    [SerializeField] private TMP_Text room;
+    public TMP_Text room;
 
     private void Update()
     {
-        gameObject.GetComponent<Button>().onClick.AddListener(() => OnClickRoomList());
+        gameObject.GetComponent<Button>().onClick.AddListener(OnClickRoomList);
     }
-    public string OnClickRoomList()
+    public void OnClickRoomList()
     {
-        return room.text;
+        PhotonManager.instance.join_room_name = room.text;
     }
 }

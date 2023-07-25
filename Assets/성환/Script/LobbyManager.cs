@@ -10,6 +10,8 @@ public class LobbyManager : MonoBehaviour
     PhotonView photonview;
     [SerializeField] private Image userList;
     [SerializeField] private Image roomCreate_BG;
+    [SerializeField] private Button createBtn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,7 @@ public class LobbyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        createBtn.onClick.AddListener(OnClickCreate);
     }
 
     public void OnCreateStartBtn()
@@ -31,5 +33,8 @@ public class LobbyManager : MonoBehaviour
     {
         roomCreate_BG.transform.gameObject.SetActive(false);
     }
-
+    public void OnClickCreate()
+    {
+        PhotonManager.instance.OnClickToCreateRoom();
+    }
 }
