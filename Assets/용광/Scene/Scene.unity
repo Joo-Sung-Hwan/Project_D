@@ -11794,6 +11794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterManager: {fileID: 1829132232}
+  uiManager_ingame: {fileID: 0}
 --- !u!1001 &1310010973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16129,6 +16130,7 @@ MonoBehaviour:
   - {fileID: 6393961617092999494, guid: 2ac9818d276d50a43b1122eae24bc345, type: 3}
   - {fileID: 117296395, guid: cbec44d54ff65f049966852c07d7ed7a, type: 3}
   isWave: 0
+  killed: 0
 --- !u!1001 &1847220260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16236,12 +16238,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawns:
-  - {fileID: 481456801}
-  - {fileID: 1559191948}
-  - {fileID: 925549064}
+  - {fileID: 481456803}
+  - {fileID: 1559191950}
+  - {fileID: 925549066}
   spawn: {fileID: 481456801}
-  prefab: {fileID: 6359098112099735906, guid: 78c9176a69b1c1f49a5e9c0a74a9b353, type: 3}
+  prefab: {fileID: 6359098112099735914, guid: 78c9176a69b1c1f49a5e9c0a74a9b353, type: 3}
   unitlist: []
+  movable: {fileID: 6359098112099735905, guid: 78c9176a69b1c1f49a5e9c0a74a9b353, type: 3}
 --- !u!1001 &1858326851
 PrefabInstance:
   m_ObjectHideFlags: 0

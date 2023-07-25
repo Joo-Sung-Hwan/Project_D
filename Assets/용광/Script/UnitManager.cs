@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class UnitManager : MonoBehaviour
 {
-    public List<Transform> spawns;
+    public List<UnitBlocks> spawns;
     public Transform spawn;
-    public GameObject prefab;
+    public UnitUnion prefab;
     public List<UnitUnion> unitlist;
+    public MovableObj movable;
 
     void Start()
     {
@@ -21,7 +22,7 @@ public class UnitManager : MonoBehaviour
 
     public void FindUnit()
     {
-        unitlist.Add(prefab.GetComponent<UnitUnion>());
+        unitlist.Add(prefab);
     }
 
     public void TestSpawn()
@@ -29,13 +30,10 @@ public class UnitManager : MonoBehaviour
         int rand = Random.Range(0, 3);
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            Instantiate(prefab, spawns[rand]);
+            Instantiate(prefab, spawns[rand].transform);
             FindUnit();
+            movable.block = spawns[rand].gameObject.GetComponent<UnitBlocks>();
         }
     }
 
-    public void Union()
-    {
-
-    }
 }
