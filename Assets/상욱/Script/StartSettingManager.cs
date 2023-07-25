@@ -15,7 +15,7 @@ public class StartSettingManager : MonoBehaviour
     [SerializeField] private Transform parent;
 
     string roomTexttext;
-    bool isCreatecheck = false;
+    //bool isCreatecheck = false;
 
     void Start()
     {
@@ -26,7 +26,7 @@ public class StartSettingManager : MonoBehaviour
     // 号持失獄動
     public void OnRoomCreate()
     {
-        isCreatecheck = true;
+       // isCreatecheck = true;
         roomCreate.transform.gameObject.SetActive(true);
     }
 

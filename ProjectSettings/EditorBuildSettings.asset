@@ -55,7 +55,7 @@ EditorBuildSettings:
     path: "Assets/\uC0C1\uC6B1/Scene/1.Loading_UI.unity"
     guid: b3c27aeb7a706a446aeb3b8593db3962
   - enabled: 1
-    path: "Assets/\uC0C1\uC6B1/Scene/2.PlayerName_Setting(UI).unity"
+    path: "Assets/\uC0C1\uC6B1/Scene/5.PlayerName_Setting(UI).unity"
     guid: 1cb4dc29b6f84b143a89f1f3ff562a54
   - enabled: 1
     path: "Assets/\uC0C1\uC6B1/Scene/3.Lobby.unity"
