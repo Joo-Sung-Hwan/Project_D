@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input_id: {fileID: 1057782025}
   room_name: {fileID: 0}
-  serverprefab: {fileID: 0}
+  serverprefab: {fileID: 506060924332812450, guid: 5bf5637357498904f8b43483f723f56a, type: 3}
   parent: {fileID: 0}
   join_room_name: 
 --- !u!1 &1398235676
