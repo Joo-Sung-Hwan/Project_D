@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -617,9 +617,8 @@ MonoBehaviour:
   lastNicknameSettingUI: {fileID: 538010228}
   playerLasttxt: {fileID: 2028338097}
   questionstxt: {fileID: 770282008}
-  roomCreate: {fileID: 0}
-  prefab: {fileID: 0}
-  parent: {fileID: 0}
+  roomCreate: {fileID: 525713922}
+  nickName: {fileID: 2064093373}
   playersetName: 
 --- !u!1 &267649706
 GameObject:
@@ -1497,7 +1496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &538010227
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3080,7 +3079,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2064514159}
   m_HandleRect: {fileID: 2064514158}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3646,7 +3645,7 @@ MonoBehaviour:
   input_id: {fileID: 1057782025}
   room_name: {fileID: 0}
   serverprefab: {fileID: 506060924332812450, guid: 5bf5637357498904f8b43483f723f56a, type: 3}
-  parent: {fileID: 0}
+  parent: {fileID: 712623045}
   join_room_name: 
 --- !u!1 &1372325000
 GameObject:
@@ -5459,7 +5458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.72156864}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

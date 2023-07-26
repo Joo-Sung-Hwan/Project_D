@@ -16,8 +16,10 @@ public class NickNameSettingManager : MonoBehaviour
     // 规积己 UI
     [SerializeField] private Image roomCreate;
 
-    [SerializeField] private GameObject prefab;
-    [SerializeField] private Transform parent;
+    // 葱匙烙UI
+    [SerializeField] private Image nickName;
+
+
 
     [HideInInspector] public string playersetName;
     string roomTexttext;
@@ -29,6 +31,7 @@ public class NickNameSettingManager : MonoBehaviour
     {
         lastNicknameSettingUI.transform.gameObject.SetActive(false);
         roomCreate.transform.gameObject.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -66,6 +69,7 @@ public class NickNameSettingManager : MonoBehaviour
         }
         lastNicknameSettingUI.transform.gameObject.SetActive(true);
         Imagetext();
+        nickName.transform.gameObject.SetActive(false);
     }
     // 规积己滚瓢
     public void OnRoomCreate()
