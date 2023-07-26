@@ -8,7 +8,7 @@ using Photon.Realtime;
 public class LobbyManager : MonoBehaviour
 {
     PhotonView photonview;
-    [SerializeField] private Image userList;
+    //[SerializeField] private Image userList;
     [SerializeField] private Image roomCreate_BG;
     [SerializeField] private Button createBtn;
 

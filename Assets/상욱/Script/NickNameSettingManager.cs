@@ -12,8 +12,15 @@ public class NickNameSettingManager : MonoBehaviour
     // playerNametxt에 쓴 닉네임을 입력
     [SerializeField] private TMP_Text playerLasttxt;
     [SerializeField] private TMP_Text questionstxt;
-    [HideInInspector] public string playersetName;
 
+    // 방생성 UI
+    [SerializeField] private Image roomCreate;
+
+    [SerializeField] private GameObject prefab;
+    [SerializeField] private Transform parent;
+
+    [HideInInspector] public string playersetName;
+    string roomTexttext;
     string playerLast;
     bool isCreatecheck = false;
 
@@ -21,6 +28,7 @@ public class NickNameSettingManager : MonoBehaviour
     void Start()
     {
         lastNicknameSettingUI.transform.gameObject.SetActive(false);
+        roomCreate.transform.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -58,5 +66,17 @@ public class NickNameSettingManager : MonoBehaviour
         }
         lastNicknameSettingUI.transform.gameObject.SetActive(true);
         Imagetext();
+    }
+    // 방생성버튼
+    public void OnRoomCreate()
+    {
+        // isCreatecheck = true;
+        roomCreate.transform.gameObject.SetActive(true);
+    }
+
+    // 방생성UI 가리는 버튼
+    public void OnRoomCreateOff()
+    {
+        roomCreate.transform.gameObject.SetActive(false);
     }
 }
