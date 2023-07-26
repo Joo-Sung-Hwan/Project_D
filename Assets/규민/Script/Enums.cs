@@ -20,8 +20,7 @@ public enum Unit_Type
 public enum Attack_Type
 {
     normal,
-    splash,
-    stun
+    splash
 }
 
 public enum Damage_Type
@@ -33,6 +32,7 @@ public enum Damage_Type
 
 public enum Debuff_Type
 {
+    normal,
     slow,
     stun,
     burn

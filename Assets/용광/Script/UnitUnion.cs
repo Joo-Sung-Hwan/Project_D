@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum UnitTpye
+public enum UnitType
 {
     None,
     Fire,
@@ -13,7 +13,7 @@ public enum UnitTpye
 
 public class UnitUnion : MonoBehaviour
 {
-    public UnitTpye uType = UnitTpye.None;
+    public UnitType uType = UnitType.None;
     [SerializeField] MovableObj movable;
 
     bool canAttack = true;
@@ -103,21 +103,35 @@ public class UnitUnion : MonoBehaviour
     }
 
     //Enum 랜덤값부여 스크립트
-    public UnitTpye RandomValue()
+    public UnitType RandomValue()
     {
-        var enumValues = System.Enum.GetValues(enumType: typeof(UnitTpye));
-        return (UnitTpye)enumValues.GetValue(Random.Range(1, enumValues.Length));
+        var enumValues = System.Enum.GetValues(enumType: typeof(UnitType));
+        return (UnitType)enumValues.GetValue(Random.Range(1, enumValues.Length));
     }
 
     //유닛 잡아먹는 방식
     private void OnTriggerEnter(Collider other)
     {
+        if (union)
+        {
+            if (!other.GetComponent<UnitUnion>())
+                return;
+
+            UnitUnion otherUnit = other.GetComponent<UnitUnion>();
+            if (uType == otherUnit.uType && level == otherUnit.level && level != 3)
+            {
+                level++;
+                Destroy(other.gameObject);
+            }
+        }
+
+        /*
         if (union == true)
         {
             switch (uType)
             {
-                case UnitTpye.Fire:
-                    if (other.gameObject.GetComponent<UnitUnion>().uType == UnitTpye.Fire && level == 1)
+                case UnitType.Fire:
+                    if (other.gameObject.GetComponent<UnitUnion>().uType == UnitType.Fire && level == 1)
                     {
                         if (other.gameObject.GetComponent<UnitUnion>().level == 2)
                             return;
@@ -127,7 +141,7 @@ public class UnitUnion : MonoBehaviour
                         level = 2;
                         Destroy(other.gameObject);
                     }
-                    else if (other.gameObject.GetComponent<UnitUnion>().uType == UnitTpye.Fire && level == 2)
+                    else if (other.gameObject.GetComponent<UnitUnion>().uType == UnitType.Fire && level == 2)
                     {
                         if (other.gameObject.GetComponent<UnitUnion>().level == 1)
                             return;
@@ -138,8 +152,8 @@ public class UnitUnion : MonoBehaviour
                         Destroy(other.gameObject);
                     }
                     break;
-                case UnitTpye.Wind:
-                    if (other.gameObject.GetComponent<UnitUnion>().uType == UnitTpye.Wind && level == 1)
+                case UnitType.Wind:
+                    if (other.gameObject.GetComponent<UnitUnion>().uType == UnitType.Wind && level == 1)
                     {
                         if (other.gameObject.GetComponent<UnitUnion>().level == 2)
                             return;
@@ -149,7 +163,7 @@ public class UnitUnion : MonoBehaviour
                         level = 2;
                         Destroy(other.gameObject);
                     }
-                    else if (other.gameObject.GetComponent<UnitUnion>().uType == UnitTpye.Wind && level == 2)
+                    else if (other.gameObject.GetComponent<UnitUnion>().uType == UnitType.Wind && level == 2)
                     {
                         if (other.gameObject.GetComponent<UnitUnion>().level == 1)
                             return;
@@ -160,8 +174,8 @@ public class UnitUnion : MonoBehaviour
                         Destroy(other.gameObject);
                     }
                     break;
-                case UnitTpye.Earth:
-                    if (other.gameObject.GetComponent<UnitUnion>().uType == UnitTpye.Earth && level == 1)
+                case UnitType.Earth:
+                    if (other.gameObject.GetComponent<UnitUnion>().uType == UnitType.Earth && level == 1)
                     {
                         if (other.gameObject.GetComponent<UnitUnion>().level == 2)
                             return;
@@ -171,7 +185,7 @@ public class UnitUnion : MonoBehaviour
                         level = 2;
                         Destroy(other.gameObject);
                     }
-                    else if (other.gameObject.GetComponent<UnitUnion>().uType == UnitTpye.Earth && level == 2)
+                    else if (other.gameObject.GetComponent<UnitUnion>().uType == UnitType.Earth && level == 2)
                     {
                         if (other.gameObject.GetComponent<UnitUnion>().level == 1)
                             return;
@@ -182,8 +196,8 @@ public class UnitUnion : MonoBehaviour
                         Destroy(other.gameObject);
                     }
                     break;
-                case UnitTpye.Water:
-                    if (other.gameObject.GetComponent<UnitUnion>().uType == UnitTpye.Water && level == 1)
+                case UnitType.Water:
+                    if (other.gameObject.GetComponent<UnitUnion>().uType == UnitType.Water && level == 1)
                     {
                         if (other.gameObject.GetComponent<UnitUnion>().level == 2)
                             return;
@@ -193,7 +207,7 @@ public class UnitUnion : MonoBehaviour
                         level = 2;
                         Destroy(other.gameObject);
                     }
-                    else if (other.gameObject.GetComponent<UnitUnion>().uType == UnitTpye.Water && level == 2)
+                    else if (other.gameObject.GetComponent<UnitUnion>().uType == UnitType.Water && level == 2)
                     {
                         if (other.gameObject.GetComponent<UnitUnion>().level == 1)
                             return;
@@ -205,7 +219,7 @@ public class UnitUnion : MonoBehaviour
                     }
                     break;
             }
-        }
+        }*/
     }
 }
 

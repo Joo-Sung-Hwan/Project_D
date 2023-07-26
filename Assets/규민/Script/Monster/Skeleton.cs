@@ -12,6 +12,7 @@ public class Skeleton : Monster
         md.maxHP = 50;
         md.curHP = md.maxHP;
         md.speed = 1;
+        md.speed_origin = md.speed;
         md.armor = 5;
     }
 

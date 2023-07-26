@@ -19,7 +19,7 @@ public class MonsterManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("C_Wave_1");
+        //StartCoroutine("C_Wave_1");
     }
 
     // Update is called once per frame
@@ -41,38 +41,14 @@ public class MonsterManager : MonoBehaviour
 
             if(d_monsters[mi].TryDequeue(out temp_monster))
             {
-                temp_monster.gameObject.SetActive(true);
                 temp_monster.PoolInit(transform);
+                temp_monster.gameObject.SetActive(true);
             }
             else
                 Instantiate(monsters[index], transform);
 
             spawned++;
             yield return new WaitForSeconds(delay);
-        }
-    }
-    IEnumerator C_Wave_1()
-    {
-        isWave = true;
-        canClear = false;
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 5, 1f));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.archer, 5, 1f));
-        yield return c_wait = StartCoroutine(C_WaitTime(5));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 5, 1f));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.archer, 5, 1f));
-        canClear = true;
-    }
-
-    IEnumerator C_WaitTime(float second)
-    {
-        float time = 0;
-        while (time < second)
-        {
-            //wave 대기시간 강제 종료
-            if (Input.GetKey(KeyCode.F3))
-                break;
-            time += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
         }
     }
 
@@ -88,15 +64,45 @@ public class MonsterManager : MonoBehaviour
         }
     }
 
+    #region 테스트
     private void Test()
     {
         if (Input.GetKeyDown(KeyCode.F1))
         {
             isWave = !isWave;
         }
-        if (Input.GetKeyDown(KeyCode.F2))
+        if (Input.GetKeyDown(KeyCode.F3))
         {
             StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 1, 1));
         }
     }
+
+    IEnumerator C_Wave_1()
+    {
+        isWave = true;
+        canClear = false;
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.archer, 5, 1f));
+        yield return c_wait = StartCoroutine(C_WaitTime(5));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.archer, 5, 1f));
+        canClear = true;
+    }
+
+    #region C_Wave_1 부속함수
+    IEnumerator C_WaitTime(float second)
+    {
+        float time = 0;
+        while (time < second)
+        {
+            //wave 대기시간 강제 종료
+            if (Input.GetKey(KeyCode.F3))
+                break;
+            time += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+    #endregion
+    #endregion
+
 }

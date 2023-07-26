@@ -6,7 +6,7 @@ public class Test_Unit : Unit
 {
     protected override void Init()
     {
-        ud.atk_type = Attack_Type.stun;
+        ud.atk_type = Attack_Type.normal;
         ud.attack = 30;
         ud.atkDelay = 0.5f;
     }   
