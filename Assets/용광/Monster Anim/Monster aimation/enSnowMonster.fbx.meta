@@ -95,7 +95,7 @@ ModelImporter:
       takeName: SlapAttackLeft
       internalID: -3385558567594881581
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 35
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -124,7 +124,7 @@ ModelImporter:
       takeName: SlapAttackRight
       internalID: -601051459114698796
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 35
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -153,7 +153,7 @@ ModelImporter:
       takeName: CastSpell
       internalID: -788077490799791933
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 44
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -182,7 +182,7 @@ ModelImporter:
       takeName: ClapAttack
       internalID: -8211957855945095370
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 45
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -211,7 +211,7 @@ ModelImporter:
       takeName: TakeDamage
       internalID: -1068325664247336573
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 26
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
