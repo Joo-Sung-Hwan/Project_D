@@ -124,7 +124,7 @@ ModelImporter:
       takeName: Channeling
       internalID: 5064791307595740650
       firstFrame: 0
-      lastFrame: 28
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -240,7 +240,7 @@ ModelImporter:
       takeName: TakeDamage
       internalID: -1068325664247336573
       firstFrame: 0
-      lastFrame: 26
+      lastFrame: 56
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -298,7 +298,7 @@ ModelImporter:
       takeName: Channeling_1
       internalID: -8763886236594334329
       firstFrame: 0
-      lastFrame: 28
+      lastFrame: 70
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -327,7 +327,7 @@ ModelImporter:
       takeName: attack
       internalID: -6239216113759591374
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 70
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
