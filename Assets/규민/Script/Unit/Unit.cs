@@ -10,15 +10,20 @@ public abstract class  Unit : MonoBehaviour
     {
         public Unit_Type unit_type;
         public Attack_Type atk_type;
+        public Mana_Type mana_type;
         public float atkDelay;
         public float attack;
+        public float maxMana;
+        public float curMana;
     }
     public unit_Data ud;
     #endregion
 
     //자기 자신
     [SerializeField] MovableObj movable;
+    public int level = 1;
     protected bool canAttack = true;
+    protected bool union;
     #endregion
 
     protected abstract void Init();
@@ -32,29 +37,75 @@ public abstract class  Unit : MonoBehaviour
             return;
 
         if (canAttack)
-            StartCoroutine(Attack(ud.atk_type));
+            StartCoroutine(Attack(ud.atk_type , Damage_Type.physic , Debuff_Type.stun , 2f));
     }
 
+    #region 유닛 합치기
+    private void OnMouseDown()
+    {
+        union = true;
+    }
+    private void OnMouseUp()
+    {
+        union = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (union && !MapManager.instance.monsterManager.isWave)
+        {
+            if (!collision.gameObject.GetComponent<Unit>())
+                return;
+
+            Unit otherUnit = collision.gameObject.GetComponent<Unit>();
+            if (ud.unit_type == otherUnit.ud.unit_type && level == otherUnit.level && level < 3)
+            {
+                otherUnit.LevelUp_Test();
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    public void LevelUp_Test()
+    {
+        level++;
+        switch (level)
+        {
+            case 2:
+                ud.attack *= 1.5f;
+                ud.atk_type = Attack_Type.splash;
+                break;
+
+            default:
+                Debug.Log("Error : level값이 잘못되었습니다.");
+                break;
+        }
+
+        Debug.Log($"{name} level : {level}");
+    }
+    #endregion
+
+
     #region 공격
-    IEnumerator Attack(Attack_Type type)
+    IEnumerator Attack(Attack_Type attack_Type, Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.none, float debuff_Time = 0f)
     {
         Monster first_mob = FindTarget();
         if (first_mob == null)
             yield break;
 
-        switch (type)
+        switch (attack_Type)
         {
             case Attack_Type.normal:
-                NormalAttack(first_mob , Damage_Type.physic , Debuff_Type.slow , 2f);
+                NormalAttack(first_mob , damage_Type, debuff_Type, debuff_Time);
                 break;
             case Attack_Type.splash:
-                SplashAttack(first_mob , Damage_Type.physic);
+                SplashAttack(first_mob , damage_Type, debuff_Type, debuff_Time);
                 break;
             default:
                 break;
         }
         canAttack = false;
-        StartCoroutine(Test_ColorChange());
+        StartCoroutine(Test_ColorChange_Attack());
         yield return new WaitForSeconds(ud.atkDelay);
         canAttack = true;
     }
@@ -79,12 +130,12 @@ public abstract class  Unit : MonoBehaviour
         return first_mob;
     }
 
-    void NormalAttack(Monster target , Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.normal, float debuffTime = 0)
+    void NormalAttack(Monster target , Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.none, float debuffTime = 0)
     {
         target.Damaged(ud.attack, damage_Type , debuff_Type , debuffTime);
     }
 
-    void SplashAttack(Monster target, Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.normal, float debuffTime = 0)
+    void SplashAttack(Monster target, Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.none, float debuffTime = 0)
     {
         Collider[] monsters = Physics.OverlapSphere(target.transform.position, 1);
         foreach (var item in monsters)
@@ -97,8 +148,39 @@ public abstract class  Unit : MonoBehaviour
     #endregion
     #endregion
 
+    #region 스킬
+    void UseSkill()
+    {
+
+    }
+
+    // public abstract IEnumerator Skill(Attack_Type attack_Type, Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.none, float debuff_Time = 0f);
+
+    void ManaRestore()
+    {
+        switch (ud.mana_type)
+        {
+            case Mana_Type.auto:
+                if (ud.curMana >= ud.maxMana)
+                {
+                    CancelInvoke("Mana_AutoRestore()");
+                    return;
+
+                }
+                break;
+            case Mana_Type.attack:
+                break;
+            default:
+                break;
+        }
+        
+    }
+
+    #endregion
+
+
     #region 테스트
-    IEnumerator Test_ColorChange()
+    IEnumerator Test_ColorChange_Attack()
     {
         GetComponent<Renderer>().material.color = Color.red;
         yield return new WaitForSeconds(0.2f);

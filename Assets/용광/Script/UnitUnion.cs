@@ -95,11 +95,11 @@ public class UnitUnion : MonoBehaviour
 
     private void OnMouseDown()
     {
-        union = false;
+        union = true;
     }
     private void OnMouseUp()
     {
-        union = true;
+        union = false;
     }
 
     //Enum 랜덤값부여 스크립트
@@ -118,10 +118,10 @@ public class UnitUnion : MonoBehaviour
                 return;
 
             UnitUnion otherUnit = other.GetComponent<UnitUnion>();
-            if (uType == otherUnit.uType && level == otherUnit.level && level != 3)
+            if (uType == otherUnit.uType && level == otherUnit.level && level < 3)
             {
-                level++;
-                Destroy(other.gameObject);
+                otherUnit.level++;
+                Destroy(gameObject);
             }
         }
 

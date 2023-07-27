@@ -11,6 +11,7 @@ public enum Monsters_Index
 
 public enum Unit_Type
 {
+    none,
     water,
     wind,
     earth,
@@ -32,8 +33,14 @@ public enum Damage_Type
 
 public enum Debuff_Type
 {
-    normal,
+    none,
     slow,
     stun,
     burn
+}
+
+public enum Mana_Type
+{
+    auto,
+    attack
 }

@@ -88,7 +88,6 @@ public abstract class Monster : MonoBehaviour
                 break;
             default:
                 transform.Rotate(new Vector3(0, -1, 0) * 120 * Time.deltaTime) ;
-              //  hpBarPrf.transform.localEulerAngles = new Vector3(0, 90 - transform.rotation.eulerAngles.y, 0);
                 rotated += 120 * Time.deltaTime;
                 if (rotated >= 90)
                 {
@@ -118,7 +117,7 @@ public abstract class Monster : MonoBehaviour
 
     #region 함수 - 피격
 
-    public void Damaged(float damage , Damage_Type damage_type , Debuff_Type debuff_Type = Debuff_Type.normal , float debuffTime = 0)
+    public void Damaged(float damage , Damage_Type damage_type , Debuff_Type debuff_Type = Debuff_Type.none , float debuffTime = 0)
     {
         switch (debuff_Type)
         {
