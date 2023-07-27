@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     public LobbyUIManager lobbyUIManager;
-    [HideInInspector] public bool isConnect = false;
 
     private void Awake()
     {
@@ -22,4 +21,5 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
     }
+    
 }

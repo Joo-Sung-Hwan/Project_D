@@ -5,6 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
@@ -13,10 +14,12 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_InputField room_name;
     [SerializeField] private GameObject serverprefab;
     [SerializeField] private Transform parent;
+    [SerializeField] private TMP_Text statusText;
+    [SerializeField] private TMP_Text nickname;
 
     [HideInInspector] public string join_room_name;
+    [HideInInspector] public Player[] playerList;
     bool name_ischeck = false;
-    bool isCreate = false;
     PhotonView photonview;
 
 
@@ -30,83 +33,68 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        if (GameManager.instance.isConnect == false)
-        {
-            PhotonNetwork.AutomaticallySyncScene = true;
-            PhotonNetwork.ConnectUsingSettings();
-            GameManager.instance.isConnect = true;
-        }
-        else
-        {
-            PhotonNetwork.AutomaticallySyncScene = true;
-            PhotonNetwork.ConnectUsingSettings();
-        }
         photonview = GetComponent<PhotonView>();
-
-        
+        PhotonNetwork.ConnectUsingSettings();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        statusText.text = PhotonNetwork.NetworkClientState.ToString();
+        SetPlayerList();
+        
     }
 
+    public void SetPlayerList()
+    {
+        playerList = new Player[PhotonNetwork.PlayerList.Length];
+        playerList = PhotonNetwork.PlayerList.ToArray<Player>();
+    }
+    public void Connect()
+    {
+        
+        PhotonNetwork.LocalPlayer.NickName = input_id.text;
+        nickname.text = input_id.text;
+        GameManager.instance.lobbyUIManager.lastNicknameSettingUI.gameObject.SetActive(false);
+        PhotonNetwork.JoinLobby();
+    }
     public override void OnConnectedToMaster()
     {
         Debug.Log("마스터 서버 연결");
-        if(isCreate == false)
-        {
-            return;
-        }
-        else
-        {
-            PhotonNetwork.CreateRoom(room_name.text, new RoomOptions { MaxPlayers = 4 }, null);
-        }
+        
     }
     
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        Debug.Log("방 인원이 최대입니다. 다른 방을 선택해주세요.");
+        Debug.Log(PhotonNetwork.NetworkClientState.ToString());
     }
 
     public override void OnJoinedLobby()
     {
-        Debug.Log($"{PhotonNetwork.NickName} 입장");
+        Debug.Log(PhotonNetwork.NetworkClientState.ToString());
     }
 
     public override void OnCreatedRoom()
     {
-        Debug.Log($"{room_name.text} 방생성");
+        Debug.Log($"{room_name.text} 생성 완료");
     }
 
     public override void OnJoinedRoom()
     {
-        //UpdatePlayer();
-        Debug.Log($"{PhotonNetwork.NickName} 입장");
-    }
+        Debug.Log($"{join_room_name} 입장 완료");
 
-    public void OnClickToChannelSelect()
-    {
-        for(int i =0; i < PhotonNetwork.PlayerList.Length; i++)
+        for(int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
         {
-            if (input_id.text.Equals(PhotonNetwork.PlayerList[i]))
-            {
-                name_ischeck = true;
-                Debug.Log("닉네임 중복");
-            }
+            Debug.Log(PhotonNetwork.PlayerList[i].NickName);
         }
-        if(name_ischeck == false)
-        {
-            PhotonNetwork.NickName = input_id.text;
-            GameManager.instance.lobbyUIManager.lastNicknameSettingUI.gameObject.SetActive(false);
-            PhotonNetwork.JoinLobby();
-        }
+        PhotonNetwork.LoadLevel("4.InGameUI");
     }
 
     public void OnClickToCreateRoom()
     {
-        isCreate = true;
+        
+        PhotonNetwork.CreateRoom(room_name.text, new RoomOptions { MaxPlayers = 4 });
+        join_room_name = room_name.text;
         PhotonNetwork.LoadLevel("4.InGameUI");
         DontDestroyOnLoad(this.gameObject);
     }
@@ -114,7 +102,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public void OnClickToJoinRoom()
     {
         PhotonNetwork.JoinRoom(join_room_name, null);
-        
+        PhotonNetwork.LoadLevel("4.InGameUI");
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -122,7 +112,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         for(int i = 0; i < roomList.Count; i++)
         {
             GameObject roomlist = Instantiate(serverprefab, parent);
-            roomlist.GetComponent<TMP_Text>().text = roomList[i].Name;
+            roomlist.transform.GetChild(4).GetComponent<TMP_Text>().text = roomList[i].Name;
         }
         Debug.Log(roomList.Count);
     }

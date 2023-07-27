@@ -42,7 +42,7 @@ public class LobbyUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        createBtn.onClick.AddListener(OnClickCreate);
+        
     }
     // 마지막 질문창 텍스트
     public void Imagetext()

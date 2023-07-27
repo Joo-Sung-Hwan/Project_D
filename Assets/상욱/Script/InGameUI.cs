@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InGameUI : MonoBehaviour
 {
+    [Header("BottomBG")]
     [SerializeField] private Image[] prefabCharacter;
     [SerializeField] private Transform[] parent;
 
+    [Header("대기석")]
     // 게임오브젝트를 담는 곳(부모)
     [SerializeField] private Transform callCharacter1;
     [SerializeField] private Transform callCharacter2;
@@ -15,18 +18,28 @@ public class InGameUI : MonoBehaviour
     // 게임오브젝트생성(자식)
     [SerializeField] private GameObject create1;
 
-
+    [Header("Score_UI")]
     [SerializeField] private Image firendList;
+    [SerializeField] private GameObject[] player; 
 
+    [Header("Server_Name_UI")]
+    public TMP_Text server_name;
     public int randomInt;
 
     bool ischeck = true;
 
+    private void Awake()
+    {
+        server_name.text = PhotonManager.instance.join_room_name;
+        SetUserName();
+
+
+    }
     // Start is called before the first frame update
     void Start()
     {
         SetBottomImage();
-        firendList.transform.gameObject.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -35,6 +48,13 @@ public class InGameUI : MonoBehaviour
 
     }
 
+    public void SetUserName()
+    {
+        for(int i = 0; i < PhotonManager.instance.playerList.Length; i++)
+        {
+            player[i].transform.GetChild(0).GetComponent<TMP_Text>().text = PhotonManager.instance.playerList[i].NickName;
+        }
+    }
     // 레벌업
     public void OnLevelUP()
     {

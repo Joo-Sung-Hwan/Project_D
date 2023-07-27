@@ -412,6 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movable: {fileID: 50244756}
+  level: 1
 --- !u!65 &50244755
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5850,6 +5851,12 @@ MonoBehaviour:
   callCharacter3: {fileID: 965238349}
   create1: {fileID: 2633232115456553443, guid: 38ea9bf6a292e2d47995a1aa5c6b1331, type: 3}
   firendList: {fileID: 1474534219}
+  player:
+  - {fileID: 1172818885}
+  - {fileID: 1780251418}
+  - {fileID: 93452830}
+  - {fileID: 1085228021}
+  server_name: {fileID: 1347083177}
   randomInt: 10
 --- !u!4 &484130926
 Transform:
@@ -9599,6 +9606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movable: {fileID: 804491614}
+  level: 1
 --- !u!65 &804491613
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17188,7 +17196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1474534219
 MonoBehaviour:
   m_ObjectHideFlags: 0

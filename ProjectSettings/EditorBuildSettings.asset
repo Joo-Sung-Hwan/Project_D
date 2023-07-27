@@ -54,7 +54,7 @@ EditorBuildSettings:
   - enabled: 0
     path: "Assets/\uC0C1\uC6B1/Scene/1.Loading_UI.unity"
     guid: b3c27aeb7a706a446aeb3b8593db3962
-  - enabled: 1
+  - enabled: 0
     path: "Assets/\uC0C1\uC6B1/Scene/2.NickName_Setting.unity"
     guid: 6d676aa67190b4b49bea2dd5b90dfb23
   - enabled: 1
