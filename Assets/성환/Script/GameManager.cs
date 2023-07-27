@@ -7,6 +7,7 @@ using Photon.Realtime;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+    public LobbyUIManager lobbyUIManager;
     [HideInInspector] public bool isConnect = false;
 
     private void Awake()
@@ -14,12 +15,11 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
         }
         else if (instance != this)
         {
             Destroy(this.gameObject);
         }
+        DontDestroyOnLoad(this.gameObject);
     }
-    
 }

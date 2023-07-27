@@ -10,7 +10,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 {
     public static PhotonManager instance = null;
     [SerializeField] private TMP_InputField input_id;
-    [HideInInspector] public TMP_InputField room_name;
+    [SerializeField] private TMP_InputField room_name;
     [SerializeField] private GameObject serverprefab;
     [SerializeField] private Transform parent;
 
@@ -61,7 +61,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            room_name = GameObject.Find("Canvas/RoomCreate_BG/InputField (TMP)").GetComponent<TMP_InputField>();
             PhotonNetwork.CreateRoom(room_name.text, new RoomOptions { MaxPlayers = 4 }, null);
         }
     }
@@ -100,9 +99,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         if(name_ischeck == false)
         {
             PhotonNetwork.NickName = input_id.text;
+            GameManager.instance.lobbyUIManager.lastNicknameSettingUI.gameObject.SetActive(false);
             PhotonNetwork.JoinLobby();
-            PhotonNetwork.LoadLevel("3.Lobby");
-            DontDestroyOnLoad(this.gameObject);
         }
     }
 
