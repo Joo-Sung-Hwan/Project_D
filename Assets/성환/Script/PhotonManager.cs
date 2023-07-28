@@ -22,6 +22,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     bool name_ischeck = false;
     PhotonView photonview;
 
+    Dictionary<string, int> room_inf = new Dictionary<string, int>();
+
 
     private void Awake()
     {
@@ -41,18 +43,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     void Update()
     {
         statusText.text = PhotonNetwork.NetworkClientState.ToString();
-        SetPlayerList();
-        
+        //SetPlayerList();
     }
-
-    public void SetPlayerList()
-    {
-        playerList = new Player[PhotonNetwork.PlayerList.Length];
-        playerList = PhotonNetwork.PlayerList.ToArray<Player>();
-    }
+    
     public void Connect()
     {
-        
         PhotonNetwork.LocalPlayer.NickName = input_id.text;
         nickname.text = input_id.text;
         GameManager.instance.lobbyUIManager.lastNicknameSettingUI.gameObject.SetActive(false);
@@ -92,9 +87,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void OnClickToCreateRoom()
     {
-        
         PhotonNetwork.CreateRoom(room_name.text, new RoomOptions { MaxPlayers = 4 });
         join_room_name = room_name.text;
+        room_inf.Add(join_room_name, 1);
         PhotonNetwork.LoadLevel("4.InGameUI");
         DontDestroyOnLoad(this.gameObject);
     }
@@ -102,8 +97,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public void OnClickToJoinRoom()
     {
         PhotonNetwork.JoinRoom(join_room_name, null);
+        room_inf[join_room_name] += 1;
         PhotonNetwork.LoadLevel("4.InGameUI");
-
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -113,7 +108,23 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         {
             GameObject roomlist = Instantiate(serverprefab, parent);
             roomlist.transform.GetChild(4).GetComponent<TMP_Text>().text = roomList[i].Name;
+            for(int j = 0; j < room_inf[roomList[i].Name]; j++)
+            {
+                roomlist.transform.GetChild(j).GetComponent<Image>().color = Color.green;
+            }
         }
         Debug.Log(roomList.Count);
     }
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        
+    }
+
+    
+    
 }

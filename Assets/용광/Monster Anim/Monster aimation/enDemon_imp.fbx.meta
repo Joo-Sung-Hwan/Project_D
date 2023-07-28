@@ -95,7 +95,7 @@ ModelImporter:
       takeName: Take 001_2
       internalID: 7490887377711229557
       firstFrame: 0
-      lastFrame: 25
+      lastFrame: 18
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -124,7 +124,7 @@ ModelImporter:
       takeName: Take 001_3
       internalID: -6225252274419835018
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 26
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

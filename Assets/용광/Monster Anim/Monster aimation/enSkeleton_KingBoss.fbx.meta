@@ -115,7 +115,7 @@ ModelImporter:
       takeName: skel_king_gethit2
       internalID: 8153726582681274601
       firstFrame: 0
-      lastFrame: 71
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -144,7 +144,7 @@ ModelImporter:
       takeName: skel_king_attack1
       internalID: 5518710086446179320
       firstFrame: 0
-      lastFrame: 71
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -173,7 +173,7 @@ ModelImporter:
       takeName: skel_king_attack2
       internalID: -3389019063020094228
       firstFrame: 0
-      lastFrame: 71
+      lastFrame: 54
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -256,40 +256,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: skel_king_magick
-      takeName: skel_king_magick
-      internalID: -5879548637493694198
-      firstFrame: 0
-      lastFrame: 80
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: skel_king_gethit1
       takeName: skel_king_gethit1
       internalID: 8856421989425433676
       firstFrame: 0
-      lastFrame: 80
+      lastFrame: 46
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
