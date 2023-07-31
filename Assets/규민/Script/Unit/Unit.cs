@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class  Unit : MonoBehaviour
 {
@@ -19,6 +20,13 @@ public abstract class  Unit : MonoBehaviour
     public unit_Data ud;
     #endregion
 
+    #region 선언 - 마나
+    [SerializeField] protected Mp_Bar mpBar_Prf;
+    protected Mp_Bar mpBar;
+    protected bool canManaRestore = true;
+    protected bool isManaRestore = false;
+    #endregion
+
     //자기 자신
     [SerializeField] MovableObj movable;
     public int level = 1;
@@ -26,18 +34,40 @@ public abstract class  Unit : MonoBehaviour
     protected bool union;
     #endregion
 
-    protected abstract void Init();
+    protected virtual void Init()
+    {
+        mpBar = Instantiate(mpBar_Prf, MapManager.instance.uiManager_ingame.canvas_hp.transform);
+        mpBar.unit = this;
+    }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F4) && ud.curMana >= ud.maxMana)
+        {
+            StartCoroutine(UseSkill());
+        }
+
         Test_ColorChange_isWave();
 
         if (movable.block.isWaiting || !MapManager.instance.monsterManager.isWave)
+        {
+            mpBar.gameObject.SetActive(false);
+            ud.curMana = 0;
+            mpBar.mpbar.fillAmount = 0;
             return;
+        }
+        else
+        {
+            mpBar.gameObject.SetActive(true);
+        }
 
         if (canAttack)
             StartCoroutine(Attack(ud.atk_type , Damage_Type.physic , Debuff_Type.stun , 2f));
+
+        if (ud.mana_type == Mana_Type.auto && !isManaRestore)
+            StartCoroutine(ManaRestore_Auto());
+
     }
 
     #region 유닛 합치기
@@ -104,6 +134,8 @@ public abstract class  Unit : MonoBehaviour
             default:
                 break;
         }
+        if (ud.mana_type == Mana_Type.attack)
+            ManaRestore_Attack();
         canAttack = false;
         StartCoroutine(Test_ColorChange_Attack());
         yield return new WaitForSeconds(ud.atkDelay);
@@ -149,33 +181,62 @@ public abstract class  Unit : MonoBehaviour
     #endregion
 
     #region 스킬
-    void UseSkill()
+    //테스트 스킬
+    IEnumerator UseSkill()
     {
-
+        ud.curMana = 0;
+        float skillTime = 3f;
+        float preDelay = ud.atkDelay;
+        canManaRestore = false;
+        ud.atkDelay /= 2;
+        while (skillTime > 0) 
+        {
+            yield return new WaitForEndOfFrame();
+            skillTime -= Time.deltaTime;
+            mpBar.mpbar.fillAmount = skillTime /3f;
+        }
+        ud.atkDelay = preDelay;
+        canManaRestore = true;
     }
 
     // public abstract IEnumerator Skill(Attack_Type attack_Type, Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.none, float debuff_Time = 0f);
 
-    void ManaRestore()
+    IEnumerator ManaRestore_Auto()
     {
-        switch (ud.mana_type)
-        {
-            case Mana_Type.auto:
-                if (ud.curMana >= ud.maxMana)
-                {
-                    CancelInvoke("Mana_AutoRestore()");
-                    return;
+        //amount = 초당 마나 회복량
+        float amount = 1;
 
-                }
-                break;
-            case Mana_Type.attack:
-                break;
-            default:
-                break;
+        isManaRestore = true;
+        while (ud.curMana < ud.maxMana && canManaRestore)
+        {
+            ud.curMana += Time.deltaTime * amount;
+            mpBar.mpbar.fillAmount = ud.curMana / ud.maxMana;
+            yield return new WaitForEndOfFrame();
         }
-        
+
+        if (ud.curMana > ud.maxMana)
+            ud.curMana = ud.maxMana;
+
+        isManaRestore = false;
     }
 
+    void ManaRestore_Attack()
+    {
+        if (!canManaRestore)
+            return;
+
+        // amount = 공격당 마나 회복량
+        float amount = 1;
+
+        if (ud.curMana < ud.maxMana)
+        {
+            if (ud.curMana + amount >= ud.maxMana)
+                ud.curMana = ud.maxMana;
+            else
+                ud.curMana += amount;
+        }
+        mpBar.mpbar.fillAmount = ud.curMana / ud.maxMana;
+    }
     #endregion
 
 

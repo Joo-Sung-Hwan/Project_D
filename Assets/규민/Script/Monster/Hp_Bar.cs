@@ -16,7 +16,7 @@ public class Hp_Bar : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
-        hpbar_BG.rectTransform.anchoredPosition = Camera.main.WorldToScreenPoint(monster.transform.position)+ new Vector3(0,-10);
+    {
+        hpbar_BG.rectTransform.anchoredPosition = Camera.main.WorldToScreenPoint(monster.transform.position) + new Vector3(0, -10);
     }
 }

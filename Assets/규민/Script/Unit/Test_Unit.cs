@@ -6,11 +6,13 @@ public class Test_Unit : Unit
 {
     protected override void Init()
     {
+        base.Init();
         ud.unit_type = Unit_Type.none;
         ud.atk_type = Attack_Type.normal;
         ud.attack = 30f;
         ud.atkDelay = 0.5f;
-        ud.maxMana = 50f;
+        ud.mana_type = Mana_Type.auto;
+        ud.maxMana = 10f;
         ud.curMana = 0f;
     }   
         
