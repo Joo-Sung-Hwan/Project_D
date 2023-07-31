@@ -6,7 +6,8 @@ public enum Monsters_Index
 {
     skeleton,
     archer,
-    ghost
+    ghost,
+    dragon
 }
 
 public enum Unit_Type

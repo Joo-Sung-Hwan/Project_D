@@ -73,7 +73,7 @@ public class MonsterManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F3))
         {
-            StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 1, 1));
+            StartCoroutine(C_Spawn((int)Monsters_Index.dragon, 1, 1));
         }
     }
 

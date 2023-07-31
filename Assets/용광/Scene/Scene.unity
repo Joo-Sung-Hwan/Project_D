@@ -16231,7 +16231,8 @@ MonoBehaviour:
   - {fileID: 758881666106950321, guid: ffc019dbb1fb3c5468ea47c8a5cca9eb, type: 3}
   - {fileID: 6393961617092999494, guid: 2ac9818d276d50a43b1122eae24bc345, type: 3}
   - {fileID: 117296395, guid: cbec44d54ff65f049966852c07d7ed7a, type: 3}
-  isWave: 0
+  - {fileID: 6918497532205217685, guid: cfd9abf73cb7c524b8daa2d0d1c3c255, type: 3}
+  isWave: 1
   killed: 0
 --- !u!1001 &1847220260
 PrefabInstance:

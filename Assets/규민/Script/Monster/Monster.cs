@@ -38,8 +38,9 @@ public abstract class Monster : MonoBehaviour
     float stunTime = 0;
     float burnTime = 0;
     #endregion
-#endregion
+    #endregion
 
+    public Animator anim;
     void Update()
     {
         Move();
@@ -49,11 +50,13 @@ public abstract class Monster : MonoBehaviour
     {
         if (hpBar == null)
             hpBar = Instantiate(hpBar_Prf, MapManager.instance.uiManager_ingame.canvas_hp.transform);
-        hpBar.monster = this;     
+        hpBar.monster = this;
+        anim = GetComponent<Animator>();
     }
 
     private void Move()
     {
+        anim.SetInteger("w&r",1);
         //index - 왼쪽:0, 아래:1, 오른쪽:2, 위:3;
         if (index != -1)
             moved += md.speed * Time.deltaTime;
@@ -112,7 +115,6 @@ public abstract class Monster : MonoBehaviour
         burnTime = 0;
         hpBar.gameObject.SetActive(true);
         hpBar.hpbar.fillAmount = 1;
-
     }
 
     #region 함수 - 피격
@@ -161,6 +163,7 @@ public abstract class Monster : MonoBehaviour
         if (!dm.ContainsKey(md.index))
             dm.Add(md.index, new Queue<Monster>());
 
+        anim.SetTrigger("die");
         dm[md.index].Enqueue(this);
         hpBar.gameObject.SetActive(false);
         MapManager.instance.monsterManager.killed++;
