@@ -10,49 +10,85 @@ public class GameStartManager : MonoBehaviour
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private Image notNextPlay;
 
-    bool ischack = false;
+    // bool ischeck = false;
+    bool[] ischeck_array = new bool[4];
+    int count = 0;
 
     private void Start()
     {
+        /*
         for (int i = 0; i < ready_Image.Length; i++)
         {
             ready_Image[i].gameObject.SetActive(false);
         }
+        */
+        for(int i = 0; i < ischeck_array.Length; i++)
+        {
+            ischeck_array[i] = true;
+        }
         notNextPlay.gameObject.SetActive(false);
     }
+
+    public void OnClickReady(int a)
+    {
+        if (ischeck_array[a])
+        {
+            ready_Image[a].color = Color.yellow;
+            count++;
+        }
+        else
+        {
+            ready_Image[a].color = Color.white;
+            count--;
+        }
+        ischeck_array[a] = !ischeck_array[a];
+
+
+    }
+    /*
     // 버튼 
     public void OnReady_Image1()
     {
-        ready_Image[0].gameObject.SetActive(!ischack);
-        ischack = !ischack;
-        ready_Image[0].gameObject.SetActive(ischack);
+        ready_Image[0].gameObject.SetActive(!ischeck);
+        ischeck = !ischeck;
+        ready_Image[0].gameObject.SetActive(ischeck);
         Debug.Log("첫번째 버튼이 눌렸습니다.");
     }
     public void OnReady_Image2()
     {
-        ready_Image[1].gameObject.SetActive(!ischack);
-        ischack = !ischack;
-        ready_Image[1].gameObject.SetActive(ischack);
+        ready_Image[1].gameObject.SetActive(!ischeck);
+        ischeck = !ischeck;
+        ready_Image[1].gameObject.SetActive(ischeck);
         Debug.Log("두번째 버튼이 눌렸습니다.");
     }
 
     public void OnReady_Image3()
     {
-        ready_Image[2].gameObject.SetActive(!ischack);
-        ischack = !ischack;
-        ready_Image[2].gameObject.SetActive(ischack);
+        ready_Image[2].gameObject.SetActive(!ischeck);
+        ischeck = !ischeck;
+        ready_Image[2].gameObject.SetActive(ischeck);
         Debug.Log("세번째 버튼이 눌렸습니다.");
     }
     public void OnReady_Image4()
     {
-        ready_Image[3].gameObject.SetActive(!ischack);
-        ischack = !ischack;
-        ready_Image[3].gameObject.SetActive(ischack);
+        ready_Image[3].gameObject.SetActive(!ischeck);
+        ischeck = !ischeck;
+        ready_Image[3].gameObject.SetActive(ischeck);
         Debug.Log("네번째 버튼이 눌렸습니다.");
-    }
+    }*/
 
     public void OnGameStart()
     {
+        if(count == 4)
+        {
+            Debug.Log("게임시작");
+        }
+        else
+        {
+            Debug.Log("게임시작 X");
+            notNextPlay.gameObject.SetActive(true);
+        }
+        /*
         for (int i = 0; i < ready_Image.Length; i++)
         {
             if (ready_Image[i].gameObject.activeInHierarchy == false)
@@ -65,6 +101,7 @@ public class GameStartManager : MonoBehaviour
                 Debug.Log("게임을 시작합니다.");
             }
         }
+        */
     }
 
     public void OnNotNextPlayChack()

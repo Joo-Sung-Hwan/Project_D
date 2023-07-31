@@ -20,10 +20,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     [HideInInspector] public string join_room_name;
     [HideInInspector] public Player[] playerList;
     bool name_ischeck = false;
+    List<RoomInfo> myList = new List<RoomInfo>();
+
     PhotonView photonview;
 
-    Dictionary<string, int> room_inf = new Dictionary<string, int>();
-
+    List<GameObject> prefabList = new List<GameObject>();
 
     private void Awake()
     {
@@ -71,50 +72,82 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public override void OnCreatedRoom()
     {
-        Debug.Log($"{room_name.text} 생성 완료");
+
+        DontDestroyOnLoad(this.gameObject);
+        PhotonNetwork.LoadLevel("4.InGameUI");
     }
 
     public override void OnJoinedRoom()
     {
-        Debug.Log($"{join_room_name} 입장 완료");
 
-        for(int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
         {
             Debug.Log(PhotonNetwork.PlayerList[i].NickName);
         }
+        DontDestroyOnLoad(this.gameObject);
         PhotonNetwork.LoadLevel("4.InGameUI");
     }
 
     public void OnClickToCreateRoom()
     {
-        PhotonNetwork.CreateRoom(room_name.text, new RoomOptions { MaxPlayers = 4 });
         join_room_name = room_name.text;
-        room_inf.Add(join_room_name, 1);
-        PhotonNetwork.LoadLevel("4.InGameUI");
-        DontDestroyOnLoad(this.gameObject);
+        PhotonNetwork.CreateRoom(room_name.text, new RoomOptions { MaxPlayers = 4 });
     }
 
     public void OnClickToJoinRoom()
     {
         PhotonNetwork.JoinRoom(join_room_name, null);
-        room_inf[join_room_name] += 1;
-        PhotonNetwork.LoadLevel("4.InGameUI");
-        DontDestroyOnLoad(this.gameObject);
     }
-
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        for(int i = 0; i < roomList.Count; i++)
-        {
-            GameObject roomlist = Instantiate(serverprefab, parent);
-            roomlist.transform.GetChild(4).GetComponent<TMP_Text>().text = roomList[i].Name;
-            for(int j = 0; j < room_inf[roomList[i].Name]; j++)
+        int roomCount = roomList.Count;
+        for(int i = 0; i < roomCount; i++)
+        {   
+            
+            if (!roomList[i].RemovedFromList)
             {
-                roomlist.transform.GetChild(j).GetComponent<Image>().color = Color.green;
+                if (!myList.Contains(roomList[i]))
+                {
+                    myList.Add(roomList[i]);
+                    GameObject roomlist = Instantiate(serverprefab, parent);
+                    roomlist.transform.GetChild(4).GetComponent<TMP_Text>().text = roomList[i].Name;
+                    roomlist.transform.GetChild(0).GetComponent<Image>().color = Color.green;
+                    prefabList.Add(roomlist);
+                    roomlist.transform.GetChild(0).GetComponent<Image>().color = Color.green;
+                }
+                else
+                {
+                    myList[myList.IndexOf(roomList[i])] = roomList[i];
+                    for(int k = 0; k < prefabList[i].transform.childCount - 1; k++)
+                    {
+                        prefabList[i].transform.GetChild(k).GetComponent<Image>().color = Color.white;
+                    }
+                    for (int j = 0; j < roomList[i].PlayerCount; j++)
+                    {
+                        
+                        prefabList[i].transform.GetChild(j).GetComponent<Image>().color = Color.green;
+                        if (roomList[i].PlayerCount == roomList[i].MaxPlayers)
+                        {
+                            prefabList[i].transform.GetChild(j).GetComponent<Image>().color = Color.red;
+                        }
+                    }
+                }
+            }
+            else if(myList.IndexOf(roomList[i]) != -1)
+            {
+                for(int k = 0; k < parent.childCount; k++)
+                {
+                    if(parent.transform.GetChild(k).GetChild(4).GetComponent<TMP_Text>().text == roomList[i].Name)
+                    {
+                        prefabList.RemoveAt(i);
+                        Destroy(parent.transform.GetChild(k).gameObject);
+                    }
+                }
+                myList.RemoveAt(myList.IndexOf(roomList[i]));
             }
         }
-        Debug.Log(roomList.Count);
     }
+    
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         
@@ -125,6 +158,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         
     }
 
-    
-    
+    public void OnRefrsh()
+    {
+        PhotonNetwork.JoinLobby();
+    }
 }
