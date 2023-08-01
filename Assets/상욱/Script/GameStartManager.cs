@@ -6,9 +6,17 @@ using TMPro;
 
 public class GameStartManager : MonoBehaviour
 {
+    [Header("InGame")]
     [SerializeField] private Image[] ready_Image;
     [SerializeField] private TMP_Text nameText;
-    [SerializeField] private Image notNextPlay;
+    [Header("Ready_BG")]
+    // 인게임시작전 준비창 
+    [SerializeField] private GameObject ready_BG;
+    [SerializeField] private GameObject gameScene;
+    [SerializeField] private Image not_NextPlay;
+    [SerializeField] private Image not_Executive;
+
+
 
     // bool ischeck = false;
     bool[] ischeck_array = new bool[4];
@@ -22,11 +30,15 @@ public class GameStartManager : MonoBehaviour
             ready_Image[i].gameObject.SetActive(false);
         }
         */
-        for(int i = 0; i < ischeck_array.Length; i++)
+        for (int i = 0; i < ischeck_array.Length; i++)
         {
             ischeck_array[i] = true;
         }
-        notNextPlay.gameObject.SetActive(false);
+        not_NextPlay.gameObject.SetActive(false);
+        //ready_BG.gameObject.SetActive(true);
+        gameScene.gameObject.SetActive(false);
+        not_Executive.gameObject.SetActive(false);
+
     }
 
     public void OnClickReady(int a)
@@ -79,15 +91,20 @@ public class GameStartManager : MonoBehaviour
 
     public void OnGameStart()
     {
-        if(count == 4)
+        if (count == 4)
         {
             Debug.Log("게임시작");
+            //ready_BG.gameObject.SetActive(false);
+            gameScene.gameObject.SetActive(true);
+            not_Executive.gameObject.SetActive(true);
         }
         else
         {
             Debug.Log("게임시작 X");
-            notNextPlay.gameObject.SetActive(true);
+            not_NextPlay.gameObject.SetActive(true);
         }
+
+
         /*
         for (int i = 0; i < ready_Image.Length; i++)
         {
@@ -106,6 +123,12 @@ public class GameStartManager : MonoBehaviour
 
     public void OnNotNextPlayChack()
     {
-        notNextPlay.gameObject.SetActive(false);
+        not_NextPlay.gameObject.SetActive(false);
+    }
+
+    // 방장만 시작할 수 있다는 경고문닫는버튼
+    public void OnNotExecutive()
+    {
+        not_Executive.gameObject.SetActive(false);
     }
 }

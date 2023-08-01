@@ -34,7 +34,12 @@ public class InGameUI : MonoBehaviour
     public GameObject chat_text;
     public Transform chat_parent;
 
+    [Header("Level_UP")]
+    [SerializeField] private TMP_Text levelUPText;
+
     bool ischeck = true;
+    string levelup;
+    int levelupNum = 1;
     PhotonView photonview;
 
     private void Awake()
@@ -43,7 +48,7 @@ public class InGameUI : MonoBehaviour
         {
             instance = this;
         }
-        server_name.text = PhotonManager.instance.join_room_name;
+        //server_name.text = PhotonManager.instance.join_room_name;
     }
     // Start is called before the first frame update
     void Start()
@@ -80,6 +85,9 @@ public class InGameUI : MonoBehaviour
     public void OnLevelUP()
     {
         Debug.Log("레벨업");
+        levelUPText.text = levelup;
+        levelupNum += 1;
+        
     }
 
     public void SetBottomImage()
@@ -105,6 +113,7 @@ public class InGameUI : MonoBehaviour
     public void OnCharacterImage()
     {
         Debug.Log("캐릭터 소환");
+        
     }
 
     public void OnFirendList()
