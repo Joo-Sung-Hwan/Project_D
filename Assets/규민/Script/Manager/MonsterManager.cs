@@ -19,7 +19,7 @@ public class MonsterManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine("C_Wave_1");
+        StartCoroutine("C_Wave_1");
     }
 
     // Update is called once per frame
@@ -71,7 +71,7 @@ public class MonsterManager : MonoBehaviour
         {
             isWave = !isWave;
         }
-        if (Input.GetKeyDown(KeyCode.F3))
+        if (Input.GetKeyDown(KeyCode.F2))
         {
             StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 1, 1));
         }

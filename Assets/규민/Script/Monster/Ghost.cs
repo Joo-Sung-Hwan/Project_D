@@ -9,6 +9,7 @@ public class Ghost : Monster
     {
         base.Init();
         md.index = Monsters_Index.ghost;
+        md.element_Type = Element_Type.wind;
         md.maxHP = 50;
         md.curHP = md.maxHP;
         md.speed = 1;

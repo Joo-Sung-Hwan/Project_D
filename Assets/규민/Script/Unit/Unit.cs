@@ -9,7 +9,7 @@ public abstract class  Unit : MonoBehaviour
     #region 선언 - 데이터
     public struct unit_Data
     {
-        public Element_Type unit_type;
+        public Element_Type element_type;
         public Attack_Type atk_type;
         public Mana_Type mana_type;
         public float atkDelay;
@@ -88,7 +88,7 @@ public abstract class  Unit : MonoBehaviour
                 return;
 
             Unit otherUnit = collision.gameObject.GetComponent<Unit>();
-            if (ud.unit_type == otherUnit.ud.unit_type && level == otherUnit.level && level < 3)
+            if (ud.element_type == otherUnit.ud.element_type && level == otherUnit.level && level < 3)
             {
                 otherUnit.LevelUp_Test();
                 Destroy(gameObject);
@@ -164,7 +164,7 @@ public abstract class  Unit : MonoBehaviour
 
     void NormalAttack(Monster target , Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.none, float debuffTime = 0)
     {
-        target.Damaged(ud.attack, damage_Type , debuff_Type , debuffTime);
+        target.Damaged(ud.attack, damage_Type , Element_Const(target) , debuff_Type , debuffTime);
     }
 
     void SplashAttack(Monster target, Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.none, float debuffTime = 0)
@@ -174,14 +174,37 @@ public abstract class  Unit : MonoBehaviour
         {
             Monster mob;
             if (mob = item.GetComponent<Monster>())
-                mob.Damaged(ud.attack, damage_Type, debuff_Type , debuffTime);
+                mob.Damaged(ud.attack, damage_Type, Element_Const(mob), debuff_Type , debuffTime);
         }
     }
 
     //상성에 따른 계수
-    float Fconst(Monster monster)
+    float Element_Const(Monster monster)
     {
-        return 0;
+        Element_Type md_et = monster.md.element_Type;
+        switch (ud.element_type)
+        {
+            case Element_Type.none:
+                return 1;
+            case Element_Type.water:
+                return md_et == Element_Type.wind ? 0.75f
+                    : md_et == Element_Type.fire ? 1.25f
+                    : 1;
+            case Element_Type.wind:
+                return md_et == Element_Type.earth ? 0.75f
+                    : md_et == Element_Type.water ? 1.25f
+                    : 1;
+            case Element_Type.earth:
+                return md_et == Element_Type.fire ? 0.75f
+                    : md_et == Element_Type.wind ? 1.25f
+                    : 1;
+            case Element_Type.fire:
+                return md_et == Element_Type.water ? 0.75f
+                    : md_et == Element_Type.earth ? 1.25f
+                    : 1;
+            default:
+                return 1;
+        }
     }
     #endregion
     #endregion

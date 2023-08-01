@@ -60,7 +60,7 @@ public abstract class Monster : MonoBehaviour
 
     private void Move()
     {
-        anim.SetInteger("w&r", ranmove = Random.Range(1,3));
+        //anim.SetInteger("w&r", ranmove = Random.Range(1,3));
         //index - 왼쪽:0, 아래:1, 오른쪽:2, 위:3;
         if (index != -1)
             moved += md.speed * Time.deltaTime;
@@ -123,7 +123,7 @@ public abstract class Monster : MonoBehaviour
 
     #region 함수 - 피격
 
-    public void Damaged(float damage , Damage_Type damage_type , Debuff_Type debuff_Type = Debuff_Type.none , float debuffTime = 0)
+    public void Damaged(float damage , Damage_Type damage_type , float element_const, Debuff_Type debuff_Type = Debuff_Type.none , float debuffTime = 0)
     {
         switch (debuff_Type)
         {
@@ -143,13 +143,13 @@ public abstract class Monster : MonoBehaviour
         switch (damage_type)
         {
             case Damage_Type.physic:
-                md.curHP -= damage > md.armor ? damage - md.armor : 0;
+                md.curHP -= damage > md.armor ? (damage - md.armor) * element_const : 0;
                 break;
             case Damage_Type.magic:
-                md.curHP -= damage;
+                md.curHP -= damage * element_const;
                 break;
             case Damage_Type.trueType:
-                md.curHP -= damage;
+                md.curHP -= damage * element_const;
                 break;
             default:
                 break;
@@ -167,7 +167,7 @@ public abstract class Monster : MonoBehaviour
         if (!dm.ContainsKey(md.index))
             dm.Add(md.index, new Queue<Monster>());
 
-        anim.SetTrigger("die");
+        //anim.SetTrigger("die");
         dm[md.index].Enqueue(this);
         hpBar.gameObject.SetActive(false);
         MapManager.instance.monsterManager.killed++;
@@ -255,7 +255,7 @@ public abstract class Monster : MonoBehaviour
             if (i >= 0.5f)
             {
                 //화상 데미지 고정? -> 조정 필요
-                Damaged(3, Damage_Type.trueType);
+                Damaged(3, Damage_Type.trueType, 1);
                 i = 0;
             }
         }

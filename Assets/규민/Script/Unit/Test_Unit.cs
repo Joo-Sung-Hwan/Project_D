@@ -7,7 +7,7 @@ public class Test_Unit : Unit
     protected override void Init()
     {
         base.Init();
-        ud.unit_type = Element_Type.none;
+        ud.element_type = Element_Type.earth;
         ud.atk_type = Attack_Type.normal;
         ud.attack = 30f;
         ud.atkDelay = 0.5f;
