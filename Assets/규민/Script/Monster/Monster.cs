@@ -25,6 +25,7 @@ public abstract class Monster : MonoBehaviour
     int preIndex = 0;
     float rotated = 0;
     public float moved = 0;
+    int ranmove;
     #endregion
 
     #region 선언 - 체력
@@ -38,9 +39,11 @@ public abstract class Monster : MonoBehaviour
     float stunTime = 0;
     float burnTime = 0;
     #endregion
-    #endregion
 
     public Animator anim;
+
+    #endregion
+
     void Update()
     {
         Move();
@@ -56,7 +59,7 @@ public abstract class Monster : MonoBehaviour
 
     private void Move()
     {
-        anim.SetInteger("w&r",1);
+        anim.SetInteger("w&r", ranmove = Random.Range(1,3));
         //index - 왼쪽:0, 아래:1, 오른쪽:2, 위:3;
         if (index != -1)
             moved += md.speed * Time.deltaTime;
