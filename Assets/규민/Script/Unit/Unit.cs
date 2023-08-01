@@ -9,7 +9,7 @@ public abstract class  Unit : MonoBehaviour
     #region 선언 - 데이터
     public struct unit_Data
     {
-        public Unit_Type unit_type;
+        public Element_Type unit_type;
         public Attack_Type atk_type;
         public Mana_Type mana_type;
         public float atkDelay;
@@ -43,7 +43,7 @@ public abstract class  Unit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F4) && ud.curMana >= ud.maxMana)
+        if (ud.curMana >= ud.maxMana)
         {
             StartCoroutine(UseSkill());
         }
@@ -176,6 +176,12 @@ public abstract class  Unit : MonoBehaviour
             if (mob = item.GetComponent<Monster>())
                 mob.Damaged(ud.attack, damage_Type, debuff_Type , debuffTime);
         }
+    }
+
+    //상성에 따른 계수
+    float Fconst(Monster monster)
+    {
+        return 0;
     }
     #endregion
     #endregion

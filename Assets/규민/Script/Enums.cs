@@ -10,7 +10,7 @@ public enum Monsters_Index
     dragon
 }
 
-public enum Unit_Type
+public enum Element_Type
 {
     none,
     water,

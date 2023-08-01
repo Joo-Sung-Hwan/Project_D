@@ -11,6 +11,7 @@ public abstract class Monster : MonoBehaviour
     public struct monster_Data
     {
         public Monsters_Index index;
+        public Element_Type element_Type;
         public float maxHP;
         public float curHP;
         public float speed;
