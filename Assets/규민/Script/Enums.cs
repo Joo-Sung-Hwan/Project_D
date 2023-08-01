@@ -7,7 +7,32 @@ public enum Monsters_Index
     skeleton,
     archer,
     ghost,
-    dragon
+    dragon,
+    demon,
+    imp,
+    ice_elementalboss,
+    ice_minion,
+    orc_lord,
+    orc_shaman,
+    orc_grunt,
+    orc_heavy,
+    skeleton_king,
+    snake,
+    snowman,
+    wolf,
+    guardin,
+    firewizzard,
+    icewizzard,
+    lightningwizzard,
+    naturewizzard,
+    golem,
+    king,
+    knight,
+    parrot,
+    Piranha,
+    Pirate_Warrior,
+    SeaTitan,
+    ShooterFish
 }
 
 public enum Element_Type
