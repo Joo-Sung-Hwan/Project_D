@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceElementalBoss : MonoBehaviour
+public class IceElementalBoss : Monster
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Init()
     {
-        
+        base.Init();
+        md.index = Monsters_Index.ice_elementalboss;
+        md.maxHP = 100;
+        md.curHP = md.maxHP;
+        md.speed = 1;
+        md.speed_origin = md.speed;
+        md.armor = 40;
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        Init();
     }
 }

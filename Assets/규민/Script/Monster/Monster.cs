@@ -60,7 +60,7 @@ public abstract class Monster : MonoBehaviour
 
     private void Move()
     {
-        //anim.SetInteger("w&r", ranmove = Random.Range(1,3));
+        anim.SetInteger("w&r", ranmove = Random.Range(1,3));
         //index - 왼쪽:0, 아래:1, 오른쪽:2, 위:3;
         if (index != -1)
             moved += md.speed * Time.deltaTime;

@@ -82,10 +82,10 @@ public class MonsterManager : MonoBehaviour
         isWave = true;
         canClear = false;
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 5, 1f));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.archer, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.dragon, 5, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 5, 1f));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.archer, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.imp, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.demon, 5, 1f));
         canClear = true;
     }
 
