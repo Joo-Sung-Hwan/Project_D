@@ -44,9 +44,7 @@ public abstract class  Unit : MonoBehaviour
     void Update()
     {
         if (ud.curMana >= ud.maxMana)
-        {
             StartCoroutine(UseSkill());
-        }
 
         Test_ColorChange_isWave();
 
@@ -63,7 +61,7 @@ public abstract class  Unit : MonoBehaviour
         }
 
         if (canAttack)
-            StartCoroutine(Attack(ud.atk_type , Damage_Type.physic , Debuff_Type.stun , 2f));
+            Attack();
 
         if (ud.mana_type == Mana_Type.auto && !isManaRestore)
             StartCoroutine(ManaRestore_Auto());
@@ -117,7 +115,9 @@ public abstract class  Unit : MonoBehaviour
 
 
     #region АјАн
-    IEnumerator Attack(Attack_Type attack_Type, Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.none, float debuff_Time = 0f)
+    protected abstract void Attack();
+
+    protected IEnumerator C_Attack(Attack_Type attack_Type, Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.none, float debuff_Time = 0f)
     {
         Monster first_mob = FindTarget();
         if (first_mob == null)
