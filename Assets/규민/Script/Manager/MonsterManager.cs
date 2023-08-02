@@ -29,6 +29,7 @@ public class MonsterManager : MonoBehaviour
         WaveClear();
     }
 
+    #region spawn
     IEnumerator C_Spawn(int index, int num, float delay)
     {
         for (int i = 0; i < num; i++)
@@ -51,41 +52,50 @@ public class MonsterManager : MonoBehaviour
             yield return new WaitForSeconds(delay);
         }
     }
+    #endregion
 
+    #region Wave
     void WaveClear()
     {
         if (canClear && spawned == killed)
         {
             Debug.Log("Wave Clear!");
-            isWave = false;
+            SetIsWave(false);
             canClear = false;
             spawned = 0;
             killed = 0;
         }
     }
 
+    void SetIsWave(bool tf)
+    {
+        isWave = tf;
+        MapManager.instance.unitManager.Init_IsWave(tf);
+    }
+    #endregion
+
     #region Å×½ºÆ®
     private void Test()
     {
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            isWave = !isWave;
+            SetIsWave(!isWave);
         }
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 1, 1));
+            StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 1, 1));
         }
     }
 
     IEnumerator C_Wave_1()
     {
-        isWave = true;
+        SetIsWave(true);
         canClear = false;
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 5, 1f));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.dragon, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 5, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.imp, 5, 1f));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.demon, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 5, 1f));
         canClear = true;
     }
 

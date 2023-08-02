@@ -40,6 +40,18 @@ public abstract class  Unit : MonoBehaviour
         mpBar.unit = this;
     }
 
+    public void Init_Wave(bool isWave)
+    {
+        if (isWave && !movable.block.isWaiting)
+            mpBar.gameObject.SetActive(true);
+        else
+        {
+            mpBar.gameObject.SetActive(false);
+            ud.curMana = 0;
+            mpBar.mpbar.fillAmount = 0;
+        }   
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -49,16 +61,8 @@ public abstract class  Unit : MonoBehaviour
         Test_ColorChange_isWave();
 
         if (movable.block.isWaiting || !MapManager.instance.monsterManager.isWave)
-        {
-            mpBar.gameObject.SetActive(false);
-            ud.curMana = 0;
-            mpBar.mpbar.fillAmount = 0;
             return;
-        }
-        else
-        {
-            mpBar.gameObject.SetActive(true);
-        }
+
 
         if (canAttack)
             Attack();
@@ -66,6 +70,13 @@ public abstract class  Unit : MonoBehaviour
         if (ud.mana_type == Mana_Type.auto && !isManaRestore)
             StartCoroutine(ManaRestore_Auto());
 
+    }
+
+    void DestroyUnit()
+    {
+        Destroy(gameObject);
+        Destroy(mpBar);
+        MapManager.instance.unitManager.units.Remove(this);
     }
 
     #region 유닛 합치기
@@ -89,7 +100,7 @@ public abstract class  Unit : MonoBehaviour
             if (ud.element_type == otherUnit.ud.element_type && level == otherUnit.level && level < 3)
             {
                 otherUnit.LevelUp_Test();
-                Destroy(gameObject);
+                DestroyUnit();
             }
         }
     }
@@ -105,7 +116,7 @@ public abstract class  Unit : MonoBehaviour
                 break;
 
             default:
-                Debug.Log("Error : level값이 잘못되었습니다.");
+                Debug.LogError("Error : 잘못된 level값.");
                 break;
         }
 
