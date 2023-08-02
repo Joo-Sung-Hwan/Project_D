@@ -364,5 +364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5610b90392b27844ca7dc9e6691301e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpBar_Prf: {fileID: 2208916345214765374, guid: daefbd967b7f3514abd58e30f46c5138, type: 3}
   moved: 0
+  hpBar_Prf: {fileID: 2208916345214765374, guid: daefbd967b7f3514abd58e30f46c5138, type: 3}
+  anim: {fileID: 5019650076747954503}
