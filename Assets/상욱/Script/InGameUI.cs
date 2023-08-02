@@ -6,7 +6,7 @@ using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class InGameUI : MonoBehaviour
+public class InGameUI : MonoBehaviourPunCallbacks
 {
     public static InGameUI instance = null;
     [Header("BottomBG")]
@@ -37,6 +37,19 @@ public class InGameUI : MonoBehaviour
     [Header("Level_UP")]
     [SerializeField] private TMP_Text levelUPText;
 
+    [Header("Ready_UI")]
+    [SerializeField] private GameObject ready_ui;
+    public Image[] ready_Image;
+    [SerializeField] private TMP_Text nameText;
+    [SerializeField] private Button startBtn;
+    bool isready = false;
+    // 인게임시작전 준비창 
+    
+    [SerializeField] private Image not_NextPlay;
+    [SerializeField] private Image not_Executive;
+    bool[] ischeck_array = new bool[4];
+    int count = 0;
+
     bool ischeck = true;
     string levelup;
     int levelupNum = 1;
@@ -48,13 +61,29 @@ public class InGameUI : MonoBehaviour
         {
             instance = this;
         }
-        //server_name.text = PhotonManager.instance.join_room_name;
+        server_name.text = PhotonManager.instance.join_room_name;
+        nameText.text = PhotonManager.instance.name_ui;
+        
+        if (PhotonNetwork.IsMasterClient)
+        {
+            startBtn.gameObject.SetActive(true);
+        }
+        ready_Image[GetBtnIndex()].transform.GetChild(1).gameObject.SetActive(true);
+        ButtonOff();
     }
     // Start is called before the first frame update
     void Start()
     {
-        SetBottomImage();
         photonview = GetComponent<PhotonView>();
+        ready_ui.SetActive(true);
+        for (int i = 0; i < ischeck_array.Length; i++)
+        {
+            ischeck_array[i] = true;
+        }
+        not_NextPlay.gameObject.SetActive(false);
+        //ready_BG.gameObject.SetActive(true);
+        not_Executive.gameObject.SetActive(false);
+        SetBottomImage();
     }
 
     // Update is called once per frame
@@ -76,11 +105,47 @@ public class InGameUI : MonoBehaviour
 
     public void SetUserName()
     {
+        for(int i = 0; i < player.Length; i++)
+        {
+            player[i].transform.GetChild(0).GetComponent<TMP_Text>().text = string.Empty;
+            ready_Image[i].transform.GetChild(0).GetComponent<TMP_Text>().text = string.Empty;
+        }
         for(int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
         {
             player[i].transform.GetChild(0).GetComponent<TMP_Text>().text = PhotonNetwork.PlayerList[i].NickName;
+            ready_Image[i].transform.GetChild(0).GetComponent<TMP_Text>().text = PhotonNetwork.PlayerList[i].NickName;
         }
     }
+
+    public int GetBtnIndex()
+    {
+        int btn_index = 0;
+        for(int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        {
+            if(PhotonManager.instance.name_ui == PhotonNetwork.PlayerList[i].NickName)
+            {
+                btn_index = i;
+            }
+        }
+        return btn_index;
+    }
+
+    public void ButtonOff()
+    {
+        for(int i = 0; i < ready_Image.Length; i++)
+        {
+            if(i == GetBtnIndex())
+            {
+                ready_Image[i].GetComponent<Button>().interactable = true;
+            }
+            else
+            {
+                ready_Image[i].GetComponent<Button>().interactable = false;
+            }
+            
+        }
+    }
+    
     // 레벌업
     public void OnLevelUP()
     {
@@ -133,5 +198,91 @@ public class InGameUI : MonoBehaviour
         CreateChat(msg);
     }
 
+    public void OnClickReady(int a)
+    {
+        if (ischeck_array[a])
+        {
+            ready_Image[a].transform.GetChild(1).GetComponent<Image>().color = Color.yellow;
+            count++;
+        }
+        else
+        {
+            ready_Image[a].transform.GetChild(1).GetComponent<Image>().color = Color.white;
+            count--;
+        }
+        ischeck_array[a] = !ischeck_array[a];
+    }
 
+    public void OnGameStart()
+    {
+        if (count == 4)
+        {
+            Debug.Log("게임시작");
+            //ready_BG.gameObject.SetActive(false);
+            not_Executive.gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("게임시작 X");
+            not_NextPlay.gameObject.SetActive(true);
+        }
+    }
+
+    public void OnNotNextPlayChack()
+    {
+        not_NextPlay.gameObject.SetActive(false);
+    }
+
+    // 방장만 시작할 수 있다는 경고문닫는버튼
+    public void OnNotExecutive()
+    {
+        not_Executive.gameObject.SetActive(false);
+    }
+
+    public void OnReady()
+    {
+        var hash = PhotonNetwork.LocalPlayer.CustomProperties;
+        if (isready == false)
+        {
+            hash["Ready"] = true;
+            isready = true;
+            Debug.Log("준비완료");
+        }
+        else
+        {
+            hash["Ready"] = false;
+            isready = false;
+            Debug.Log("준비취소");
+        }
+        PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+        
+    }
+
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
+    {
+        OnClickReady(GetBtnIndex());
+        base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
+    }
+    
+    /*
+    public override void OnMasterClientSwitched(Player newMasterClient)
+    {
+        if (newMasterClient != PhotonNetwork.LocalPlayer) return;
+
+        CheckAllPlayersReady();
+    }
+    
+
+    private void CheckAllPlayersReady()
+    {
+        var players = PhotonNetwork.PlayerList;
+
+        // This is just using a shorthand via Linq instead of having a loop with a counter
+        // for checking whether all players in the list have the key "Ready" in their custom properties
+        if (players.All(p => p.CustomProperties.ContainsKey("Ready") && (bool)p.CustomProperties["Ready"]))
+        {
+            Debug.Log("All players are ready!");
+        }
+    }
+    */
 }

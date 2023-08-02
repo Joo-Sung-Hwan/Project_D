@@ -2731,10 +2731,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 630558753}
-        m_TargetAssemblyTypeName: GameStartManager, Assembly-CSharp
+      - m_Target: {fileID: 484130925}
+        m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
         m_MethodName: OnClickReady
         m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 484130925}
+        m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
+        m_MethodName: OnReady
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4072,7 +4084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &310482072
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5417,8 +5429,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 630558753}
-        m_TargetAssemblyTypeName: GameStartManager, Assembly-CSharp
+      - m_Target: {fileID: 484130925}
+        m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
         m_MethodName: OnNotExecutive
         m_Mode: 1
         m_Arguments:
@@ -6177,7 +6189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &478358734
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6566,6 +6578,16 @@ MonoBehaviour:
   chat_text: {fileID: 2245849527732813146, guid: 655d8585d7a088e41bb6e2ccd56d1d25, type: 3}
   chat_parent: {fileID: 1322252013}
   levelUPText: {fileID: 1598946963}
+  ready_ui: {fileID: 1894051196}
+  ready_Image:
+  - {fileID: 231144643}
+  - {fileID: 2028687758}
+  - {fileID: 948861764}
+  - {fileID: 1286167194}
+  nameText: {fileID: 822111134}
+  startBtn: {fileID: 1345734625}
+  not_NextPlay: {fileID: 1942065582}
+  not_Executive: {fileID: 651021841}
 --- !u!4 &484130926
 Transform:
   m_ObjectHideFlags: 0
@@ -12316,7 +12338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &871653817
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13259,14 +13281,26 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 630558753}
-        m_TargetAssemblyTypeName: GameStartManager, Assembly-CSharp
+      - m_Target: {fileID: 484130925}
+        m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
         m_MethodName: OnClickReady
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 484130925}
+        m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
+        m_MethodName: OnReady
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -14639,7 +14673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1056283474
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17354,14 +17388,26 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 630558753}
-        m_TargetAssemblyTypeName: GameStartManager, Assembly-CSharp
+      - m_Target: {fileID: 484130925}
+        m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
         m_MethodName: OnClickReady
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 484130925}
+        m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
+        m_MethodName: OnReady
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -18060,7 +18106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1345734622
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18164,8 +18210,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 630558753}
-        m_TargetAssemblyTypeName: GameStartManager, Assembly-CSharp
+      - m_Target: {fileID: 484130925}
+        m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
         m_MethodName: OnGameStart
         m_Mode: 1
         m_Arguments:
@@ -19649,9 +19695,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 630558753}
-        m_TargetAssemblyTypeName: GameStartManager, Assembly-CSharp
-        m_MethodName: OnNotExecutive
+      - m_Target: {fileID: 484130925}
+        m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
+        m_MethodName: OnNotNextPlayChack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27370,8 +27416,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 630558753}
-        m_TargetAssemblyTypeName: GameStartManager, Assembly-CSharp
+      - m_Target: {fileID: 484130925}
+        m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
         m_MethodName: OnNotNextPlayChack
         m_Mode: 1
         m_Arguments:
@@ -28486,14 +28532,26 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 630558753}
-        m_TargetAssemblyTypeName: GameStartManager, Assembly-CSharp
+      - m_Target: {fileID: 484130925}
+        m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
         m_MethodName: OnClickReady
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 484130925}
+        m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
+        m_MethodName: OnReady
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

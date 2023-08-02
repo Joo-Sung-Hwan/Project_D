@@ -19,11 +19,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     [HideInInspector] public string join_room_name;
     [HideInInspector] public Player[] playerList;
-    bool name_ischeck = false;
+    //bool name_ischeck = false;
     List<RoomInfo> myList = new List<RoomInfo>();
 
     PhotonView photonview;
-
+    public string name_ui;
     List<GameObject> prefabList = new List<GameObject>();
 
     private void Awake()
@@ -51,6 +51,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LocalPlayer.NickName = input_id.text;
         nickname.text = input_id.text;
+        name_ui = PhotonNetwork.LocalPlayer.NickName;
         GameManager.instance.lobbyUIManager.lastNicknameSettingUI.gameObject.SetActive(false);
         PhotonNetwork.JoinLobby();
     }
@@ -156,10 +157,5 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         
-    }
-
-    public void OnRefrsh()
-    {
-        PhotonNetwork.JoinLobby();
     }
 }
