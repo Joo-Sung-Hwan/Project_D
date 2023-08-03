@@ -89,6 +89,7 @@ public class MonsterManager : MonoBehaviour
 
     IEnumerator C_Wave_1()
     {
+        yield return new WaitForSeconds(3);
         SetIsWave(true);
         canClear = false;
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.parrot, 5, 1f));

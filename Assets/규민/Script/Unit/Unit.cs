@@ -38,12 +38,15 @@ public abstract class  Unit : MonoBehaviour
     {
         mpBar = Instantiate(mpBar_Prf, MapManager.instance.uiManager_ingame.canvas_hp.transform);
         mpBar.unit = this;
+        mpBar.gameObject.SetActive(false);
     }
 
     public void Init_Wave(bool isWave)
     {
         if (isWave && !movable.block.isWaiting)
+        {
             mpBar.gameObject.SetActive(true);
+        }
         else
         {
             mpBar.gameObject.SetActive(false);
