@@ -83,7 +83,7 @@ public class MonsterManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 1, 1));
+            StartCoroutine(C_Spawn((int)Monsters_Index.parrot, 1, 1));
         }
     }
 
@@ -91,11 +91,11 @@ public class MonsterManager : MonoBehaviour
     {
         SetIsWave(true);
         canClear = false;
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 5, 1f));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.parrot, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.parrot, 5, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 5, 1f));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.skeleton, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.parrot, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.parrot, 5, 1f));
         canClear = true;
     }
 
