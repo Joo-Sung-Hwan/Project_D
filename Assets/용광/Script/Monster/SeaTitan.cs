@@ -7,7 +7,7 @@ public class SeaTitan : Monster
     public override void Init()
     {
         base.Init();
-        md.index = Monsters_Index.SeaTitan;
+        md.index = Monsters_Index.seaTitan;
         md.maxHP = 100;
         md.curHP = md.maxHP;
         md.speed = 1;

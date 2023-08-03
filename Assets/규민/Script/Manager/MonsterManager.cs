@@ -92,11 +92,11 @@ public class MonsterManager : MonoBehaviour
         yield return new WaitForSeconds(3);
         SetIsWave(true);
         canClear = false;
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.parrot, 5, 1f));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.parrot, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.wolf, 5, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.parrot, 5, 1f));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.parrot, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.snowman, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.snake, 5, 1f));
         canClear = true;
     }
 

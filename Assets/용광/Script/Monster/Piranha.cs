@@ -7,7 +7,7 @@ public class Piranha : Monster
     public override void Init()
     {
         base.Init();
-        md.index = Monsters_Index.Piranha;
+        md.index = Monsters_Index.piranha;
         md.maxHP = 100;
         md.curHP = md.maxHP;
         md.speed = 1;

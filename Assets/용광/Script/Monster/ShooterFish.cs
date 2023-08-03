@@ -7,7 +7,7 @@ public class ShooterFish : Monster
     public override void Init()
     {
         base.Init();
-        md.index = Monsters_Index.ShooterFish;
+        md.index = Monsters_Index.shooterFish;
         md.maxHP = 100;
         md.curHP = md.maxHP;
         md.speed = 1;
