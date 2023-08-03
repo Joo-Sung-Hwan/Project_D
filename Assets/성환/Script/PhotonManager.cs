@@ -151,7 +151,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        
+       
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)

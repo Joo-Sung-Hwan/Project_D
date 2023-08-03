@@ -3588,6 +3588,7 @@ MonoBehaviour:
   statusText: {fileID: 433850248}
   nickname: {fileID: 1121956634}
   join_room_name: 
+  name_ui: 
 --- !u!1 &1372325000
 GameObject:
   m_ObjectHideFlags: 0

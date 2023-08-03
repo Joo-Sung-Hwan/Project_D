@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
+using System.Linq;
 
 public class InGameUI : MonoBehaviourPunCallbacks
 {
@@ -200,26 +201,26 @@ public class InGameUI : MonoBehaviourPunCallbacks
 
     public void OnClickReady(int a)
     {
-        if (ischeck_array[a])
+        int num = Mathf.Abs(a);
+        var hash = PhotonNetwork.PlayerList[num].CustomProperties;
+        if ((bool)hash["Ready"] == true)
         {
-            ready_Image[a].transform.GetChild(1).GetComponent<Image>().color = Color.yellow;
-            count++;
+            ready_Image[num].transform.GetChild(1).GetComponent<Image>().color = Color.yellow;
+            PhotonNetwork.PlayerList[num].CustomProperties["Ready"] = false;
         }
         else
         {
-            ready_Image[a].transform.GetChild(1).GetComponent<Image>().color = Color.white;
-            count--;
+            ready_Image[num].transform.GetChild(1).GetComponent<Image>().color = Color.white;
+            PhotonNetwork.PlayerList[num].CustomProperties["Ready"] = true;
         }
-        ischeck_array[a] = !ischeck_array[a];
     }
-
     public void OnGameStart()
     {
         if (count == 4)
         {
             Debug.Log("게임시작");
-            //ready_BG.gameObject.SetActive(false);
-            not_Executive.gameObject.SetActive(true);
+            ready_ui.gameObject.SetActive(false);
+            //not_Executive.gameObject.SetActive(true);
         }
         else
         {
@@ -245,12 +246,14 @@ public class InGameUI : MonoBehaviourPunCallbacks
         if (isready == false)
         {
             hash["Ready"] = true;
+            hash["index"] = GetBtnIndex();
             isready = true;
             Debug.Log("준비완료");
         }
         else
         {
             hash["Ready"] = false;
+            hash["index"] = GetBtnIndex() * -1;
             isready = false;
             Debug.Log("준비취소");
         }
@@ -260,10 +263,26 @@ public class InGameUI : MonoBehaviourPunCallbacks
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
-        OnClickReady(GetBtnIndex());
+        OnClickReady((int)targetPlayer.CustomProperties["index"]);
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
     }
-    
+
+    public void CheckAllPlayersReady()
+    {
+        var players = PhotonNetwork.PlayerList;
+        
+        if (players.All(p => p.CustomProperties.ContainsKey("Ready") && (bool)p.CustomProperties["Ready"] == false))
+        {
+            Debug.Log("All players are ready!");
+            ready_ui.gameObject.SetActive(false);
+            //not_Executive.gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("게임시작 X");
+            not_NextPlay.gameObject.SetActive(true);
+        }
+    }
     /*
     public override void OnMasterClientSwitched(Player newMasterClient)
     {

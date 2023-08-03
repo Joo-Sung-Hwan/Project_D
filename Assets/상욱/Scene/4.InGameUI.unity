@@ -305,9 +305,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas_Hp: {fileID: 829585585}
   monsters:
-  - {fileID: 6393961617092999494, guid: 2ac9818d276d50a43b1122eae24bc345, type: 3}
-  - {fileID: 117296395, guid: cbec44d54ff65f049966852c07d7ed7a, type: 3}
-  - {fileID: 758881666106950321, guid: ffc019dbb1fb3c5468ea47c8a5cca9eb, type: 3}
+  - {fileID: 8941576770141383096, guid: 80a1374b91807a545b60f10862e04663, type: 3}
+  - {fileID: -1151497962513584350, guid: 9acdac9752d82944898e119f1c43c78c, type: 3}
+  - {fileID: 846399467759072708, guid: 986892dd67a586c45a715beb17cc3f92, type: 3}
+  - {fileID: 6918497532205217685, guid: cfd9abf73cb7c524b8daa2d0d1c3c255, type: 3}
   isWave: 0
   killed: 0
 --- !u!1001 &12622931
@@ -4084,7 +4085,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &310482072
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4588,6 +4589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterManager: {fileID: 7392894}
   uiManager_ingame: {fileID: 1056991034}
+  unitManager: {fileID: 2103820724}
 --- !u!1001 &344478153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5431,7 +5433,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 484130925}
         m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
-        m_MethodName: OnNotExecutive
+        m_MethodName: OnReady
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6189,7 +6191,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &478358734
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12338,7 +12340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &871653817
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14673,7 +14675,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1056283474
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18212,7 +18214,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 484130925}
         m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
-        m_MethodName: OnGameStart
+        m_MethodName: CheckAllPlayersReady
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26334,7 +26336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1894051197
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29565,6 +29567,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2103820723}
+  - component: {fileID: 2103820724}
   m_Layer: 0
   m_Name: UnitManager
   m_TagString: Untagged
@@ -29587,6 +29590,20 @@ Transform:
   m_Father: {fileID: 742096666}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2103820724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103820722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f52edf0d38c38478f6f12e8e3446eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  units:
+  - {fileID: 804491612}
 --- !u!1001 &2122100198
 PrefabInstance:
   m_ObjectHideFlags: 0
