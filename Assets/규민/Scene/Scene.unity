@@ -1230,6 +1230,14 @@ PrefabInstance:
       propertyPath: block
       value: 
       objectReference: {fileID: 1812680673}
+    - target: {fileID: 532915477937041824, guid: 74a431c52bb43234798b5b537db4daab, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 532915477937041824, guid: 74a431c52bb43234798b5b537db4daab, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74a431c52bb43234798b5b537db4daab, type: 3}
 --- !u!1 &337324248
@@ -6679,7 +6687,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 503
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -6765,6 +6773,14 @@ PrefabInstance:
       propertyPath: block
       value: 
       objectReference: {fileID: 2051728752}
+    - target: {fileID: 532915477937041824, guid: 74a431c52bb43234798b5b537db4daab, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 532915477937041824, guid: 74a431c52bb43234798b5b537db4daab, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74a431c52bb43234798b5b537db4daab, type: 3}
 --- !u!1001 &7092963117358974417

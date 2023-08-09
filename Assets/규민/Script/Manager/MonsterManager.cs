@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class MonsterManager : MonoBehaviour
+public class MonsterManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] public Canvas canvas_Hp;
 
@@ -15,6 +17,16 @@ public class MonsterManager : MonoBehaviour
     private int spawned = 0;
     private bool canClear = false;
     private Coroutine c_wait;
+
+    private void Awake()
+    {
+        //PhotonNetwork.ConnectUsingSettings();
+    }
+
+    public void OnConnectedToServer()
+    {
+        //PhotonNetwork.JoinOrCreateRoom("Room", new RoomOptions { MaxPlayers = 4 }, null);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -93,10 +105,10 @@ public class MonsterManager : MonoBehaviour
         SetIsWave(true);
         canClear = false;
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 5, 1f));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.wolf, 5, 1f));
+        //yield return StartCoroutine(C_Spawn((int)Monsters_Index.wolf, 5, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.snowman, 5, 1f));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.snake, 5, 1f));
+        //yield return StartCoroutine(C_Spawn((int)Monsters_Index.snowman, 5, 1f));
+        //yield return StartCoroutine(C_Spawn((int)Monsters_Index.snake, 5, 1f));
         canClear = true;
     }
 
