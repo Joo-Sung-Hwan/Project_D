@@ -265,17 +265,24 @@ public class InGameUI : MonoBehaviourPunCallbacks
         {
             Debug.Log("All players are ready!");
             // gamestart = true;
-            ready_ui.gameObject.SetActive(false);
-            for (int i = 0; i < map.Length; i++)
-            {
-                map[i].SetActive(true);
-            }
+            photonview.RPC("Off_ReadyUI", RpcTarget.All);
+            
             //not_Executive.gameObject.SetActive(true);
         }
         else
         {
             Debug.Log("게임시작 X");
             not_NextPlay.gameObject.SetActive(true);
+        }
+    }
+
+    [PunRPC]
+    public void Off_ReadyUI()
+    {
+        ready_ui.SetActive(false);
+        for (int i = 0; i < map.Length; i++)
+        {
+            map[i].SetActive(true);
         }
     }
     /*
