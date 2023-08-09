@@ -12,7 +12,6 @@ public class GameStartManager : MonoBehaviour
     [Header("Ready_BG")]
     // 인게임시작전 준비창 
     [SerializeField] private GameObject ready_BG;
-    [SerializeField] private GameObject gameScene;
     [SerializeField] private Image not_NextPlay;
     [SerializeField] private Image not_Executive;
 
@@ -36,7 +35,6 @@ public class GameStartManager : MonoBehaviour
         }
         not_NextPlay.gameObject.SetActive(false);
         //ready_BG.gameObject.SetActive(true);
-        gameScene.gameObject.SetActive(false);
         not_Executive.gameObject.SetActive(false);
 
     }
@@ -95,7 +93,6 @@ public class GameStartManager : MonoBehaviour
         {
             Debug.Log("게임시작");
             //ready_BG.gameObject.SetActive(false);
-            gameScene.gameObject.SetActive(true);
             not_Executive.gameObject.SetActive(true);
         }
         else

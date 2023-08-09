@@ -44,17 +44,19 @@ public class InGameUI : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private Button startBtn;
     bool isready = false;
+
+    public GameObject[] map;
     // 인게임시작전 준비창 
     
     [SerializeField] private Image not_NextPlay;
     [SerializeField] private Image not_Executive;
     bool[] ischeck_array = new bool[4];
-    int count = 0;
 
     bool ischeck = true;
     string levelup;
     int levelupNum = 1;
     PhotonView photonview;
+    //bool gamestart = false;
 
     private void Awake()
     {
@@ -102,6 +104,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
             photonview.RPC("RPC_Chat", RpcTarget.All, str);
             chat_input.text = string.Empty;
         }
+        
     }
 
     public void SetUserName()
@@ -214,20 +217,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
             PhotonNetwork.PlayerList[num].CustomProperties["Ready"] = true;
         }
     }
-    public void OnGameStart()
-    {
-        if (count == 4)
-        {
-            Debug.Log("게임시작");
-            ready_ui.gameObject.SetActive(false);
-            //not_Executive.gameObject.SetActive(true);
-        }
-        else
-        {
-            Debug.Log("게임시작 X");
-            not_NextPlay.gameObject.SetActive(true);
-        }
-    }
+    
 
     public void OnNotNextPlayChack()
     {
@@ -274,7 +264,12 @@ public class InGameUI : MonoBehaviourPunCallbacks
         if (players.All(p => p.CustomProperties.ContainsKey("Ready") && (bool)p.CustomProperties["Ready"] == false))
         {
             Debug.Log("All players are ready!");
+            // gamestart = true;
             ready_ui.gameObject.SetActive(false);
+            for (int i = 0; i < map.Length; i++)
+            {
+                map[i].SetActive(true);
+            }
             //not_Executive.gameObject.SetActive(true);
         }
         else
