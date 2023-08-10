@@ -10,6 +10,7 @@ using System.Linq;
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
     public static PhotonManager instance = null;
+    public LobbyUIManager lobbyuimanager;
     [SerializeField] private TMP_InputField input_id;
     [SerializeField] private TMP_InputField room_name;
     [SerializeField] private GameObject serverprefab;
@@ -22,9 +23,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     //bool name_ischeck = false;
     List<RoomInfo> myList = new List<RoomInfo>();
 
-    PhotonView photonview;
     public string name_ui;
     List<GameObject> prefabList = new List<GameObject>();
+    List<Player> player_list = new List<Player>();
 
     private void Awake()
     {
@@ -36,8 +37,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        photonview = GetComponent<PhotonView>();
-        PhotonNetwork.ConnectUsingSettings();
+        if (!PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.ConnectUsingSettings();
+        }
+        
     }
 
     // Update is called once per frame
@@ -45,6 +49,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         statusText.text = PhotonNetwork.NetworkClientState.ToString();
         //SetPlayerList();
+        player_list = PhotonNetwork.PlayerList.ToList();
     }
     
     public void Connect()
@@ -77,7 +82,15 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         DontDestroyOnLoad(this.gameObject);
         PhotonNetwork.LoadLevel("4.InGameUI");
     }
+    public override void OnLeftRoom()
+    {
+        Debug.Log("³ª°¡±â");
+        Destroy(this.gameObject);
+        PhotonNetwork.LoadLevel("2.Lobby");
+        LobbyUIManager.instance.nickName.gameObject.SetActive(false);
+    }
 
+    
     public override void OnJoinedRoom()
     {
 
@@ -156,6 +169,15 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        
+        for (int i = 0; i < player_list.Count; i++)
+        {
+            if (player_list[i].NickName == otherPlayer.NickName)
+            {
+                InGameUI.instance. player[i].transform.GetChild(0).GetComponent<TMP_Text>().text = string.Empty;
+                InGameUI.instance.ready_Image[i].transform.GetChild(0).GetComponent<TMP_Text>().text = string.Empty;
+                InGameUI.instance.ready_Image[i].transform.GetChild(1).gameObject.SetActive(false);
+            }
+        }
+
     }
 }

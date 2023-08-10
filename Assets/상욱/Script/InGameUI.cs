@@ -24,7 +24,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
 
     [Header("Score_UI")]
     [SerializeField] private Image firendList;
-    [SerializeField] private GameObject[] player; 
+    public GameObject[] player; 
 
     [Header("Server_Name_UI")]
     public TMP_Text server_name;
@@ -43,6 +43,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
     public Image[] ready_Image;
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private Button startBtn;
+    [SerializeField] private Button LeftBtn;
     bool isready = false;
 
     public GameObject[] map;
@@ -51,10 +52,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
     [SerializeField] private Image not_NextPlay;
     [SerializeField] private Image not_Executive;
     bool[] ischeck_array = new bool[4];
-
     bool ischeck = true;
-    string levelup;
-    int levelupNum = 1;
     PhotonView photonview;
     //bool gamestart = false;
 
@@ -72,11 +70,11 @@ public class InGameUI : MonoBehaviourPunCallbacks
             startBtn.gameObject.SetActive(true);
         }
         ready_Image[GetBtnIndex()].transform.GetChild(1).gameObject.SetActive(true);
-        ButtonOff();
     }
     // Start is called before the first frame update
     void Start()
     {
+        LeftBtn.onClick.AddListener(PhotonManager.instance.OnLeftRoom);
         photonview = GetComponent<PhotonView>();
         ready_ui.SetActive(true);
         for (int i = 0; i < ischeck_array.Length; i++)
@@ -93,6 +91,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
     void Update()
     {
         SetUserName();
+        
         if (chat_input.text == string.Empty)
         {
             return;
@@ -134,22 +133,8 @@ public class InGameUI : MonoBehaviourPunCallbacks
         return btn_index;
     }
 
-    public void ButtonOff()
-    {
-        for(int i = 0; i < ready_Image.Length; i++)
-        {
-            if(i == GetBtnIndex())
-            {
-                ready_Image[i].GetComponent<Button>().interactable = true;
-            }
-            else
-            {
-                ready_Image[i].GetComponent<Button>().interactable = false;
-            }
-            
-        }
-    }
     
+    /*
     // 레벌업
     public void OnLevelUP()
     {
@@ -157,7 +142,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
         levelUPText.text = levelup;
         levelupNum += 1;
         
-    }
+    }*/
 
     public void SetBottomImage()
     {
@@ -276,6 +261,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
         }
     }
 
+    // 준비창 사라지고 게임 시작
     [PunRPC]
     public void Off_ReadyUI()
     {
@@ -285,6 +271,8 @@ public class InGameUI : MonoBehaviourPunCallbacks
             map[i].SetActive(true);
         }
     }
+
+    
     /*
     public override void OnMasterClientSwitched(Player newMasterClient)
     {

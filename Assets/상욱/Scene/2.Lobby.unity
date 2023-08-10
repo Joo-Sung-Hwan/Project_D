@@ -1425,7 +1425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &525713921
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1505,7 +1505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &538010227
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3515,7 +3515,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1284981780}
   - component: {fileID: 1284981782}
-  - component: {fileID: 1284981781}
+  - component: {fileID: 1284981783}
   m_Layer: 0
   m_Name: PhotonManager
   m_TagString: Untagged
@@ -3538,7 +3538,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284981781
+--- !u!114 &1284981782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284981779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aa103c9cfced964a876aff2c455aa59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lobbyuimanager: {fileID: 1615495059}
+  input_id: {fileID: 1057782025}
+  room_name: {fileID: 95302399}
+  serverprefab: {fileID: 506060924332812450, guid: 5bf5637357498904f8b43483f723f56a, type: 3}
+  parent: {fileID: 712623045}
+  statusText: {fileID: 433850248}
+  nickname: {fileID: 1121956634}
+  join_room_name: 
+  name_ui: 
+--- !u!114 &1284981783
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3560,26 +3581,6 @@ MonoBehaviour:
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &1284981782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284981779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aa103c9cfced964a876aff2c455aa59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input_id: {fileID: 1057782025}
-  room_name: {fileID: 95302399}
-  serverprefab: {fileID: 506060924332812450, guid: 5bf5637357498904f8b43483f723f56a, type: 3}
-  parent: {fileID: 712623045}
-  statusText: {fileID: 433850248}
-  nickname: {fileID: 1121956634}
-  join_room_name: 
-  name_ui: 
 --- !u!1 &1372325000
 GameObject:
   m_ObjectHideFlags: 0
