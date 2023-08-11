@@ -1310,7 +1310,7 @@ GameObject:
   - component: {fileID: 6658721210867141014}
   - component: {fileID: 8804372735809386919}
   - component: {fileID: 8744850936034877730}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Orcpeon_Heavy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

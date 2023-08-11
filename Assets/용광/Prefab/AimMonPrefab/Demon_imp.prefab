@@ -1443,7 +1443,7 @@ GameObject:
   - component: {fileID: 5197488206197109717}
   - component: {fileID: -1151497962513584350}
   - component: {fileID: -2506170734824069930}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Demon_imp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1458,7 +1458,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5885695176474511855}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children:

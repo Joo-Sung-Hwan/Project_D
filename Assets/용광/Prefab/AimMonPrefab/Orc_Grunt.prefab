@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 1535617145237587453}
   - component: {fileID: 3387504079950318280}
   - component: {fileID: 2081716638702540749}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Orc_Grunt
   m_TagString: Untagged
   m_Icon: {fileID: 0}

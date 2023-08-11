@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: -515424870740212248}
   - component: {fileID: 846399467759072708}
   - component: {fileID: -2136554997248735082}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: demonbomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}

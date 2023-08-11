@@ -1264,7 +1264,7 @@ GameObject:
   - component: {fileID: 3959568818508721505}
   - component: {fileID: 1402243650142381245}
   - component: {fileID: 4789332197814363327}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: NatureWizzard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1279,7 +1279,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4447558000745166810}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children:

@@ -1009,7 +1009,7 @@ GameObject:
   - component: {fileID: 2410860424240020675}
   - component: {fileID: 3758111279315535331}
   - component: {fileID: 5700093576965082120}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Skeleton_KingBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}

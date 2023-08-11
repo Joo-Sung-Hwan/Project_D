@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 1154787257415004746}
   - component: {fileID: 1035617599960286965}
   - component: {fileID: 464597392862102579}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Orc_shaman
   m_TagString: Untagged
   m_Icon: {fileID: 0}

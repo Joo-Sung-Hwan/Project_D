@@ -1120,7 +1120,7 @@ GameObject:
   - component: {fileID: 5716631263544095692}
   - component: {fileID: 967732381880384310}
   - component: {fileID: 1507156512698815585}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IceMinionBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1554,7 +1554,7 @@ GameObject:
   - component: {fileID: 6627747211959087715}
   - component: {fileID: 8900914025802518776}
   - component: {fileID: 7408548332917370183}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SnowMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -967,7 +967,7 @@ GameObject:
   - component: {fileID: 5143971285608667948}
   - component: {fileID: 2304102417523567008}
   - component: {fileID: 8044632582565907931}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IceElementalBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}

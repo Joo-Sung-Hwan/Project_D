@@ -1624,7 +1624,7 @@ GameObject:
   - component: {fileID: 7727972159623988431}
   - component: {fileID: 164761292590040057}
   - component: {fileID: 3330846433293225904}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pirate_Warrior
   m_TagString: Untagged
   m_Icon: {fileID: 0}

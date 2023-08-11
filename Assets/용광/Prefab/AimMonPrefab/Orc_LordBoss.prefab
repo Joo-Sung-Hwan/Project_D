@@ -1432,7 +1432,7 @@ GameObject:
   - component: {fileID: 8022479336385400448}
   - component: {fileID: 5149040868948310110}
   - component: {fileID: 6964259708357043675}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Orc_LordBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}

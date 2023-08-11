@@ -2556,7 +2556,7 @@ GameObject:
   - component: {fileID: 7391932787352540451}
   - component: {fileID: 908081382064212028}
   - component: {fileID: 6044252013288995448}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ThreeTailedWolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2590,7 +2590,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.06, z: 0.1}
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0.03, z: 0}
 --- !u!95 &908081382064212028
 Animator:
