@@ -56,9 +56,11 @@ public class InGameUI : MonoBehaviourPunCallbacks
     PhotonView photonview;
     //bool gamestart = false;
 
+    
     private void Awake()
     {
-        if(instance == null)
+        
+        if (instance == null)
         {
             instance = this;
         }
@@ -74,7 +76,8 @@ public class InGameUI : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        LeftBtn.onClick.AddListener(PhotonManager.instance.OnLeftRoom);
+        
+        LeftBtn.onClick.AddListener(OnclickLeftRoom);
         photonview = GetComponent<PhotonView>();
         ready_ui.SetActive(true);
         for (int i = 0; i < ischeck_array.Length; i++)
@@ -119,7 +122,12 @@ public class InGameUI : MonoBehaviourPunCallbacks
             ready_Image[i].transform.GetChild(0).GetComponent<TMP_Text>().text = PhotonNetwork.PlayerList[i].NickName;
         }
     }
-
+    public void OnclickLeftRoom()
+    {
+        Debug.Log("³ª°¡±â");
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel("2.Lobby");
+    }
     public int GetBtnIndex()
     {
         int btn_index = 0;

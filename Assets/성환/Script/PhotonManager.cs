@@ -6,6 +6,7 @@ using Photon.Realtime;
 using TMPro;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
@@ -33,6 +34,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         {
             instance = this;
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     // Start is called before the first frame update
     void Start()
@@ -41,7 +46,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.ConnectUsingSettings();
         }
-        
     }
 
     // Update is called once per frame
@@ -50,6 +54,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         statusText.text = PhotonNetwork.NetworkClientState.ToString();
         //SetPlayerList();
         player_list = PhotonNetwork.PlayerList.ToList();
+        Set_First_Start();
     }
     
     public void Connect()
@@ -57,12 +62,13 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LocalPlayer.NickName = input_id.text;
         nickname.text = input_id.text;
         name_ui = PhotonNetwork.LocalPlayer.NickName;
-        GameManager.instance.lobbyUIManager.lastNicknameSettingUI.gameObject.SetActive(false);
+        lobbyuimanager.lastNicknameSettingUI.gameObject.SetActive(false);
         PhotonNetwork.JoinLobby();
     }
     public override void OnConnectedToMaster()
     {
         Debug.Log("마스터 서버 연결");
+        Debug.Log(PhotonNetwork.LocalPlayer.NickName);
         
     }
     
@@ -79,15 +85,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
 
-        DontDestroyOnLoad(this.gameObject);
         PhotonNetwork.LoadLevel("4.InGameUI");
     }
+
+    
     public override void OnLeftRoom()
     {
-        Debug.Log("나가기");
-        Destroy(this.gameObject);
-        PhotonNetwork.LoadLevel("2.Lobby");
-        LobbyUIManager.instance.nickName.gameObject.SetActive(false);
+        
+        //LobbyUIManager.instance.nickName.gameObject.SetActive(false);
     }
 
     
@@ -98,7 +103,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         {
             Debug.Log(PhotonNetwork.PlayerList[i].NickName);
         }
-        DontDestroyOnLoad(this.gameObject);
         PhotonNetwork.LoadLevel("4.InGameUI");
     }
 
@@ -178,6 +182,13 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                 InGameUI.instance.ready_Image[i].transform.GetChild(1).gameObject.SetActive(false);
             }
         }
+    }
 
+    public void Set_First_Start()
+    {
+        if(PhotonNetwork.NickName != "")
+        {
+            lobbyuimanager.Set_First(false);
+        }
     }
 }

@@ -6,7 +6,6 @@ using TMPro;
 
 public class LobbyUIManager : MonoBehaviour
 {
-    public static LobbyUIManager instance = null;
     [Header("닉네임 설정")]
     [SerializeField] private TMP_InputField playerNametxt;
     [SerializeField] private TMP_InputField c_playerNametext;
@@ -31,24 +30,39 @@ public class LobbyUIManager : MonoBehaviour
 
     string roomTexttext;
     bool isCreatecheck = false;
+    bool first_start = true;
 
     private void Awake()
     {
-        if (instance == null)
+        if (first_start == false)
         {
-            instance = this;
+            nickName.gameObject.SetActive(false);
+        }
+        else
+        {
+            nickName.gameObject.SetActive(true);
         }
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (first_start == false)
+        {
+            nickName.gameObject.SetActive(false);
+        }
+        else
+        {
+            nickName.gameObject.SetActive(true);
+        }
     }
-
+    public void Set_First(bool ischeck)
+    {
+        first_start = ischeck;
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(first_start);
     }
     // 마지막 질문창 텍스트
     public void Imagetext()
