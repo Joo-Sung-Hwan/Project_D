@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class PersonalCamera : MonoBehaviour
 {
@@ -11,7 +13,8 @@ public class PersonalCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Add_Camera_pos();
+        //Add_Camera_pos();
+        Set_Camera_Pos();
     }
 
     // Update is called once per frame
@@ -43,6 +46,26 @@ public class PersonalCamera : MonoBehaviour
                     break;
             }
             camera_pos[i] = temp;
+        }
+    }
+
+    void Set_Camera_Pos()
+    {
+        switch (PhotonNetwork.LocalPlayer.ActorNumber)
+        {
+            case 1:
+                break;
+            case 2:
+                main_camera.transform.position += Vector3.forward *17;
+                break;
+            case 3:
+                main_camera.transform.position += Vector3.right * 17;
+                break;
+            case 4:
+                main_camera.transform.position += (Vector3.forward + Vector3.right) * 17;
+                break;
+            default:
+                break;
         }
     }
 

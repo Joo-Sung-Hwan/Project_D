@@ -62,7 +62,7 @@ public class LobbyUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(first_start);
+        //Debug.Log(first_start);
     }
     // 마지막 질문창 텍스트
     public void Imagetext()

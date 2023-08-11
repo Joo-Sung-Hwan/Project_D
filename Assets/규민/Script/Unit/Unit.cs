@@ -137,6 +137,7 @@ public abstract class  Unit : MonoBehaviour
         if (first_mob == null)
             yield break;
 
+        #region 데미지 들어가는 부분 (파티클 스크립트로 이동?)
         switch (attack_Type)
         {
             case Attack_Type.normal:
@@ -148,6 +149,9 @@ public abstract class  Unit : MonoBehaviour
             default:
                 break;
         }
+        #endregion
+        //이동시 이 함수의 인수도 인계 필요, 투사체 발사나 애니메이션은 이 함수에
+
         if (ud.mana_type == Mana_Type.attack)
             ManaRestore_Attack();
         canAttack = false;
