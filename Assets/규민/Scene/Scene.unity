@@ -6627,6 +6627,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f52edf0d38c38478f6f12e8e3446eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitingBlocks:
+  - {fileID: 1912311088}
+  - {fileID: 1591882296}
+  - {fileID: 1729549958}
+  - {fileID: 1581060798}
+  - {fileID: 1739781790}
   units:
   - {fileID: 1200961586}
   - {fileID: 875919068}

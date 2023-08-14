@@ -60,3 +60,7 @@ Cell 크기 정해야함.
 f5df2e78-256b-4fc7-9730-3e66e83109b8
 
 Photon - https://ojui.tistory.com/
+
+PhotonViewID
+1.Photonview
+map : nP - managers - MapManager 150~153

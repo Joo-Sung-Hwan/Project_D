@@ -6,20 +6,24 @@ using Photon.Realtime;
 
 public class UnitManager : MonoBehaviour
 {
-    //[SerializeField] UnitBlocks ub;
-
+    [SerializeField] List<UnitBlocks> waitingBlocks;
+    Dictionary<UnitBlocks, bool> dic_canPlace = new Dictionary<UnitBlocks, bool>();
     public List<Unit> units;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        foreach (var blocks in waitingBlocks)
+            dic_canPlace.Add(blocks, true);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Unit_Instantiate();
+        }
     }
 
     public void Init_IsWave(bool isWave)
@@ -30,8 +34,17 @@ public class UnitManager : MonoBehaviour
         }
     }
 
-    void Unit_Instantiate()
+    public void Unit_Instantiate()
     {
-        //PhotonNetwork.Instantiate("TestUnit", transform.position, transform.rotation).GetComponent<MovableObj>().block = ub;
+        for (int i = 0; i < waitingBlocks.Count; i++)
+        {
+            if (dic_canPlace[waitingBlocks[i]])
+            {
+                UnitBlocks ub = waitingBlocks[i];
+                PhotonNetwork.Instantiate("TestUnit", ub.transform.position + Vector3.up * 0.25f, ub.transform.rotation).GetComponent<MovableObj>().block = waitingBlocks[i];
+                dic_canPlace[ub] = false;
+                break;
+            }
+        }
     }
 }

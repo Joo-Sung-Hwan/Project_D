@@ -3508,6 +3508,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f52edf0d38c38478f6f12e8e3446eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitingBlocks:
+  - {fileID: 1612766790}
+  - {fileID: 516612176}
+  - {fileID: 406483658}
+  - {fileID: 1391017659}
+  - {fileID: 14666097}
   units:
   - {fileID: 9381426}
   - {fileID: 1765342543}
@@ -6284,6 +6290,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f52edf0d38c38478f6f12e8e3446eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitingBlocks:
+  - {fileID: 53684626}
+  - {fileID: 2072929655}
+  - {fileID: 1037497260}
+  - {fileID: 700012238}
+  - {fileID: 1400206879}
   units:
   - {fileID: 1705339979}
   - {fileID: 1184614125}
@@ -9543,6 +9555,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f52edf0d38c38478f6f12e8e3446eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitingBlocks:
+  - {fileID: 1635153281}
+  - {fileID: 715980913}
+  - {fileID: 1333726068}
+  - {fileID: 1842377787}
+  - {fileID: 1708509352}
   units:
   - {fileID: 2056513046}
   - {fileID: 1899460898}
@@ -15247,6 +15265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 912918565}
   - component: {fileID: 912918566}
+  - component: {fileID: 912918567}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -15284,6 +15303,28 @@ MonoBehaviour:
   monsterManager: {fileID: 446736477}
   uiManager_ingame: {fileID: 170261692}
   unitManager: {fileID: 359468390}
+--- !u!114 &912918567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912918564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 150
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &915254969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16710,6 +16751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1018160853}
   - component: {fileID: 1018160854}
+  - component: {fileID: 1018160855}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -16747,6 +16789,28 @@ MonoBehaviour:
   monsterManager: {fileID: 1697899075}
   uiManager_ingame: {fileID: 572104546}
   unitManager: {fileID: 1247926912}
+--- !u!114 &1018160855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018160852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 152
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1019120422
 GameObject:
   m_ObjectHideFlags: 0
@@ -20279,6 +20343,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f52edf0d38c38478f6f12e8e3446eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitingBlocks:
+  - {fileID: 1536771855}
+  - {fileID: 1542630650}
+  - {fileID: 1469538635}
+  - {fileID: 448037625}
+  - {fileID: 456354593}
   units:
   - {fileID: 1563411469}
   - {fileID: 109142787}
@@ -23006,6 +23076,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1406591167}
   - component: {fileID: 1406591168}
+  - component: {fileID: 1406591169}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -23043,6 +23114,28 @@ MonoBehaviour:
   monsterManager: {fileID: 480612621}
   uiManager_ingame: {fileID: 969200957}
   unitManager: {fileID: 192628939}
+--- !u!114 &1406591169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406591166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 153
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &1413141262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27320,6 +27413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1628040468}
   - component: {fileID: 1628040469}
+  - component: {fileID: 1628040470}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -27357,6 +27451,28 @@ MonoBehaviour:
   monsterManager: {fileID: 846657441}
   uiManager_ingame: {fileID: 449476320}
   unitManager: {fileID: 547055562}
+--- !u!114 &1628040470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628040467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 151
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &1632719409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36502,6 +36618,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2126541406}
+  - component: {fileID: 2126541407}
   m_Layer: 0
   m_Name: MapsManager
   m_TagString: Untagged
@@ -36524,6 +36641,23 @@ Transform:
   m_Father: {fileID: 956901294}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2126541407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126541405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad6d43dc30aae6469ecb61b1ac3853e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pvs:
+  - {fileID: 912918567}
+  - {fileID: 1628040470}
+  - {fileID: 1018160855}
+  - {fileID: 1406591169}
 --- !u!1001 &2128586870
 PrefabInstance:
   m_ObjectHideFlags: 0
