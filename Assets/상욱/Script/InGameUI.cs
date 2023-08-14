@@ -46,7 +46,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
     [SerializeField] private Button LeftBtn;
     bool isready = false;
 
-    public GameObject[] map;
+    [SerializeField] MapsManager mapsManager;
     // 인게임시작전 준비창 
     
     [SerializeField] private Image not_NextPlay;
@@ -274,10 +274,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
     public void Off_ReadyUI()
     {
         ready_ui.SetActive(false);
-        for (int i = 0; i < map.Length; i++)
-        {
-            map[i].SetActive(true);
-        }
+        mapsManager.Map_instantiate();
     }
 
     
