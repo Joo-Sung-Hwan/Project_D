@@ -3212,26 +3212,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabCharacter:
-  - {fileID: 7032857068203706256, guid: fec40b68e6eb499408db54c62d9d8b71, type: 3}
-  - {fileID: 8825433777109861676, guid: 30e3ce8350c600545933947b7d4cad75, type: 3}
-  - {fileID: 3813162464200223375, guid: b1616e363f3e9f24a84fde41d2e382fc, type: 3}
-  - {fileID: 7898711990683638507, guid: 1c12a68dc1a19d446ae2d5c8b3b6ac86, type: 3}
-  - {fileID: 2765301248869766755, guid: ce1a9c06ef3c465489f082ea63ca13be, type: 3}
-  - {fileID: 7107633800515662268, guid: 87aa73837b89a9b45a07074d6da10df9, type: 3}
-  - {fileID: 7112377425319357798, guid: 3e48f9221afb0fc47b6f66c00c315a17, type: 3}
-  - {fileID: 5674620273607726068, guid: 74da095b8054d6c4e90388ab2938029e, type: 3}
-  - {fileID: 360711043858806878, guid: 0917a78148eba1745b20c401693d764c, type: 3}
-  - {fileID: 1137391460493666891, guid: d170dd200b7f1ca40883cdab5dd7fc14, type: 3}
+  - {fileID: 7032857068203706262, guid: fec40b68e6eb499408db54c62d9d8b71, type: 3}
+  - {fileID: 8825433777109861678, guid: 30e3ce8350c600545933947b7d4cad75, type: 3}
   parent:
   - {fileID: 1276034306}
   - {fileID: 385777593}
   - {fileID: 1943723260}
   - {fileID: 1460397195}
   - {fileID: 242915869}
-  callCharacter1: {fileID: 0}
-  callCharacter2: {fileID: 0}
-  callCharacter3: {fileID: 0}
-  create1: {fileID: 2633232115456553443, guid: 38ea9bf6a292e2d47995a1aa5c6b1331, type: 3}
   firendList: {fileID: 1474534219}
   player:
   - {fileID: 1172818885}
@@ -10203,7 +10191,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1894051197
 RectTransform:
   m_ObjectHideFlags: 0

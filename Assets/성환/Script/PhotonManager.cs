@@ -68,7 +68,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("마스터 서버 연결");
-        Debug.Log(PhotonNetwork.LocalPlayer.NickName);
         
     }
     
@@ -116,6 +115,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.JoinRoom(join_room_name, null);
     }
+
+    
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
         int roomCount = roomList.Count;
@@ -131,7 +132,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                     roomlist.transform.GetChild(4).GetComponent<TMP_Text>().text = roomList[i].Name;
                     roomlist.transform.GetChild(0).GetComponent<Image>().color = Color.green;
                     prefabList.Add(roomlist);
-                    roomlist.transform.GetChild(0).GetComponent<Image>().color = Color.green;
                 }
                 else
                 {
@@ -163,6 +163,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                 }
                 myList.RemoveAt(myList.IndexOf(roomList[i]));
             }
+
+            
         }
     }
     

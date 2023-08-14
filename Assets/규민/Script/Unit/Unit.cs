@@ -306,10 +306,13 @@ public abstract class  Unit : MonoBehaviour
             GetComponent<Renderer>().material.color = MapManager.instance.monsterManager.isWave ? Color.green : Color.white;
         }
     }*/
+    /*
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, 2);
     }
+    */
     #endregion
+    
 }

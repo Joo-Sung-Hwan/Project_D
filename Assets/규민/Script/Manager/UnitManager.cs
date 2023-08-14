@@ -22,7 +22,7 @@ public class UnitManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Unit_Instantiate();
+            Unit_Instantiate("TestUnit");
         }
     }
 
@@ -34,14 +34,14 @@ public class UnitManager : MonoBehaviour
         }
     }
 
-    public void Unit_Instantiate()
+    public void Unit_Instantiate(string name)
     {
         for (int i = 0; i < waitingBlocks.Count; i++)
         {
             if (dic_canPlace[waitingBlocks[i]])
             {
                 UnitBlocks ub = waitingBlocks[i];
-                PhotonNetwork.Instantiate("TestUnit", ub.transform.position + Vector3.up * 0.25f, ub.transform.rotation).GetComponent<MovableObj>().block = waitingBlocks[i];
+                PhotonNetwork.Instantiate(name, ub.transform.position + Vector3.up * 0.25f, ub.transform.rotation).GetComponent<MovableObj>().block = waitingBlocks[i];
                 dic_canPlace[ub] = false;
                 break;
             }

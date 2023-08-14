@@ -82,7 +82,7 @@ public class MonsterManager : MonoBehaviourPunCallbacks
     void SetIsWave(bool tf)
     {
         isWave = tf;
-        MapManager.instance.unitManager.Init_IsWave(tf);
+        //MapManager.instance.unitManager.Init_IsWave(tf);
     }
     #endregion
 
@@ -95,7 +95,7 @@ public class MonsterManager : MonoBehaviourPunCallbacks
         }
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            StartCoroutine(C_Spawn((int)Monsters_Index.parrot, 1, 1));
+            StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 1, 1));
         }
     }
 

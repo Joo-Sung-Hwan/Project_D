@@ -11,16 +11,8 @@ public class InGameUI : MonoBehaviourPunCallbacks
 {
     public static InGameUI instance = null;
     [Header("BottomBG")]
-    [SerializeField] private Image[] prefabCharacter;
+    [SerializeField] private GameObject[] prefabCharacter;
     [SerializeField] private Transform[] parent;
-
-    [Header("대기석")]
-    // 게임오브젝트를 담는 곳(부모)
-    [SerializeField] private Transform callCharacter1;
-    [SerializeField] private Transform callCharacter2;
-    [SerializeField] private Transform callCharacter3;
-    // 게임오브젝트생성(자식)
-    [SerializeField] private GameObject create1;
 
     [Header("Score_UI")]
     [SerializeField] private Image firendList;
@@ -59,7 +51,6 @@ public class InGameUI : MonoBehaviourPunCallbacks
     
     private void Awake()
     {
-        
         if (instance == null)
         {
             instance = this;
@@ -156,8 +147,8 @@ public class InGameUI : MonoBehaviourPunCallbacks
     {
         for (int i = 0; i < parent.Length; i++)
         {
-            randomInt = Random.Range(0, 9);
-            Instantiate(prefabCharacter[randomInt], parent[i]);
+            randomInt = Random.Range(0, prefabCharacter.Length);
+            GameObject go = Instantiate(prefabCharacter[randomInt], parent[i]);
         }
     }
 
@@ -167,16 +158,12 @@ public class InGameUI : MonoBehaviourPunCallbacks
         Debug.Log("새로고침");
         for (int i = 0; i < parent.Length; i++)
         {
-            randomInt = Random.Range(0, 9);
-            parent[i].transform.GetChild(0).GetComponent<Image>().sprite = prefabCharacter[randomInt].sprite;
+            Destroy(parent[i].transform.GetChild(0).gameObject);
         }
+        SetBottomImage();
     }
     // 캐릭터 소환
-    public void OnCharacterImage()
-    {
-        Debug.Log("캐릭터 소환");
-        
-    }
+    
 
     public void OnFirendList()
     {
@@ -253,7 +240,28 @@ public class InGameUI : MonoBehaviourPunCallbacks
     public void CheckAllPlayersReady()
     {
         var players = PhotonNetwork.PlayerList;
-        
+        /*
+        if(players.Length == 4)
+        {
+            if (players.All(p => p.CustomProperties.ContainsKey("Ready") && (bool)p.CustomProperties["Ready"] == false))
+            {
+                Debug.Log("All players are ready!");
+                // gamestart = true;
+                photonview.RPC("Off_ReadyUI", RpcTarget.All);
+
+                //not_Executive.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("게임시작 X");
+                not_NextPlay.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            Debug.Log("인원이 부족합니다.");
+        }
+        */
         if (players.All(p => p.CustomProperties.ContainsKey("Ready") && (bool)p.CustomProperties["Ready"] == false))
         {
             Debug.Log("All players are ready!");
