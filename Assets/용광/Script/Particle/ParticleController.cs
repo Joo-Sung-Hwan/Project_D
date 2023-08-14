@@ -8,9 +8,13 @@ public abstract class ParticleController : MonoBehaviour
     #region 선언 - 데이터
     public struct Particle_Data
     {
+        public Debuff_Type debuff_type;
+        public Damage_Type damage_type;
         public Element_Type element_type;
         public Attack_Type atk_type;
         public float damage;
+        public float element_const;
+        public float debufftime;
     }
     public Particle_Data pd;
     #endregion
@@ -19,16 +23,16 @@ public abstract class ParticleController : MonoBehaviour
 
     #endregion
 
-    void Start()
-    {
-        ps = GetComponent<ParticleSystem>();
-        mm = FindObjectOfType<MonsterManager>();
-    }
-
     // Update is called once per frame
     void Update()
     {
         Attack();
+    }
+
+    public virtual void Init()
+    {
+        ps = GetComponent<ParticleSystem>();
+        mm = FindObjectOfType<MonsterManager>();
     }
 
     public void Attack()
@@ -49,7 +53,7 @@ public abstract class ParticleController : MonoBehaviour
         Monster monster = other.GetComponent<Monster>();
         if (monster != null && monster.gameObject.layer == 10)
         {
-            monster.Damaged(pd.damage, Damage_Type.magic, 0.75f,Debuff_Type.slow, 2);
+            monster.Damaged(pd.damage, pd.damage_type, pd.element_const ,pd.debuff_type, pd.debufftime);
         }
     }
 }

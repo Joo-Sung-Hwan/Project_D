@@ -32,6 +32,8 @@ public abstract class  Unit : MonoBehaviour
     public int level = 1;
     protected bool canAttack = true;
     protected bool union;
+
+    public Animator anim;
     #endregion
 
     protected virtual void Init()
@@ -39,6 +41,7 @@ public abstract class  Unit : MonoBehaviour
         mpBar = Instantiate(mpBar_Prf, MapManager.instance.uiManager_ingame.canvas_hp.transform);
         mpBar.unit = this;
         mpBar.gameObject.SetActive(false);
+        anim = GetComponent<Animator>();
     }
 
     public void Init_Wave(bool isWave)
@@ -61,7 +64,7 @@ public abstract class  Unit : MonoBehaviour
         if (ud.curMana >= ud.maxMana)
             StartCoroutine(UseSkill());
 
-        Test_ColorChange_isWave();
+        //Test_ColorChange_isWave();
 
         if (movable.block.isWaiting || !MapManager.instance.monsterManager.isWave)
             return;
@@ -155,9 +158,10 @@ public abstract class  Unit : MonoBehaviour
         if (ud.mana_type == Mana_Type.attack)
             ManaRestore_Attack();
         canAttack = false;
-        StartCoroutine(Test_ColorChange_Attack());
+        anim.SetBool("attack", true);
         yield return new WaitForSeconds(ud.atkDelay);
         canAttack = true;
+        anim.SetBool("attack", false);
     }
     #region Attack - 부속함수
     Monster FindTarget()
@@ -295,13 +299,13 @@ public abstract class  Unit : MonoBehaviour
         GetComponent<Renderer>().material.color = Color.white;
     }
 
-    void Test_ColorChange_isWave()
+    /*void Test_ColorChange_isWave()
     {
         if (GetComponent<Renderer>().material.color != Color.red)
         {
             GetComponent<Renderer>().material.color = MapManager.instance.monsterManager.isWave ? Color.green : Color.white;
         }
-    }
+    }*/
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
