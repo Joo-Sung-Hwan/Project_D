@@ -9,6 +9,7 @@ public class MovableObj : MonoBehaviour
     RaycastHit rayHit;
     Vector3 dis;
     Vector3 prePos;
+    [SerializeField] PhotonView pv;
 
     [SerializeField] public UnitBlocks block;
 
@@ -27,6 +28,15 @@ public class MovableObj : MonoBehaviour
 
     private void OnMouseDrag()
     {
+        if (pv.IsMine)
+        {
+            pv.RPC("RPCOnMouseDrag" , RpcTarget.All);
+        }
+    }
+
+    [PunRPC]
+    void RPCOnMouseDrag()
+    {
         if (!block.isWaiting && MapManager.instance.monsterManager.isWave)
         {
             transform.position = prePos;
@@ -42,17 +52,35 @@ public class MovableObj : MonoBehaviour
             //dis = 클릭한 마우스 위치와 클릭된 오브젝트 위치의 차이
             if (dis == Vector3.zero)
                 dis = new Vector3(transform.position.x - rayHit.point.x, 0, transform.position.z - rayHit.point.z);
-            
+
             transform.position = new Vector3(rayHit.point.x, y, rayHit.point.z) + dis;
         }
     }
 
     private void OnMouseDown()
     {
+        if (pv.IsMine)
+        {
+            pv.RPC("RPCOnMouseDown" , RpcTarget.All);
+        }
+    }
+
+    [PunRPC]
+    void RPCOnMouseDown()
+    {
         prePos = transform.position;
     }
 
     private void OnMouseUp()
+    {
+        if (pv.IsMine)
+        {
+            pv.RPC("RPCOnMouseUp", RpcTarget.All);
+        }
+    }
+
+    [PunRPC]
+    void RPCOnMouseUp()
     {
         if (!block.isWaiting && MapManager.instance.monsterManager.isWave)
             return;
@@ -75,6 +103,5 @@ public class MovableObj : MonoBehaviour
         {
             transform.position = prePos;
         }
-
     }
 }

@@ -42,6 +42,9 @@ MonoBehaviour:
   - RPC_Chat
   - AddDic
   - Off_ReadyUI
+  - RPCOnMouseDown
+  - RPCOnMouseDrag
+  - RPCOnMouseUp
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -8,7 +8,7 @@ using Photon.Realtime;
 public class PersonalCamera : MonoBehaviour
 {
     [SerializeField] private Camera main_camera;
-    Vector3[] camera_pos = new Vector3[4];
+    Vector3 camera_pos;
 
     // Start is called before the first frame update
     void Start()
@@ -23,40 +23,15 @@ public class PersonalCamera : MonoBehaviour
         
     }
 
-    public void Add_Camera_pos()
-    {
-        
-        for (int i = 0; i < camera_pos.Length; i++)
-        {
-            Vector3 temp = main_camera.transform.position;
-            switch (i)
-            {
-                case 0:
-                    break;
-                case 1:
-                    temp.z = main_camera.transform.position.z + 17;
-                    camera_pos[i] = temp;
-                    break;
-                case 2:
-                    temp.x = main_camera.transform.position.x + 17;
-                    break;
-                case 3:
-                    temp.x = main_camera.transform.position.x + 17;
-                    temp.z = main_camera.transform.position.z + 17;
-                    break;
-            }
-            camera_pos[i] = temp;
-        }
-    }
-
     void Set_Camera_Pos()
     {
+        camera_pos = Camera.main.transform.position;
         switch (PhotonNetwork.LocalPlayer.ActorNumber)
         {
             case 1:
                 break;
             case 2:
-                main_camera.transform.position += Vector3.forward *17;
+                main_camera.transform.position += Vector3.forward * 17;
                 break;
             case 3:
                 main_camera.transform.position += Vector3.right * 17;
@@ -71,6 +46,22 @@ public class PersonalCamera : MonoBehaviour
 
     public void Onclick_Change_Camera(int i)
     {
-        main_camera.transform.position = camera_pos[i];
+        switch (i)
+        {
+            case 0:
+                main_camera.transform.position = camera_pos + new Vector3(0, 0, 0);
+                break;
+            case 1:
+                main_camera.transform.position = camera_pos + new Vector3(0, 0, 17);
+                break;
+            case 2:
+                main_camera.transform.position = camera_pos + new Vector3(17, 0, 0);
+                break;
+            case 3:
+                main_camera.transform.position = camera_pos + new Vector3(17, 0, 17);
+                break;
+            default:
+                break;
+        }
     }
 }

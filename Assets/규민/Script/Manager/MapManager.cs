@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Realtime;
+using Photon.Pun;
 
 public class MapManager : MonoBehaviour
 {
     public static MapManager instance;
-    [SerializeField] public MonsterManager monsterManager;
-    [SerializeField] public InGameUIManager uiManager_ingame;
-    [SerializeField] public UnitManager unitManager;
+    public MonsterManager monsterManager;
+    public InGameUIManager uiManager_ingame;
+    public UnitManager unitManager;
+    public PhotonView pv;
 
     private void Awake()
     {
