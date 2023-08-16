@@ -68,3 +68,12 @@ public enum Mana_Type
     auto,
     attack
 }
+
+public enum Position_Index
+{
+    left,
+    down,
+    right,
+    up,
+    other
+}

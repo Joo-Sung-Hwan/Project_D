@@ -7,6 +7,7 @@ using Photon.Realtime;
 public class UnitManager : MonoBehaviour
 {
     [SerializeField] List<UnitBlocks> waitingBlocks;
+    [SerializeField] UnitBlocks startBlock;
     Dictionary<UnitBlocks, bool> dic_canPlace = new Dictionary<UnitBlocks, bool>();
     public List<Unit> units;
 
@@ -15,6 +16,8 @@ public class UnitManager : MonoBehaviour
     {
         foreach (var blocks in waitingBlocks)
             dic_canPlace.Add(blocks, true);
+
+        Unit_Instantiate_Start("FireWizzard");
     }
 
     // Update is called once per frame
@@ -41,10 +44,15 @@ public class UnitManager : MonoBehaviour
             if (dic_canPlace[waitingBlocks[i]])
             {
                 UnitBlocks ub = waitingBlocks[i];
-                PhotonNetwork.Instantiate(name, ub.transform.position + Vector3.up * 0.25f, ub.transform.rotation).GetComponent<MovableObj>().block = waitingBlocks[i];
+                PhotonNetwork.Instantiate(name, ub.transform.position + Vector3.up * 0.25f, ub.transform.rotation).GetComponent<MovableObj>().block = ub;
                 dic_canPlace[ub] = false;
-                break;
+                return;
             }
         }
+    }
+
+    public void Unit_Instantiate_Start(string name)
+    {
+        PhotonNetwork.Instantiate(name, startBlock.transform.position + Vector3.up * 0.25f, startBlock.transform.rotation).GetComponent<MovableObj>().block = startBlock;
     }
 }
