@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class ParticleController : MonoBehaviour
 {
@@ -19,32 +20,45 @@ public abstract class ParticleController : MonoBehaviour
     public Particle_Data pd;
     #endregion
     ParticleSystem ps;
-    public MonsterManager mm;
+    UnityAction action;
 
     #endregion
 
     // Update is called once per frame
     void Update()
     {
-        Attack();
+
     }
 
     public virtual void Init()
     {
         ps = GetComponent<ParticleSystem>();
-        mm = FindObjectOfType<MonsterManager>();
+    }
+    public void EffTest(float dis)
+    {
+        EffStart(dis, -1, null);
     }
 
-    public void Attack()
+    public void EffStart(float attDistance, float attNextDelay, UnityAction action)
     {
-        if (mm.isWave != false)
-        {
-            ps.Play();
-        }
+        ps.startLifetime = attDistance;
+        ps.Play();
 
-        else if (mm.isWave == false)
+        this.action = action;
+        if (attNextDelay != -1)
+            Invoke("NextAction", attNextDelay);
+    }
+
+    public void EffStop()
+    {
+    }
+
+    void NextAction()
+    {
+        if (action != null)
         {
-            ps.Stop();
+            action();
+            action = null;
         }
     }
 
