@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6418301835482718608}
   - component: {fileID: 6418301835482718611}
+  - component: {fileID: 5639665000297018503}
   m_Layer: 0
   m_Name: UnitManager
   m_TagString: Untagged
@@ -51,10 +52,33 @@ MonoBehaviour:
   - {fileID: 6418301836160442201}
   - {fileID: 6418301836368493115}
   - {fileID: 6418301836523412202}
-  startBlock: {fileID: 6418301835416163922}
+  startBlock: {fileID: 6418301836564109909}
+  pv: {fileID: 5639665000297018503}
   units:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &5639665000297018503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6418301835482718609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6418301835578361006
 GameObject:
   m_ObjectHideFlags: 0

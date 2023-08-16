@@ -8,6 +8,7 @@ public class UnitManager : MonoBehaviour
 {
     [SerializeField] List<UnitBlocks> waitingBlocks;
     [SerializeField] UnitBlocks startBlock;
+    [SerializeField] PhotonView pv;
     Dictionary<UnitBlocks, bool> dic_canPlace = new Dictionary<UnitBlocks, bool>();
     public List<Unit> units;
 
@@ -21,9 +22,9 @@ public class UnitManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (pv.IsMine && Input.GetKeyDown(KeyCode.Q))
         {
-            Unit_Instantiate("TestUnit");
+            Unit_Instantiate("FireWizzard");
         }
     }
 
@@ -42,7 +43,9 @@ public class UnitManager : MonoBehaviour
             if (dic_canPlace[waitingBlocks[i]])
             {
                 UnitBlocks ub = waitingBlocks[i];
+                //MovableObj move;
                 PhotonNetwork.Instantiate(name, ub.transform.position + Vector3.up * 0.25f, ub.transform.rotation).GetComponent<MovableObj>().block = ub;
+                //pv.RPC("InitBlock", RpcTarget.All, move, ub);
                 dic_canPlace[ub] = false;
                 return;
             }
@@ -52,5 +55,11 @@ public class UnitManager : MonoBehaviour
     public void Unit_Instantiate_Start(string name)
     {
         PhotonNetwork.Instantiate(name, startBlock.transform.position + Vector3.up * 0.25f, startBlock.transform.rotation).GetComponent<MovableObj>().block = startBlock;
+    }
+
+    [PunRPC]
+    public void InitBlock()
+    {
+        //mov.block = unitBlocks;
     }
 }
