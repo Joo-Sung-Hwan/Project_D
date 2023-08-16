@@ -16,8 +16,6 @@ public class UnitManager : MonoBehaviour
     {
         foreach (var blocks in waitingBlocks)
             dic_canPlace.Add(blocks, true);
-
-        Unit_Instantiate_Start("FireWizzard");
     }
 
     // Update is called once per frame

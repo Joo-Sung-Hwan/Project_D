@@ -25,6 +25,7 @@ public abstract class Monster : MonoBehaviour
     Position_Index index = 0;
     Position_Index nextIndex = 0;
     float rotated = 0;
+    public float rotateSpeed = 0;
     public float moved = 0;
     int ranmove;
     #endregion
@@ -97,14 +98,23 @@ public abstract class Monster : MonoBehaviour
                     Dead();
                 break;
             default:
-                transform.Rotate(new Vector3(0, -1, 0) * 120 * Time.deltaTime) ;
-                rotated += 120 * Time.deltaTime;
-                if (rotated >= 90)
+                if (rotateSpeed == 0)
                 {
+                    transform.Rotate(new Vector3(0, -1, 0) * 90);
                     index = nextIndex;
-                    rotated = 0;
+                    break;
                 }
-                break;
+                else
+                {
+                    transform.Rotate(new Vector3(0, -1, 0) * rotateSpeed * Time.deltaTime);
+                    rotated += 120 * Time.deltaTime;
+                    if (rotated >= 90)
+                    {
+                        index = nextIndex;
+                        rotated = 0;
+                    }
+                    break;
+                }
         }
     }
 
