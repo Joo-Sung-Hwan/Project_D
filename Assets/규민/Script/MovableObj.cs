@@ -11,15 +11,13 @@ public class MovableObj : MonoBehaviour
     Vector3 prePos;
     [SerializeField] PhotonView pv;
 
-    [SerializeField] public UnitBlocks block;
+    public UnitBlocks block;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         dis = Vector3.zero;
     }
-
-    // Update is called once per frame
     
     void Update()
     {

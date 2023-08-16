@@ -22,9 +22,10 @@ public abstract class Monster : MonoBehaviour
     #endregion
 
     #region 선언 - 이동
-    int index = 0;
-    int preIndex = 0;
+    Position_Index index = 0;
+    Position_Index nextIndex = 0;
     float rotated = 0;
+    public float rotateSpeed = 0;
     public float moved = 0;
     int ranmove;
     #endregion
@@ -62,46 +63,58 @@ public abstract class Monster : MonoBehaviour
     {
         anim.SetInteger("w&r", ranmove = Random.Range(1,3));
         //index - 왼쪽:0, 아래:1, 오른쪽:2, 위:3;
-        if (index != -1)
+        if (index != Position_Index.other)
             moved += md.speed * Time.deltaTime;
 
         switch (index)
         {
-            case 0:
+            case Position_Index.left:
                 transform.Translate(Vector3.forward * md.speed * Time.deltaTime);
                 if (transform.localPosition.x >= 6)
-                    index = -1;
+                {
+                    index = Position_Index.other;
+                    nextIndex = Position_Index.down;
+                }
                 break;
-            case 1:
+            case Position_Index.down:
                 transform.Translate(Vector3.forward * md.speed * Time.deltaTime);
                 if (transform.localPosition.z >= 6)
                 {
-                    index = -1;
-                    preIndex = 1;
+                    index = Position_Index.other;
+                    nextIndex = Position_Index.right;
                 }
                 break;
-            case 2:
+            case Position_Index.right:
                 transform.Translate(Vector3.forward * md.speed * Time.deltaTime);
                 if (transform.localPosition.x <= 0)
                 {
-                    index = -1;
-                    preIndex = 2;
+                    index = Position_Index.other;
+                    nextIndex = Position_Index.up;
                 }
                 break;
-            case 3:
+            case Position_Index.up:
                 transform.Translate(Vector3.forward * md.speed * Time.deltaTime);
                 if (transform.localPosition.z <= 1)
                     Dead();
                 break;
             default:
-                transform.Rotate(new Vector3(0, -1, 0) * 120 * Time.deltaTime) ;
-                rotated += 120 * Time.deltaTime;
-                if (rotated >= 90)
+                if (rotateSpeed == 0)
                 {
-                    index = preIndex + 1;
-                    rotated = 0;
+                    transform.Rotate(new Vector3(0, -1, 0) * 90);
+                    index = nextIndex;
+                    break;
                 }
-                break;
+                else
+                {
+                    transform.Rotate(new Vector3(0, -1, 0) * rotateSpeed * Time.deltaTime);
+                    rotated += 120 * Time.deltaTime;
+                    if (rotated >= 90)
+                    {
+                        index = nextIndex;
+                        rotated = 0;
+                    }
+                    break;
+                }
         }
     }
 
@@ -111,7 +124,7 @@ public abstract class Monster : MonoBehaviour
         transform.position = mm_trans.position;
         Init();
         index = 0;
-        preIndex = 0;
+        nextIndex = 0;
         rotated = 0;
         moved = 0;
         slowTime = 0;

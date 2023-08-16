@@ -42,7 +42,7 @@ public class MonsterManager : MonoBehaviourPunCallbacks
     }
 
     #region spawn
-    IEnumerator C_Spawn(int index, int num, float delay)
+    IEnumerator C_Spawn(int index, int num, float delay, float rotateSpeed = 0)
     {
         for (int i = 0; i < num; i++)
         {
@@ -55,10 +55,11 @@ public class MonsterManager : MonoBehaviourPunCallbacks
             if(d_monsters[mi].TryDequeue(out temp_monster))
             {
                 temp_monster.PoolInit(transform);
+                temp_monster.rotateSpeed = rotateSpeed;
                 temp_monster.gameObject.SetActive(true);
             }
             else
-                Instantiate(monsters[index], transform);
+                Instantiate(monsters[index], transform).rotateSpeed = rotateSpeed;
 
             spawned++;
             yield return new WaitForSeconds(delay);
