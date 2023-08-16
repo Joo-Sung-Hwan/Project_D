@@ -7,7 +7,7 @@ using Photon.Realtime;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
-    public LobbyUIManager lobbyUIManager;
+    public PlayerManager playermanager;
 
     private void Awake()
     {

@@ -6,6 +6,8 @@ using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Linq;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
+
 
 public class InGameUI : MonoBehaviourPunCallbacks
 {
@@ -38,6 +40,8 @@ public class InGameUI : MonoBehaviourPunCallbacks
     [SerializeField] private Button LeftBtn;
     bool isready = false;
 
+    [Header("Gold_UI")]
+    [SerializeField] private TMP_Text gold_ui;
     [SerializeField] MapsManager mapsManager;
     // 인게임시작전 준비창 
     
@@ -67,7 +71,6 @@ public class InGameUI : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        
         LeftBtn.onClick.AddListener(OnclickLeftRoom);
         photonview = GetComponent<PhotonView>();
         ready_ui.SetActive(true);
@@ -84,7 +87,9 @@ public class InGameUI : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
+
         SetUserName();
+        SetGoldUI();
         
         if (chat_input.text == string.Empty)
         {
@@ -113,12 +118,16 @@ public class InGameUI : MonoBehaviourPunCallbacks
             ready_Image[i].transform.GetChild(0).GetComponent<TMP_Text>().text = PhotonNetwork.PlayerList[i].NickName;
         }
     }
+
+    
     public void OnclickLeftRoom()
     {
         Debug.Log("나가기");
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel("2.Lobby");
     }
+
+    
     public int GetBtnIndex()
     {
         int btn_index = 0;
@@ -148,7 +157,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
         for (int i = 0; i < parent.Length; i++)
         {
             randomInt = Random.Range(0, prefabCharacter.Length);
-            GameObject go = Instantiate(prefabCharacter[randomInt], parent[i]);
+            Instantiate(prefabCharacter[randomInt], parent[i]);
         }
     }
 
@@ -234,6 +243,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
         OnClickReady((int)targetPlayer.CustomProperties["index"]);
+        
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
     }
 
@@ -285,7 +295,11 @@ public class InGameUI : MonoBehaviourPunCallbacks
         mapsManager.Map_instantiate();
     }
 
-    
+    public void SetGoldUI()
+    {
+        gold_ui.text = GameManager.instance.playermanager.Gold.ToString();
+
+    }
     /*
     public override void OnMasterClientSwitched(Player newMasterClient)
     {

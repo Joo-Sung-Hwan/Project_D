@@ -10,6 +10,7 @@ public class BottomImage : MonoBehaviour
     public void OnCharacterImage()
     {
         Debug.Log("캐릭터 소환");
+        GameManager.instance.playermanager.SetGold(1, false);
         MapManager.instance.unitManager.Unit_Instantiate(gameObject.GetComponent<BottomImage>().unit_name);
         gameObject.SetActive(false);
     }
