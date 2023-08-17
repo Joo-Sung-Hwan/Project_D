@@ -62,6 +62,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
         server_name.text = PhotonManager.instance.join_room_name;
         nameText.text = PhotonManager.instance.name_ui;
         
+        // 방장(마스터)이면 게임시작 버튼 활성화
         if (PhotonNetwork.IsMasterClient)
         {
             startBtn.gameObject.SetActive(true);
@@ -82,19 +83,27 @@ public class InGameUI : MonoBehaviourPunCallbacks
         //ready_BG.gameObject.SetActive(true);
         not_Executive.gameObject.SetActive(false);
         SetBottomImage();
+        SetUserInformation();
+        // 시작할때 스코어보드 적용
+        for(int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        {
+            player[i].transform.GetChild(1).GetComponent<TMP_Text>().text = ((int)PhotonNetwork.PlayerList[i].CustomProperties["Gold"]).ToString();
+            player[i].transform.GetChild(2).GetComponent<TMP_Text>().text = ((int)PhotonNetwork.PlayerList[i].CustomProperties["Monster_Left"]).ToString();
+            player[i].transform.GetChild(3).GetComponent<TMP_Text>().text = ((int)PhotonNetwork.PlayerList[i].CustomProperties["Life"]).ToString();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
         SetUserName();
         SetGoldUI();
-        
         if (chat_input.text == string.Empty)
         {
             return;
         }
+
+        // 채팅창
         string str = $"{PhotonNetwork.LocalPlayer.NickName} : {chat_input.text}";
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -105,6 +114,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
         
     }
 
+    // 스코어판 player 이름 적용함수
     public void SetUserName()
     {
         for(int i = 0; i < player.Length; i++)
@@ -119,7 +129,21 @@ public class InGameUI : MonoBehaviourPunCallbacks
         }
     }
 
-    
+    /// <summary>
+    /// 포톤서버에 CustomProperies에 저장하는 함수 str = "Gold", "Monster_Left", "Life" 중 하나)
+    /// </summary>
+    /// <param name="str"></param>
+    public void SetUserInformation()
+    {
+        var hash = PhotonNetwork.LocalPlayer.CustomProperties;
+        hash["Gold"] = GameManager.instance.playermanager.Gold;
+        hash["Monster_Left"] = GameManager.instance.playermanager.Monster_Left;
+        hash["Life"] = GameManager.instance.playermanager.Life;
+        
+        PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+    }
+
+    // 방 나가기 버튼 함수(미완성)
     public void OnclickLeftRoom()
     {
         Debug.Log("나가기");
@@ -127,7 +151,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel("2.Lobby");
     }
 
-    
+    // 플레이어별 인덱스 구하는 함수
     public int GetBtnIndex()
     {
         int btn_index = 0;
@@ -152,6 +176,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
         
     }*/
 
+    // 캐릭터 이미지 생성
     public void SetBottomImage()
     {
         for (int i = 0; i < parent.Length; i++)
@@ -171,26 +196,40 @@ public class InGameUI : MonoBehaviourPunCallbacks
         }
         SetBottomImage();
     }
-    // 캐릭터 소환
-    
 
+    // 스코어보드 열었다 닫았다 하는 함수
     public void OnFirendList()
     {
         firendList.transform.gameObject.SetActive(ischeck);
         ischeck = !ischeck;
     }
+
+    // 채팅 프리팹 생성 함수
     public void CreateChat(string msg)
     {
         GameObject ct = Instantiate(chat_text, chat_parent);
         ct.GetComponent<TMP_Text>().text = msg;
     }
 
+    // 마스터로 보낸 후 각 플레이어에게 뿌려주는 함수
     [PunRPC]
     void RPC_Chat(string msg)
     {
         CreateChat(msg);
     }
 
+    public void OnNotNextPlayChack()
+    {
+        not_NextPlay.gameObject.SetActive(false);
+    }
+
+    // 방장만 시작할 수 있다는 경고문닫는버튼
+    public void OnNotExecutive()
+    {
+        not_Executive.gameObject.SetActive(false);
+    }
+
+    // 준비 버튼
     public void OnClickReady(int a)
     {
         int num = Mathf.Abs(a);
@@ -206,19 +245,8 @@ public class InGameUI : MonoBehaviourPunCallbacks
             PhotonNetwork.PlayerList[num].CustomProperties["Ready"] = true;
         }
     }
-    
 
-    public void OnNotNextPlayChack()
-    {
-        not_NextPlay.gameObject.SetActive(false);
-    }
-
-    // 방장만 시작할 수 있다는 경고문닫는버튼
-    public void OnNotExecutive()
-    {
-        not_Executive.gameObject.SetActive(false);
-    }
-
+    // 각 플레이어 프로퍼티에 준비 상태 전달
     public void OnReady()
     {
         var hash = PhotonNetwork.LocalPlayer.CustomProperties;
@@ -237,16 +265,42 @@ public class InGameUI : MonoBehaviourPunCallbacks
             Debug.Log("준비취소");
         }
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
-        
     }
 
+    // 플레이어의 프로퍼티가 변경될때마다 실행되는 함수
+    // 준비 상태, 골드, 몬스터 수, 라이프 적용
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
-        OnClickReady((int)targetPlayer.CustomProperties["index"]);
+        int change_index = 0;
+        if (changedProps.ContainsKey("Ready") && ready_ui.activeInHierarchy)
+        {
+            Debug.Log("레디");
+            OnClickReady((int)targetPlayer.CustomProperties["index"]);
+        }
+        else if(changedProps.ContainsKey("Gold") || changedProps.ContainsKey("Monster_Left") || changedProps.ContainsKey("Life"))
+        {
+            Debug.Log("으악");
+            for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+            {
+                if(targetPlayer.NickName == PhotonNetwork.PlayerList[i].NickName)
+                {
+                    change_index = i;
+                }
+            }
+            player[change_index].transform.GetChild(1).GetComponent<TMP_Text>().text = ((int)targetPlayer.CustomProperties["Gold"]).ToString();
+            player[change_index].transform.GetChild(2).GetComponent<TMP_Text>().text = ((int)targetPlayer.CustomProperties["Monster_Left"]).ToString();
+            player[change_index].transform.GetChild(3).GetComponent<TMP_Text>().text = ((int)targetPlayer.CustomProperties["Life"]).ToString();
+        }
+        else
+        {
+            Debug.Log("안대");
+            return;
+        }
         
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
     }
 
+    // 플레이어 준비 상태가 완료되면 시작
     public void CheckAllPlayersReady()
     {
         var players = PhotonNetwork.PlayerList;
@@ -295,6 +349,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
         mapsManager.Map_instantiate();
     }
 
+    // 화면 하단 골드 UI
     public void SetGoldUI()
     {
         gold_ui.text = GameManager.instance.playermanager.Gold.ToString();

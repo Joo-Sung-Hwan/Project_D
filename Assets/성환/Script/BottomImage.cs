@@ -5,14 +5,20 @@ using UnityEngine;
 public class BottomImage : MonoBehaviour
 {
     public string unit_name;
-    // Start is called before the first frame update
+    [SerializeField] private bool is_instantiate;
 
     public void OnCharacterImage()
     {
-        Debug.Log("캐릭터 소환");
-        GameManager.instance.playermanager.SetGold(1, false);
-        MapManager.instance.unitManager.Unit_Instantiate_Waiting(gameObject.GetComponent<BottomImage>().unit_name);
-        gameObject.SetActive(false);
+        if (MapManager.instance.unitManager.Unit_Instantiate_Waiting(gameObject.GetComponent<BottomImage>().unit_name))
+        {
+            Debug.Log("캐릭터 소환");
+            GameManager.instance.playermanager.SetGold(1, false);
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            return;
+        }
     }
 
 }

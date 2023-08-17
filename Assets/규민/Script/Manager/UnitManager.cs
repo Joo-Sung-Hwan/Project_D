@@ -36,7 +36,7 @@ public class UnitManager : MonoBehaviourPunCallbacks
         }
     }
 
-    public void Unit_Instantiate_Waiting(string unit_name)
+    public bool Unit_Instantiate_Waiting(string unit_name)
     {
         for (int i = 0; i < waitingBlocks.Count; i++)
         {
@@ -44,9 +44,10 @@ public class UnitManager : MonoBehaviourPunCallbacks
             {
                 UnitBlocks ub = waitingBlocks[i];
                 PhotonNetwork.Instantiate(unit_name, ub.transform.position + Vector3.up * 0.25f, ub.transform.rotation).GetComponent<MovableObj>();
-                return;
+                return true;
             }
         }
+        return false;
     }
 
     public GameObject Unit_Instantiate(string unitName, UnitBlocks ub)

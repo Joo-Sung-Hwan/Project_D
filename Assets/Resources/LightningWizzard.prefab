@@ -789,7 +789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a216f65e0ce9ce488e66ac979ac628e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pv: {fileID: 0}
+  pv: {fileID: -5827297667852859758}
   block: {fileID: 0}
 --- !u!65 &2215318288644051661
 BoxCollider:
@@ -838,7 +838,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -5359293564424060631}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
