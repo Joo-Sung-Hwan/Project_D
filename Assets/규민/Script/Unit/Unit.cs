@@ -46,7 +46,7 @@ public abstract class  Unit : MonoBehaviour
 
     public void Init_Wave(bool isWave)
     {
-        if (isWave && !movable.block.isWaiting)
+        if (isWave && !movable.block.isWating)
         {
             mpBar.gameObject.SetActive(true);
         }
@@ -66,7 +66,7 @@ public abstract class  Unit : MonoBehaviour
 
         //Test_ColorChange_isWave();
 
-        if (movable.block.isWaiting || !MapManager.instance.monsterManager.isWave)
+        if (movable.block.isWating || !MapManager.instance.monsterManager.isWave)
             return;
 
 
@@ -97,6 +97,7 @@ public abstract class  Unit : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("enter");
         if (union && !MapManager.instance.monsterManager.isWave)
         {
             if (!collision.gameObject.GetComponent<Unit>())

@@ -4,19 +4,19 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class UnitManager : MonoBehaviour
+public class UnitManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] List<UnitBlocks> waitingBlocks;
     [SerializeField] UnitBlocks startBlock;
     [SerializeField] PhotonView pv;
-    Dictionary<UnitBlocks, bool> dic_canPlace = new Dictionary<UnitBlocks, bool>();
     public List<Unit> units;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        foreach (var blocks in waitingBlocks)
-            dic_canPlace.Add(blocks, true);
+        if (pv.IsMine)
+            Unit_Instantiate("FireWizzard", startBlock);
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class UnitManager : MonoBehaviour
     {
         if (pv.IsMine && Input.GetKeyDown(KeyCode.Q))
         {
-            Unit_Instantiate("FireWizzard");
+            Unit_Instantiate_Waiting("FireWizzard");
         }
     }
 
@@ -36,30 +36,21 @@ public class UnitManager : MonoBehaviour
         }
     }
 
-    public void Unit_Instantiate(string name)
+    public void Unit_Instantiate_Waiting(string unit_name)
     {
         for (int i = 0; i < waitingBlocks.Count; i++)
         {
-            if (dic_canPlace[waitingBlocks[i]])
+            if (waitingBlocks[i].CanPlace)
             {
                 UnitBlocks ub = waitingBlocks[i];
-                //MovableObj move;
-                PhotonNetwork.Instantiate(name, ub.transform.position + Vector3.up * 0.25f, ub.transform.rotation).GetComponent<MovableObj>().block = ub;
-                //pv.RPC("InitBlock", RpcTarget.All, move, ub);
-                dic_canPlace[ub] = false;
+                PhotonNetwork.Instantiate(unit_name, ub.transform.position + Vector3.up * 0.25f, ub.transform.rotation).GetComponent<MovableObj>();
                 return;
             }
         }
     }
 
-    public void Unit_Instantiate_Start(string name)
+    public GameObject Unit_Instantiate(string unitName, UnitBlocks ub)
     {
-        PhotonNetwork.Instantiate(name, startBlock.transform.position + Vector3.up * 0.25f, startBlock.transform.rotation).GetComponent<MovableObj>().block = startBlock;
-    }
-
-    [PunRPC]
-    public void InitBlock()
-    {
-        //mov.block = unitBlocks;
+        return PhotonNetwork.Instantiate(unitName, ub.transform.position + Vector3.up * 0.25f, ub.transform.rotation);
     }
 }

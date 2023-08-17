@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UnitBlocks : MonoBehaviour
 {
-    public bool isWaiting = false;
+    public bool isWating;
+    public bool CanPlace { get; set; } = true;
 
     // Start is called before the first frame update
     void Start()

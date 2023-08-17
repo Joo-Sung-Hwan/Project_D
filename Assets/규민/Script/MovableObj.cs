@@ -17,8 +17,23 @@ public class MovableObj : MonoBehaviour
     void Start()
     {
         dis = Vector3.zero;
+        InitBlock();
     }
-    
+
+    public void InitBlock()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+        RaycastHit hitdata;
+        int layerNum = LayerMask.NameToLayer("Ground");
+        if (Physics.Raycast(ray, out hitdata, 1.5f, 1 << layerNum))
+        {
+            if (block != null)
+                block.CanPlace = true;
+            block = hitdata.collider.GetComponent<UnitBlocks>();
+            block.CanPlace = false;
+        }
+    }
+
     void Update()
     {
         
@@ -35,7 +50,7 @@ public class MovableObj : MonoBehaviour
     [PunRPC]
     void RPCOnMouseDrag()
     {
-        if (!block.isWaiting && MapManager.instance.monsterManager.isWave)
+        if (!block.isWating && MapManager.instance.monsterManager.isWave)
         {
             transform.position = prePos;
             return;
@@ -80,21 +95,22 @@ public class MovableObj : MonoBehaviour
     [PunRPC]
     void RPCOnMouseUp()
     {
-        if (!block.isWaiting && MapManager.instance.monsterManager.isWave)
+        if (!block.isWating && MapManager.instance.monsterManager.isWave)
             return;
-
+        
         dis = Vector3.zero;
         int layer_Ground = 1 << LayerMask.NameToLayer("Ground");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out rayHit, Mathf.Infinity, layer_Ground))
         {
-            if (!rayHit.collider.GetComponent<UnitBlocks>().isWaiting && MapManager.instance.monsterManager.isWave)
+            UnitBlocks ub = rayHit.collider.GetComponent<UnitBlocks>();
+            if (!ub.isWating && MapManager.instance.monsterManager.isWave || (!ub.CanPlace))
                 transform.position = prePos;
             else
             {
                 transform.position = rayHit.collider.transform.position + Vector3.up * 0.25f;
-                block = rayHit.collider.GetComponent<UnitBlocks>();
+                InitBlock();
             }
         }
         else
