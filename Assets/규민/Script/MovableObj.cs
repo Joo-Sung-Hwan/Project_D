@@ -9,9 +9,11 @@ public class MovableObj : MonoBehaviour
     RaycastHit rayHit;
     Vector3 dis;
     Vector3 prePos;
+    [Header("직접 넣어줄 것(자기 자신)")]
     [SerializeField] PhotonView pv;
+    [SerializeField] Unit unit;
 
-    public UnitBlocks block;
+    [HideInInspector]public UnitBlocks block;
 
 
     void Start()
@@ -30,7 +32,7 @@ public class MovableObj : MonoBehaviour
             if (block != null)
                 block.CanPlace = true;
             block = hitdata.collider.GetComponent<UnitBlocks>();
-            block.CanPlace = false;
+            //block.SetUnit()
         }
     }
 
@@ -106,7 +108,10 @@ public class MovableObj : MonoBehaviour
         {
             UnitBlocks ub = rayHit.collider.GetComponent<UnitBlocks>();
             if (!ub.isWating && MapManager.instance.monsterManager.isWave || (!ub.CanPlace))
+            {
                 transform.position = prePos;
+
+            }
             else
             {
                 transform.position = rayHit.collider.transform.position + Vector3.up * 0.25f;

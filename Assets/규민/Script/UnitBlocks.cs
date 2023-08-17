@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class UnitBlocks : MonoBehaviour
 {
-    public bool isWating;
     public bool CanPlace { get; set; } = true;
+    
+    public bool isWating;
+    [HideInInspector] public Unit unit_Placed;
 
-    // Start is called before the first frame update
-    void Start()
+    public void SetUnit(Unit placeUnit = null)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        unit_Placed = placeUnit;
+        CanPlace = placeUnit == null ? true : false;
     }
 }
