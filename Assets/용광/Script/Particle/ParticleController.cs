@@ -21,6 +21,7 @@ public abstract class ParticleController : MonoBehaviour
     #endregion
     ParticleSystem ps;
     UnityAction action;
+    Monster monster;
 
     #endregion
 
@@ -64,10 +65,70 @@ public abstract class ParticleController : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        Monster monster = other.GetComponent<Monster>();
+        monster = other.GetComponent<Monster>();
+
         if (monster != null && monster.gameObject.layer == 10)
         {
-            monster.Damaged(pd.damage, pd.damage_type, pd.element_const ,pd.debuff_type, pd.debufftime);
+            P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
+        }
+    }
+    
+    void P_Attack(Attack_Type attack_Type, Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.none, float debuff_Time = 0f)
+    {
+        switch (attack_Type)
+        {
+            case Attack_Type.normal:
+                NormalAttack(monster, damage_Type, debuff_Type, debuff_Time);
+                break;
+            case Attack_Type.splash:
+                SplashAttack(monster, damage_Type, debuff_Type, debuff_Time);
+                break;
+            default:
+                break;
+        }
+    }
+
+    void NormalAttack(Monster target, Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.none, float debuffTime = 0)
+    {
+        target.Damaged(pd.damage, damage_Type, Element_Const(target), debuff_Type, debuffTime);
+    }
+
+    void SplashAttack(Monster target, Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.none, float debuffTime = 0)
+    {
+        Collider[] monsters = Physics.OverlapSphere(target.transform.position, 1);
+        foreach (var item in monsters)
+        {
+            Monster mob;
+            if (mob = item.GetComponent<Monster>())
+                mob.Damaged(pd.damage, damage_Type, Element_Const(mob), debuff_Type, debuffTime);
+        }
+    }
+
+    float Element_Const(Monster monster)
+    {
+        Element_Type md_et = monster.md.element_Type;
+        switch (pd.element_type)
+        {
+            case Element_Type.none:
+                return 1;
+            case Element_Type.water:
+                return md_et == Element_Type.wind ? 0.75f
+                    : md_et == Element_Type.fire ? 1.25f
+                    : 1;
+            case Element_Type.wind:
+                return md_et == Element_Type.earth ? 0.75f
+                    : md_et == Element_Type.water ? 1.25f
+                    : 1;
+            case Element_Type.earth:
+                return md_et == Element_Type.fire ? 0.75f
+                    : md_et == Element_Type.wind ? 1.25f
+                    : 1;
+            case Element_Type.fire:
+                return md_et == Element_Type.water ? 0.75f
+                    : md_et == Element_Type.earth ? 1.25f
+                    : 1;
+            default:
+                return 1;
         }
     }
 }

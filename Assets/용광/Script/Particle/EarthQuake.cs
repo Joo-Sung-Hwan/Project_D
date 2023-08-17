@@ -12,7 +12,7 @@ public class EarthQuake : ParticleController
         pd.damage_type = Damage_Type.physic;
         pd.element_type = Element_Type.earth;
         pd.atk_type = Attack_Type.splash;
-        pd.damage = 100;
+        pd.damage = 30;
         pd.element_const = 0.8f;
         pd.debufftime = 0.1f;
     }

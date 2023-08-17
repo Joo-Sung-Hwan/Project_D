@@ -644,6 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5610b90392b27844ca7dc9e6691301e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateSpeed: 0
   moved: 0
   hpBar_Prf: {fileID: 2208916345214765374, guid: aa7f5bcebf862b34e9d859199ad41c74, type: 3}
   anim: {fileID: 5594489553187715431}
