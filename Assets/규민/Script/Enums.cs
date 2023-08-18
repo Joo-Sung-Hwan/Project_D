@@ -77,3 +77,11 @@ public enum Position_Index
     up,
     other
 }
+
+public enum Effect_Type
+{
+    ball,
+    thrower,
+    spawn,
+    strike,
+}

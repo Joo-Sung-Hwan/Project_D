@@ -13,6 +13,8 @@ public abstract class ParticleController : MonoBehaviour
         public Damage_Type damage_type;
         public Element_Type element_type;
         public Attack_Type atk_type;
+        public Effect_Type eft_type;
+        public float atkdelay;
         public float damage;
         public float element_const;
         public float debufftime;
@@ -22,13 +24,16 @@ public abstract class ParticleController : MonoBehaviour
     ParticleSystem ps;
     UnityAction action;
     Monster monster;
+    [SerializeField] GameObject balltype;
+    float delaytime;
 
     #endregion
 
     // Update is called once per frame
     void Update()
     {
-
+        delaytime += Time.deltaTime;
+        ps.trigger.AddCollider(monster);
     }
 
     public virtual void Init()
@@ -63,16 +68,45 @@ public abstract class ParticleController : MonoBehaviour
         }
     }
 
+    private void OnParticleTrigger()
+    {
+        
+    }
+
     private void OnParticleCollision(GameObject other)
     {
         monster = other.GetComponent<Monster>();
 
         if (monster != null && monster.gameObject.layer == 10)
         {
-            P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
+            if (pd.atkdelay <= delaytime)
+            {
+                switch (pd.eft_type)
+                {
+                    case Effect_Type.ball:
+                        balltype.SetActive(false);
+                        if (balltype == false)
+                        {
+                            ps.Play();
+                        }
+                        break;
+                    case Effect_Type.thrower:
+                        P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
+                        break;
+                    case Effect_Type.spawn:
+                        break;
+                    case Effect_Type.strike:
+                        break;
+                    default:
+                        break;
+                }
+                delaytime = 0;
+            }
+            
         }
     }
     
+    //공격타입
     void P_Attack(Attack_Type attack_Type, Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.none, float debuff_Time = 0f)
     {
         switch (attack_Type)
@@ -88,6 +122,7 @@ public abstract class ParticleController : MonoBehaviour
         }
     }
 
+    //단일, 스플래쉬 공격 코드((P_Attack)부속코드)
     void NormalAttack(Monster target, Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.none, float debuffTime = 0)
     {
         target.Damaged(pd.damage, damage_Type, Element_Const(target), debuff_Type, debuffTime);
@@ -104,6 +139,7 @@ public abstract class ParticleController : MonoBehaviour
         }
     }
 
+    // 속성값 계산((P_Attack)부속코드)
     float Element_Const(Monster monster)
     {
         Element_Type md_et = monster.md.element_Type;
@@ -131,4 +167,5 @@ public abstract class ParticleController : MonoBehaviour
                 return 1;
         }
     }
+
 }
