@@ -79,8 +79,21 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         Debug.Log(PhotonNetwork.NetworkClientState.ToString());
+        StartCoroutine("Loading");
+        
     }
-
+    IEnumerator Loading()
+    {
+        yield return new WaitForSeconds(2f);
+        for (int i = 0; i < PhotonNetwork.CountOfRooms; i++)
+        {
+            for (int j = 0; j < PhotonNetwork.CountOfPlayersInRooms; j++)
+            {
+                Debug.Log("»öÄ¥");
+                parent.GetChild(i).transform.GetChild(j).GetComponent<Image>().color = Color.green;
+            }
+        }
+    }
     public override void OnCreatedRoom()
     {
 
@@ -97,7 +110,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     
     public override void OnJoinedRoom()
     {
-
         for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
         {
             Debug.Log(PhotonNetwork.PlayerList[i].NickName);
