@@ -257,8 +257,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1728217134288134246}
   - component: {fileID: 1728217134288134247}
-  - component: {fileID: -8810874398802083479}
   - component: {fileID: 1298758167189553774}
+  - component: {fileID: -8810874398802083479}
   - component: {fileID: -1430837964202966228}
   - component: {fileID: 2291706470427997743}
   - component: {fileID: -4951030213822987200}
@@ -308,22 +308,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-8810874398802083479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2067166518945037020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b36cee765e47e84fa32fa5f2a71b4f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mpBar_Prf: {fileID: -220029315280484533, guid: 0782a40f84a0e5248b91e0975b5e4528, type: 3}
-  movable: {fileID: 1298758167189553774}
-  level: 1
-  anim: {fileID: 1728217134288134247}
 --- !u!114 &1298758167189553774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +323,23 @@ MonoBehaviour:
   pv: {fileID: -4951030213822987200}
   unit: {fileID: -8810874398802083479}
   block: {fileID: 0}
+--- !u!114 &-8810874398802083479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067166518945037020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b36cee765e47e84fa32fa5f2a71b4f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mpBar_Prf: {fileID: -220029315280484533, guid: 0782a40f84a0e5248b91e0975b5e4528, type: 3}
+  movable: {fileID: 1298758167189553774}
+  pv: {fileID: -4951030213822987200}
+  level: 1
+  anim: {fileID: 1728217134288134247}
 --- !u!65 &-1430837964202966228
 BoxCollider:
   m_ObjectHideFlags: 0

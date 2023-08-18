@@ -41,6 +41,8 @@ public class MovableObj : MonoBehaviour
         
     }
 
+    #region 유닛 옮기기
+    #region 마우스 드래그
     private void OnMouseDrag()
     {
         if (pv.IsMine)
@@ -71,7 +73,9 @@ public class MovableObj : MonoBehaviour
             transform.position = new Vector3(rayHit.point.x, y, rayHit.point.z) + dis;
         }
     }
+    #endregion
 
+    #region 마우스 다운
     private void OnMouseDown()
     {
         if (pv.IsMine)
@@ -85,7 +89,9 @@ public class MovableObj : MonoBehaviour
     {
         prePos = transform.position;
     }
+    #endregion
 
+    #region 마우스 업 (합치기 포함)
     private void OnMouseUp()
     {
         if (pv.IsMine)
@@ -109,12 +115,14 @@ public class MovableObj : MonoBehaviour
             UnitBlocks ub = rayHit.collider.GetComponent<UnitBlocks>();
             if (!ub.isWating && MapManager.instance.monsterManager.isWave || (!ub.CanPlace))
             {
-                if (ub.unit_Placed && ub.unit_Placed.level==unit.level && ub.unit_Placed.ud.element_type == unit.ud.element_type)
+                if (ub.unit_Placed && ub.unit_Placed.level == unit.level && ub.unit_Placed.ud.element_type == unit.ud.element_type)
                 {
-                    Debug.Log("유닛 합치기");
+                    ub.unit_Placed.LevelUp_Test();
+                    unit.DestroyUnit();
+                    block.SetUnit();
                 }
-
-                transform.position = prePos;
+                else
+                    transform.position = prePos;
             }
             else
             {
@@ -127,4 +135,6 @@ public class MovableObj : MonoBehaviour
             transform.position = prePos;
         }
     }
+    #endregion
+    #endregion
 }

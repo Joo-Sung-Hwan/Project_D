@@ -46,6 +46,7 @@ MonoBehaviour:
   - RPCOnMouseDrag
   - RPCOnMouseUp
   - InitBlock
+  - RPC_LevelUp
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

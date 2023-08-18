@@ -1204,6 +1204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mpBar_Prf: {fileID: -220029315280484533, guid: 0782a40f84a0e5248b91e0975b5e4528, type: 3}
   movable: {fileID: 222491209262862712}
+  pv: {fileID: -7297474336279698945}
   level: 1
   anim: {fileID: 8486855876634139161}
 --- !u!65 &-1560838366183778160

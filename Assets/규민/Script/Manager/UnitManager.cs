@@ -9,8 +9,6 @@ public class UnitManager : MonoBehaviourPunCallbacks
     [SerializeField] List<UnitBlocks> waitingBlocks;
     [SerializeField] UnitBlocks startBlock;
     [SerializeField] PhotonView pv;
-    public List<Unit> units;
-
 
     // Start is called before the first frame update
     void Start()
@@ -25,14 +23,6 @@ public class UnitManager : MonoBehaviourPunCallbacks
         if (pv.IsMine && Input.GetKeyDown(KeyCode.Q))
         {
             Unit_Instantiate_Waiting("FireWizzard");
-        }
-    }
-
-    public void Init_IsWave(bool isWave)
-    {
-        foreach (var item in units)
-        {
-            item.Init_Wave(isWave);
         }
     }
 

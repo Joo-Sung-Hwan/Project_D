@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
 public abstract class  Unit : MonoBehaviour
 {
@@ -27,8 +29,10 @@ public abstract class  Unit : MonoBehaviour
     protected bool isManaRestore = false;
     #endregion
 
-    //자기 자신
+    [Header("자기 자신")]
     [SerializeField] MovableObj movable;
+    [SerializeField] PhotonView pv;
+
     public int level = 1;
     protected bool canAttack = true;
     protected bool union;
@@ -78,41 +82,20 @@ public abstract class  Unit : MonoBehaviour
 
     }
 
-    void DestroyUnit()
+    public void DestroyUnit()
     {
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
         Destroy(mpBar);
-        MapManager.instance.unitManager.units.Remove(this);
     }
 
-    #region 유닛 합치기
-    private void OnMouseDown()
-    {
-        union = true;
-    }
-    private void OnMouseUp()
-    {
-        union = false;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("enter");
-        if (union && !MapManager.instance.monsterManager.isWave)
-        {
-            if (!collision.gameObject.GetComponent<Unit>())
-                return;
-
-            Unit otherUnit = collision.gameObject.GetComponent<Unit>();
-            if (ud.element_type == otherUnit.ud.element_type && level == otherUnit.level && level < 3)
-            {
-                otherUnit.LevelUp_Test();
-                DestroyUnit();
-            }
-        }
-    }
-
+    #region 유닛 레벨업
     public void LevelUp_Test()
+    {
+        pv.RPC("RPC_LevelUp", RpcTarget.All);
+    }
+    
+    [PunRPC]
+    public void RPC_LevelUp()
     {
         level++;
         switch (level)
@@ -126,8 +109,6 @@ public abstract class  Unit : MonoBehaviour
                 Debug.LogError("Error : 잘못된 level값.");
                 break;
         }
-
-        Debug.Log($"{name} level : {level}");
     }
     #endregion
 
