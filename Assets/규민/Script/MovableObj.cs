@@ -29,10 +29,10 @@ public class MovableObj : MonoBehaviour
         int layerNum = LayerMask.NameToLayer("Ground");
         if (Physics.Raycast(ray, out hitdata, 1.5f, 1 << layerNum))
         {
-            if (block != null)
-                block.CanPlace = true;
+            if(block)
+                block.SetUnit();
             block = hitdata.collider.GetComponent<UnitBlocks>();
-            //block.SetUnit()
+            block.SetUnit(unit);
         }
     }
 
@@ -109,8 +109,12 @@ public class MovableObj : MonoBehaviour
             UnitBlocks ub = rayHit.collider.GetComponent<UnitBlocks>();
             if (!ub.isWating && MapManager.instance.monsterManager.isWave || (!ub.CanPlace))
             {
-                transform.position = prePos;
+                if (ub.unit_Placed && ub.unit_Placed.level==unit.level && ub.unit_Placed.ud.element_type == unit.ud.element_type)
+                {
+                    Debug.Log("À¯´Ö ÇÕÄ¡±â");
+                }
 
+                transform.position = prePos;
             }
             else
             {

@@ -43,7 +43,7 @@ public class UnitManager : MonoBehaviourPunCallbacks
             if (waitingBlocks[i].CanPlace)
             {
                 UnitBlocks ub = waitingBlocks[i];
-                PhotonNetwork.Instantiate(unit_name, ub.transform.position + Vector3.up * 0.25f, ub.transform.rotation).GetComponent<MovableObj>();
+                PhotonNetwork.Instantiate(unit_name, ub.transform.position + Vector3.up * 0.25f, ub.transform.rotation);
                 return true;
             }
         }
