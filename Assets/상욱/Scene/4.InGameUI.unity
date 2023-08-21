@@ -2109,7 +2109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 198, y: 0}
   m_SizeDelta: {x: 750, y: 150}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &353666672
@@ -3245,6 +3245,14 @@ MonoBehaviour:
   LeftBtn: {fileID: 302428711}
   gold_ui: {fileID: 1334156544}
   mapsManager: {fileID: 2126541407}
+  Synergy_prefab:
+  - {fileID: -4761575179246677308, guid: 406fdaf487a409d448354b889be6c04f, type: 3}
+  - {fileID: -6789505184304461371, guid: fa9361aea0485ab418eec52ccbf5e12e, type: 3}
+  - {fileID: 1007603894285417123, guid: 005b4b2ca08fac94d8abfc19d0a7fa5c, type: 3}
+  - {fileID: -1724487881806824676, guid: 2da8d1a92b0bdee4baa1a9fc0bd5d1af, type: 3}
+  - {fileID: -363511569788456291, guid: 15c23533c4a918445bdf599be1139b3f, type: 3}
+  - {fileID: 4717918956598650862, guid: 8080097f708a41c4198e8bdc9c7901c3, type: 3}
+  Synergy_parent: {fileID: 1442406635}
   not_NextPlay: {fileID: 1942065582}
   not_Executive: {fileID: 651021841}
 --- !u!4 &484130926
@@ -3864,6 +3872,7 @@ RectTransform:
   - {fileID: 255800716}
   - {fileID: 1894051197}
   - {fileID: 381278999}
+  - {fileID: 1442406635}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4276,7 +4285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &675709355
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7150,11 +7159,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1943708106071892511, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -48
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 1943708106071892511, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 242
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 1943708106071892511, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8182,6 +8191,67 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1442406634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1442406635}
+  - component: {fileID: 1442406636}
+  m_Layer: 5
+  m_Name: Synergy_Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1442406635
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442406634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 596821199}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -858, y: 319}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1442406636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442406634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 50}
+  m_Spacing: {x: 0, y: 20}
+  m_Constraint: 1
+  m_ConstraintCount: 1
 --- !u!1 &1460397194
 GameObject:
   m_ObjectHideFlags: 0
@@ -11299,3 +11369,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   map: {fileID: 0}
+  map_list: {fileID: 0}

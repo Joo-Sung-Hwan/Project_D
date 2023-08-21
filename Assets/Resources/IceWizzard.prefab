@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 2313294783875142258}
   - component: {fileID: 7537477485525154597}
   m_Layer: 0
-  m_Name: IceWizzard 2
+  m_Name: IceWizzard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

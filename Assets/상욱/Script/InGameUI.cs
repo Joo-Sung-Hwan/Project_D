@@ -44,6 +44,11 @@ public class InGameUI : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_Text gold_ui;
     [SerializeField] MapsManager mapsManager;
     // 인게임시작전 준비창 
+
+    [Header("Synergy")]
+    public Synergy[] Synergy_prefab;
+    public Transform Synergy_parent;
+
     
     [SerializeField] private Image not_NextPlay;
     [SerializeField] private Image not_Executive;
@@ -51,6 +56,8 @@ public class InGameUI : MonoBehaviourPunCallbacks
     bool ischeck = true;
     PhotonView photonview;
     //bool gamestart = false;
+
+    Dictionary<Element_Type, Synergy> synergy_list = new Dictionary<Element_Type, Synergy>();
 
     
     private void Awake()
@@ -98,11 +105,18 @@ public class InGameUI : MonoBehaviourPunCallbacks
     {
         SetUserName();
         SetGoldUI();
+        if (Input.GetKeyDown(KeyCode.F10))
+        {
+            SetSynergy(Element_Type.fire, true);
+        }
+        if (Input.GetKeyDown(KeyCode.F11))
+        {
+            SetSynergy(Element_Type.fire, false);
+        }
         if (chat_input.text == string.Empty)
         {
             return;
         }
-
         // 채팅창
         string str = $"{PhotonNetwork.LocalPlayer.NickName} : {chat_input.text}";
         if (Input.GetKeyDown(KeyCode.Return))
@@ -114,6 +128,36 @@ public class InGameUI : MonoBehaviourPunCallbacks
         
     }
 
+    /// <summary>
+    /// 시너지 UI 생성 true면 추가, false면 삭제
+    /// </summary>
+    /// <param name="e_type"></param>
+    /// <param name="isAdd"></param>
+    public void SetSynergy(Element_Type e_type, bool isAdd)
+    {
+        if(isAdd)
+        {
+            if (!synergy_list.ContainsKey(e_type))
+            {
+                Synergy sp = Instantiate(Synergy_prefab[(int)e_type - 1], Synergy_parent);
+                sp.count += 1;
+                synergy_list.Add(sp.s_type, sp);
+            }
+            else
+            {
+                synergy_list[e_type].count += 1;
+            }
+        }
+        else
+        {
+            synergy_list[e_type].count -= 1;
+            if(synergy_list[e_type].count <= 0)
+            {
+                Destroy(synergy_list[e_type].gameObject);
+                synergy_list.Remove(e_type);
+            }
+        }
+    }
     // 스코어판 player 이름 적용함수
     public void SetUserName()
     {

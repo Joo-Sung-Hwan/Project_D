@@ -52,6 +52,14 @@ Cell 크기 정해야함.
 
 유닛(공격하는거)
 수 풍 지 화 광 암 신 최소 7개
+수 - IceWizzard, , SeaTitan_Boss, ShooterFish - 3
+풍 - LightningWizzard, ThreeTailedWolf, Piranha_GreenM - 3
+지 - Golem, NatureWizzard, Snake - 3
+화 - dragon_skin, FireWizzard, Parrot - 3
+광 - King, Knight - 2
+암 - Fallen_guardin, Skeleton_KingBoss - 2
+몬 - Demon_imp, Ghost, Orc_Grunt, Orc_LordBoss, Orc_shaman, Orcpeon_Heavy, SnowMonster - 7
+보스 - IceElementalBoss - 1
 
 몬스터(웨이브) - 한 라운드에서는 다 똑같이, 보스
 5웨이브 - 몬스터 5개 필요
