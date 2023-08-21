@@ -39,7 +39,9 @@ public enum Element_Type
     water,
     wind,
     earth,
-    fire
+    fire,
+    light,
+    dark
 }
 
 public enum Attack_Type

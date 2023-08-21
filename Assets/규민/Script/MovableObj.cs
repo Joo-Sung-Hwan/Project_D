@@ -14,6 +14,7 @@ public class MovableObj : MonoBehaviour
     [SerializeField] Unit unit;
 
     [HideInInspector]public UnitBlocks block;
+    float clickedTime = 0f;
 
 
     void Start()
@@ -49,6 +50,8 @@ public class MovableObj : MonoBehaviour
         {
             pv.RPC("RPCOnMouseDrag" , RpcTarget.All);
         }
+        
+        clickedTime += Time.deltaTime;
     }
 
     [PunRPC]
@@ -79,9 +82,9 @@ public class MovableObj : MonoBehaviour
     private void OnMouseDown()
     {
         if (pv.IsMine)
-        {
             pv.RPC("RPCOnMouseDown" , RpcTarget.All);
-        }
+        
+        clickedTime = 0f;
     }
 
     [PunRPC]
@@ -108,12 +111,20 @@ public class MovableObj : MonoBehaviour
         
         dis = Vector3.zero;
         int layer_Ground = 1 << LayerMask.NameToLayer("Ground");
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = new Ray(transform.position, Vector3.down);
 
         if (Physics.Raycast(ray, out rayHit, Mathf.Infinity, layer_Ground))
         {
             UnitBlocks ub = rayHit.collider.GetComponent<UnitBlocks>();
-            if (!ub.isWating && MapManager.instance.monsterManager.isWave || (!ub.CanPlace))
+            if (ub == block && clickedTime <= 0.2f)
+            {
+                Debug.Log("Á¤º¸");
+            }
+            else if (!ub.isWating && MapManager.instance.monsterManager.isWave || ub == block)
+            {
+                transform.position = prePos;
+            }
+            else if (!ub.CanPlace)
             {
                 if (ub.unit_Placed && ub.unit_Placed.level == unit.level && ub.unit_Placed.ud.element_type == unit.ud.element_type)
                 {

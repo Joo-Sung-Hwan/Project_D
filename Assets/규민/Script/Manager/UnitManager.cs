@@ -10,6 +10,8 @@ public class UnitManager : MonoBehaviourPunCallbacks
     [SerializeField] UnitBlocks startBlock;
     [SerializeField] PhotonView pv;
 
+    [HideInInspector] public List<Unit> units = new();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,5 +45,19 @@ public class UnitManager : MonoBehaviourPunCallbacks
     public GameObject Unit_Instantiate(string unitName, UnitBlocks ub)
     {
         return PhotonNetwork.Instantiate(unitName, ub.transform.position + Vector3.up * 0.25f, ub.transform.rotation);
+    }
+
+    public void AddUnits(Unit unit)
+    {
+        unit.transform.SetParent(transform);
+        units.Add(unit);
+    }
+
+    public void Init_IsWave(bool isWave)
+    {
+        foreach (var item in units)
+        {
+            item.Init_Mp(isWave);
+        }
     }
 }

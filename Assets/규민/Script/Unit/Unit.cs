@@ -32,7 +32,7 @@ public abstract class  Unit : MonoBehaviour
     [Header("자기 자신")]
     [SerializeField] MovableObj movable;
     [SerializeField] PhotonView pv;
-
+    [Header("")]
     public int level = 1;
     protected bool canAttack = true;
     protected bool union;
@@ -40,20 +40,20 @@ public abstract class  Unit : MonoBehaviour
     public Animator anim;
     #endregion
 
+    #region Init
     protected virtual void Init()
     {
+        MapManager.instance.unitManager.AddUnits(this);
         mpBar = Instantiate(mpBar_Prf, MapManager.instance.uiManager_ingame.canvas_hp.transform);
         mpBar.unit = this;
-        mpBar.gameObject.SetActive(false);
+        Init_Mp();
         anim = GetComponent<Animator>();
     }
 
-    public void Init_Wave(bool isWave)
-    {
-        if (isWave && !movable.block.isWating)
-        {
+    public void Init_Mp()
+    { 
+        if (MapManager.instance.monsterManager.isWave && !movable.block.isWating)
             mpBar.gameObject.SetActive(true);
-        }
         else
         {
             mpBar.gameObject.SetActive(false);
@@ -62,16 +62,27 @@ public abstract class  Unit : MonoBehaviour
         }   
     }
 
+    public void Init_Mp(bool isWave)
+    {
+        if (isWave && !movable.block.isWating)
+            mpBar.gameObject.SetActive(true);
+        else
+        {
+            mpBar.gameObject.SetActive(false);
+            ud.curMana = 0;
+            mpBar.mpbar.fillAmount = 0;
+        }
+    }
+    #endregion
+
     // Update is called once per frame
     void Update()
     {
-        if (ud.curMana >= ud.maxMana)
-            StartCoroutine(UseSkill());
-
-        //Test_ColorChange_isWave();
-
         if (movable.block.isWating || !MapManager.instance.monsterManager.isWave)
             return;
+
+        if (ud.curMana >= ud.maxMana)
+            StartCoroutine(UseSkill());
 
 
         if (canAttack)
@@ -84,6 +95,7 @@ public abstract class  Unit : MonoBehaviour
 
     public void DestroyUnit()
     {
+        MapManager.instance.unitManager.units.Remove(this);
         PhotonNetwork.Destroy(gameObject);
         Destroy(mpBar);
     }
@@ -123,6 +135,7 @@ public abstract class  Unit : MonoBehaviour
             yield break;
 
         #region 데미지 들어가는 부분 (파티클 스크립트로 이동?)
+        //이동시 이 함수의 인수도 인계 필요, 투사체 발사나 애니메이션은 이 함수에
         switch (attack_Type)
         {
             case Attack_Type.normal:
@@ -135,8 +148,7 @@ public abstract class  Unit : MonoBehaviour
                 break;
         }
         #endregion
-        //이동시 이 함수의 인수도 인계 필요, 투사체 발사나 애니메이션은 이 함수에
-
+        
         if (ud.mana_type == Mana_Type.attack)
             ManaRestore_Attack();
         canAttack = false;
@@ -188,8 +200,6 @@ public abstract class  Unit : MonoBehaviour
         Element_Type md_et = monster.md.element_Type;
         switch (ud.element_type)
         {
-            case Element_Type.none:
-                return 1;
             case Element_Type.water:
                 return md_et == Element_Type.wind ? 0.75f
                     : md_et == Element_Type.fire ? 1.25f
@@ -205,6 +215,12 @@ public abstract class  Unit : MonoBehaviour
             case Element_Type.fire:
                 return md_et == Element_Type.water ? 0.75f
                     : md_et == Element_Type.earth ? 1.25f
+                    : 1;
+            case Element_Type.light:
+                return md_et == Element_Type.dark ? 1.25f
+                    : 1;
+            case Element_Type.dark:
+                return md_et == Element_Type.light ? 1.25f
                     : 1;
             default:
                 return 1;

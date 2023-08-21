@@ -80,10 +80,10 @@ public class MonsterManager : MonoBehaviourPunCallbacks
         }
     }
 
-    void SetIsWave(bool tf)
+    void SetIsWave(bool isWave)
     {
-        isWave = tf;
-        //MapManager.instance.unitManager.Init_IsWave(tf);
+        this.isWave = isWave;
+        MapManager.instance.unitManager.Init_IsWave(isWave);
     }
     #endregion
 
