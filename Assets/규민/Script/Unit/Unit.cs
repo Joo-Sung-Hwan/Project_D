@@ -23,16 +23,20 @@ public abstract class  Unit : MonoBehaviour
     #endregion
 
     #region 선언 - 마나
+    [Header("mp바")]
     [SerializeField] protected Mp_Bar mpBar_Prf;
     protected Mp_Bar mpBar;
     protected bool canManaRestore = true;
     protected bool isManaRestore = false;
     #endregion
 
+    #region 선언 - 정보
+    float clickTime = 0f;
+    #endregion
+
     [Header("자기 자신")]
     [SerializeField] MovableObj movable;
     [SerializeField] PhotonView pv;
-    [Header("")]
     public int level = 1;
     protected bool canAttack = true;
     protected bool union;
@@ -99,6 +103,25 @@ public abstract class  Unit : MonoBehaviour
         PhotonNetwork.Destroy(gameObject);
         Destroy(mpBar);
     }
+
+    #region 정보 보기
+    private void OnMouseDown()
+    {
+        clickTime = 0f;
+    }
+    private void OnMouseDrag()
+    {
+        clickTime += Time.deltaTime;
+    }
+    private void OnMouseUp()
+    {
+        if (clickTime < 0.2f)
+        {
+            MapManager.instance.unitManager.SetActiveInform(transform);
+        }
+    }
+
+    #endregion
 
     #region 유닛 레벨업
     public void LevelUp_Test()

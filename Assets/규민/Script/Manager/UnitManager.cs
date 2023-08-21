@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
 public class UnitManager : MonoBehaviourPunCallbacks
 {
+    [Header("자기 자신")]
+    [SerializeField] PhotonView pv;
+
     [SerializeField] List<UnitBlocks> waitingBlocks;
     [SerializeField] UnitBlocks startBlock;
-    [SerializeField] PhotonView pv;
+    public Image information_Prf;
+    [HideInInspector]public Image information;
 
     [HideInInspector] public List<Unit> units = new();
 
@@ -16,16 +21,13 @@ public class UnitManager : MonoBehaviourPunCallbacks
     void Start()
     {
         if (pv.IsMine)
-            Unit_Instantiate("FireWizzard", startBlock);
+            Unit_Instantiate_Start("FireWizzard", startBlock);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (pv.IsMine && Input.GetKeyDown(KeyCode.Q))
-        {
-            Unit_Instantiate_Waiting("FireWizzard");
-        }
+
     }
 
     public bool Unit_Instantiate_Waiting(string unit_name)
@@ -42,7 +44,7 @@ public class UnitManager : MonoBehaviourPunCallbacks
         return false;
     }
 
-    public GameObject Unit_Instantiate(string unitName, UnitBlocks ub)
+    public GameObject Unit_Instantiate_Start(string unitName, UnitBlocks ub)
     {
         return PhotonNetwork.Instantiate(unitName, ub.transform.position + Vector3.up * 0.25f, ub.transform.rotation);
     }
@@ -58,6 +60,22 @@ public class UnitManager : MonoBehaviourPunCallbacks
         foreach (var item in units)
         {
             item.Init_Mp(isWave);
+        }
+    }
+
+    public void SetActiveInform(Transform trans)
+    {
+        Vector2 wtsTrans = Camera.main.WorldToScreenPoint(trans.position);
+
+        if (information)
+        {
+            information = Instantiate(information_Prf);
+            information.rectTransform.anchoredPosition = wtsTrans;
+        }
+        else
+        {
+            information.gameObject.SetActive(true);
+            information.transform.position = trans.position;
         }
     }
 }

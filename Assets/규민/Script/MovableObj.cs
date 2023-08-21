@@ -116,11 +116,7 @@ public class MovableObj : MonoBehaviour
         if (Physics.Raycast(ray, out rayHit, Mathf.Infinity, layer_Ground))
         {
             UnitBlocks ub = rayHit.collider.GetComponent<UnitBlocks>();
-            if (ub == block && clickedTime <= 0.2f)
-            {
-                Debug.Log("Á¤º¸");
-            }
-            else if (!ub.isWating && MapManager.instance.monsterManager.isWave || ub == block)
+            if (!ub.isWating && MapManager.instance.monsterManager.isWave || ub == block)
             {
                 transform.position = prePos;
             }
