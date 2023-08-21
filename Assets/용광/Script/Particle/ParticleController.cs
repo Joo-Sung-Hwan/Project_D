@@ -18,13 +18,15 @@ public abstract class ParticleController : MonoBehaviour
         public float damage;
         public float element_const;
         public float debufftime;
+        public float speed;
     }
     public Particle_Data pd;
     #endregion
     ParticleSystem ps;
+    [SerializeField]ParticleSystem ballps;
     UnityAction action;
     Monster monster;
-    [SerializeField] GameObject balltype;
+    [SerializeField] GameObject efttype;
     float delaytime;
 
     #endregion
@@ -33,12 +35,12 @@ public abstract class ParticleController : MonoBehaviour
     void Update()
     {
         delaytime += Time.deltaTime;
-        ps.trigger.AddCollider(monster);
     }
 
     public virtual void Init()
     {
         ps = GetComponent<ParticleSystem>();
+        ballps.Play();
     }
     public void EffTest(float dis)
     {
@@ -53,6 +55,24 @@ public abstract class ParticleController : MonoBehaviour
         this.action = action;
         if (attNextDelay != -1)
             Invoke("NextAction", attNextDelay);
+
+        switch (pd.eft_type)
+        {
+            case Effect_Type.ball:
+                ballps.Stop();
+                efttype.SetActive(false);
+                P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
+                break;
+            case Effect_Type.thrower:
+                P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
+                break;
+            case Effect_Type.spawn:
+                break;
+            case Effect_Type.strike:
+                break;
+            default:
+                break;
+        }
     }
 
     public void EffStop()
@@ -67,12 +87,9 @@ public abstract class ParticleController : MonoBehaviour
             action = null;
         }
     }
-
     private void OnParticleTrigger()
     {
-        
     }
-
     private void OnParticleCollision(GameObject other)
     {
         monster = other.GetComponent<Monster>();
@@ -81,25 +98,7 @@ public abstract class ParticleController : MonoBehaviour
         {
             if (pd.atkdelay <= delaytime)
             {
-                switch (pd.eft_type)
-                {
-                    case Effect_Type.ball:
-                        balltype.SetActive(false);
-                        if (balltype == false)
-                        {
-                            ps.Play();
-                        }
-                        break;
-                    case Effect_Type.thrower:
-                        P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
-                        break;
-                    case Effect_Type.spawn:
-                        break;
-                    case Effect_Type.strike:
-                        break;
-                    default:
-                        break;
-                }
+                EffTest(ps.startLifetime);
                 delaytime = 0;
             }
             
