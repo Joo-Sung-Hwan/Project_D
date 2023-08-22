@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using System.Linq;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class PersonalCamera : MonoBehaviour
 {
     [SerializeField] private Camera main_camera;
     Vector3 camera_pos;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -63,5 +66,7 @@ public class PersonalCamera : MonoBehaviour
             default:
                 break;
         }
+        //InGameUI.instance.ShowSynergy(i);
+        //Debug.Log(i);
     }
 }

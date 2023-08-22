@@ -57,9 +57,9 @@ public class InGameUI : MonoBehaviourPunCallbacks
     PhotonView photonview;
     //bool gamestart = false;
 
-    Dictionary<Element_Type, Synergy> synergy_list = new Dictionary<Element_Type, Synergy>();
+    [HideInInspector] public Dictionary<Element_Type, Synergy> synergy_list = new Dictionary<Element_Type, Synergy>();
+    [HideInInspector] public List<Element_Type> e_list = new List<Element_Type>();
 
-    
     private void Awake()
     {
         if (instance == null)
@@ -79,6 +79,10 @@ public class InGameUI : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        foreach (Element_Type item in System.Enum.GetValues(typeof(Element_Type)))
+        {
+            e_list.Add(item);
+        }
         LeftBtn.onClick.AddListener(OnclickLeftRoom);
         photonview = GetComponent<PhotonView>();
         ready_ui.SetActive(true);
@@ -105,13 +109,14 @@ public class InGameUI : MonoBehaviourPunCallbacks
     {
         SetUserName();
         SetGoldUI();
+        int rand = Random.Range(1, Synergy_prefab.Length+1);
         if (Input.GetKeyDown(KeyCode.F10))
         {
-            SetSynergy(Element_Type.fire, true);
+            SetSynergy(e_list[rand], true);
         }
         if (Input.GetKeyDown(KeyCode.F11))
         {
-            SetSynergy(Element_Type.fire, false);
+            SetSynergy(e_list[rand], false);
         }
         if (chat_input.text == string.Empty)
         {
@@ -157,7 +162,34 @@ public class InGameUI : MonoBehaviourPunCallbacks
                 synergy_list.Remove(e_type);
             }
         }
+        /*
+        var hash = PhotonNetwork.LocalPlayer.CustomProperties;
+        hash[e_type.ToString()] = synergy_list[e_type].count;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+        */
     }
+
+    /*
+    public void ShowSynergy(int num)
+    {
+        var hash = PhotonNetwork.PlayerList[num].CustomProperties;
+        for (int j = 1; j < System.Enum.GetValues(typeof(Element_Type)).Length; j++)
+        {
+            if (hash.ContainsKey(e_list[j]))
+            {
+                Debug.Log("있다");
+                //Synergy sp = Instantiate(Synergy_prefab[0], Synergy_parent);
+                Synergy sp = Instantiate(Synergy_prefab[j-1], Synergy_parent);
+                sp.count = (int)(hash[j-1]);
+            }
+            else
+            {
+                //Debug.Log("없다");
+            }
+        }
+    }
+    */
+
     // 스코어판 player 이름 적용함수
     public void SetUserName()
     {
