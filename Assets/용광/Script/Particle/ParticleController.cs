@@ -40,7 +40,8 @@ public abstract class ParticleController : MonoBehaviour
     public virtual void Init()
     {
         ps = GetComponent<ParticleSystem>();
-        ballps.Play();
+        if (ballps != null)
+            ballps.Play();
     }
     public void EffTest(float dis)
     {
@@ -62,13 +63,17 @@ public abstract class ParticleController : MonoBehaviour
                 ballps.Stop();
                 efttype.SetActive(false);
                 P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
+                ps.Stop();
                 break;
             case Effect_Type.thrower:
                 P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
                 break;
             case Effect_Type.spawn:
+                P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
                 break;
             case Effect_Type.strike:
+                P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
+                ps.Stop();
                 break;
             default:
                 break;
@@ -77,6 +82,7 @@ public abstract class ParticleController : MonoBehaviour
 
     public void EffStop()
     {
+        ps.Stop();
     }
 
     void NextAction()
@@ -101,7 +107,7 @@ public abstract class ParticleController : MonoBehaviour
                 EffTest(ps.startLifetime);
                 delaytime = 0;
             }
-            
+            monster = null;
         }
     }
     
