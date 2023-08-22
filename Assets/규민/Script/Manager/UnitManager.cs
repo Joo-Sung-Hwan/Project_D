@@ -12,8 +12,6 @@ public class UnitManager : MonoBehaviourPunCallbacks
 
     [SerializeField] List<UnitBlocks> waitingBlocks;
     [SerializeField] UnitBlocks startBlock;
-    public Image information_Prf;
-    [HideInInspector]public Image information;
 
     [HideInInspector] public List<Unit> units = new();
 
@@ -63,19 +61,5 @@ public class UnitManager : MonoBehaviourPunCallbacks
         }
     }
 
-    public void SetActiveInform(Transform trans)
-    {
-        Vector2 wtsTrans = Camera.main.WorldToScreenPoint(trans.position);
-
-        if (information)
-        {
-            information = Instantiate(information_Prf);
-            information.rectTransform.anchoredPosition = wtsTrans;
-        }
-        else
-        {
-            information.gameObject.SetActive(true);
-            information.transform.position = trans.position;
-        }
-    }
+    
 }

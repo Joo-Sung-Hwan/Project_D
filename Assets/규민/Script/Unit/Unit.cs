@@ -49,6 +49,7 @@ public abstract class  Unit : MonoBehaviour
     {
         MapManager.instance.unitManager.AddUnits(this);
         mpBar = Instantiate(mpBar_Prf, MapManager.instance.uiManager_ingame.canvas_hp.transform);
+        mpBar.transform.SetParent(MapManager.instance.uiManager_ingame.bar_Parent);
         mpBar.unit = this;
         Init_Mp();
         anim = GetComponent<Animator>();
@@ -117,7 +118,7 @@ public abstract class  Unit : MonoBehaviour
     {
         if (clickTime < 0.2f)
         {
-            MapManager.instance.unitManager.SetActiveInform(transform);
+            MapManager.instance.uiManager_ingame.SetActiveInform(transform, this);
         }
     }
 

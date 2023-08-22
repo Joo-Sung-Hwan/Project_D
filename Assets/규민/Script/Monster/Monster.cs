@@ -54,7 +54,10 @@ public abstract class Monster : MonoBehaviour
     public virtual void Init()
     {
         if (hpBar == null)
+        {
             hpBar = Instantiate(hpBar_Prf, MapManager.instance.uiManager_ingame.canvas_hp.transform);
+            hpBar.transform.SetParent(MapManager.instance.uiManager_ingame.bar_Parent);
+        }
         hpBar.monster = this;
         anim = GetComponent<Animator>();
     }
@@ -134,7 +137,7 @@ public abstract class Monster : MonoBehaviour
         hpBar.hpbar.fillAmount = 1;
     }
 
-    #region 함수 - 피격
+    #region 피격
 
     public void Damaged(float damage , Damage_Type damage_type , float element_const, Debuff_Type debuff_Type = Debuff_Type.none , float debuffTime = 0)
     {
