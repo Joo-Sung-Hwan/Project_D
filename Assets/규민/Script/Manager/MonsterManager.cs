@@ -62,6 +62,7 @@ public class MonsterManager : MonoBehaviourPunCallbacks
                 Instantiate(monsters[index], transform).rotateSpeed = rotateSpeed;
 
             spawned++;
+            GameManager.instance.playermanager.SetMonsterLeft(true);
             yield return new WaitForSeconds(delay);
         }
     }

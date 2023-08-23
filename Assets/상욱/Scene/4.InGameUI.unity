@@ -3230,6 +3230,7 @@ MonoBehaviour:
   - {fileID: 1085228021}
   server_name: {fileID: 1347083177}
   randomInt: 10
+  scrollview: {fileID: 1322252015}
   chat_input: {fileID: 1322252014}
   chat_text: {fileID: 2245849527732813146, guid: 655d8585d7a088e41bb6e2ccd56d1d25, type: 3}
   chat_parent: {fileID: 1322252013}
@@ -3255,6 +3256,7 @@ MonoBehaviour:
   Synergy_parent: {fileID: 1442406635}
   not_NextPlay: {fileID: 1942065582}
   not_Executive: {fileID: 651021841}
+  e_list: 
 --- !u!4 &484130926
 Transform:
   m_ObjectHideFlags: 0
@@ -7137,16 +7139,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 596821199}
     m_Modifications:
+    - target: {fileID: 1943708105064647544, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
+      propertyPath: m_StartAxis
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1943708105064647544, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
+      propertyPath: m_CellSize.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1943708105064647544, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
+      propertyPath: m_ChildAlignment
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1943708105064647547, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1943708105386332479, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1943708105386332479, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1943708105386332479, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
       propertyPath: m_SizeDelta.x
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1943708105912673386, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
+      propertyPath: m_VerticalScrollbarVisibility
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1943708106071892510, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
@@ -7228,6 +7250,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &1322252015 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1943708105912673389, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
+  m_PrefabInstance: {fileID: 1322252011}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1334156542
 GameObject:
   m_ObjectHideFlags: 0

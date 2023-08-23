@@ -30,6 +30,7 @@ public class PlayerManager : MonoBehaviour
     public void SetGold(int a, bool isAdd)
     {
         Gold = (isAdd == true) ? Gold += a : Gold -= a;
+        InGameUI.instance.SetUserInformation();
     }
 
     /// <summary>
@@ -39,19 +40,23 @@ public class PlayerManager : MonoBehaviour
     public void SetMonsterLeft(bool isAdd)
     {
         Monster_Left = (isAdd == true) ? Monster_Left += 1 : Monster_Left -= 1;
+        InGameUI.instance.SetUserInformation();
     }
 
     /// <summary>
     /// 라이프는 1씩 감소
     /// </summary>
-    public void SetLife()
+    public void SetLife(bool isboss)
     {
-        Life -= 1;
+        Life = (isboss == true) ? Life -= 5 : Life -= 1;
+        InGameUI.instance.SetUserInformation();
     }
 
     private void Start()
     {
-        SetGold(0, true);
+        SetGold(10, true);
+        Life = 30;
+        Monster_Left = 0;
     }
 
     // 테스트

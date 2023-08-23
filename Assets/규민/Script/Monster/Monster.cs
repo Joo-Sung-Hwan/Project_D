@@ -98,7 +98,7 @@ public abstract class Monster : MonoBehaviour
             case Position_Index.up:
                 transform.Translate(Vector3.forward * md.speed * Time.deltaTime);
                 if (transform.localPosition.z <= 1)
-                    Dead();
+                    Dead(false);
                 break;
             default:
                 if (rotateSpeed == 0)
@@ -173,9 +173,13 @@ public abstract class Monster : MonoBehaviour
         
         hpBar.hpbar.fillAmount = md.curHP / md.maxHP;
         if (md.curHP<=0)
-            Dead();
+            Dead(true);
     }
-    private void Dead()
+    /// <summary>
+    /// true = 떄려서 잡는거, false = 새서 없어지는거
+    /// </summary>
+    /// <param name="ischeck"></param>
+    private void Dead(bool ischeck)
     {
         //StopAllCoroutines();
         gameObject.SetActive(false);
@@ -187,12 +191,23 @@ public abstract class Monster : MonoBehaviour
         dm[md.index].Enqueue(this);
         hpBar.gameObject.SetActive(false);
         MapManager.instance.monsterManager.killed++;
+        GameManager.instance.playermanager.SetMonsterLeft(false);
+        if (ischeck)
+        {
+            GameManager.instance.playermanager.SetGold(2, true);
+        }
+        else
+        {
+            GameManager.instance.playermanager.SetLife(false);
+        }
     }
 
+    /*
     private void OnMouseDown()
     {
-        Dead();
+        Dead(true);
     }
+    */
 
     #region 디버프
     public void AddDebuff_Dic(Debuff_Type debuff_Type)

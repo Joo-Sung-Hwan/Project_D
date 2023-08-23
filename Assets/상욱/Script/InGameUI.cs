@@ -25,9 +25,11 @@ public class InGameUI : MonoBehaviourPunCallbacks
     public int randomInt;
 
     [Header("Chatting_UI")]
+    public RectTransform scrollview;
     public TMP_InputField chat_input;
     public GameObject chat_text;
     public Transform chat_parent;
+    float prev_content;
 
     [Header("Level_UP")]
     [SerializeField] private TMP_Text levelUPText;
@@ -283,8 +285,28 @@ public class InGameUI : MonoBehaviourPunCallbacks
     // 채팅 프리팹 생성 함수
     public void CreateChat(string msg)
     {
+        prev_content = chat_parent.GetComponent<RectTransform>().sizeDelta.y;
         GameObject ct = Instantiate(chat_text, chat_parent);
         ct.GetComponent<TMP_Text>().text = msg;
+        StartCoroutine("AutoScrollBottom");
+    }
+
+    // 채팅창 최신화
+    IEnumerator AutoScrollBottom()
+    {
+        yield return null;
+        // 스크롤뷰 H보다 Content H값이 클 때만(스크롤이 가능한 상태라면)
+        // 스크롤바가 생기는 시점 (채팅을 어느정도 쳐서, Content 가 Scroll View 를 넘어간 시점)
+        if (chat_parent.GetComponent<RectTransform>().sizeDelta.y > scrollview.sizeDelta.y)
+        {
+            //  ==    (Content.y >= 변경되기 전 content Hight 값 - ScrollView 의 Hight 값)
+            // 스크롤 바가 바닥에 있는거라면
+            if (chat_parent.GetComponent<RectTransform>().anchoredPosition.y >= prev_content - scrollview.sizeDelta.y)
+            {
+                //5. 추가된 높이만큼 content y값을 변경하겠다. (지금은 이미 추가 된 상태인거임)
+                chat_parent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, chat_parent.GetComponent<RectTransform>().sizeDelta.y - scrollview.sizeDelta.y);
+            }
+        }
     }
 
     // 마스터로 보낸 후 각 플레이어에게 뿌려주는 함수
