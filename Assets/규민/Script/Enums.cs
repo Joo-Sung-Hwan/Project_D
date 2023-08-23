@@ -35,7 +35,6 @@ public enum Monsters_Index
 
 public enum Element_Type
 {
-    none,
     water,
     wind,
     earth,

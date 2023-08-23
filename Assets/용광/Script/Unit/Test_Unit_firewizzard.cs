@@ -14,6 +14,7 @@ public class Test_Unit_firewizzard : Unit
         ud.mana_type = Mana_Type.attack;
         ud.maxMana = 10f;
         ud.curMana = 0f;
+        ud.isBuy = false;
     }
 
     protected override void Attack()

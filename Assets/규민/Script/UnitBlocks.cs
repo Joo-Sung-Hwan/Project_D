@@ -13,5 +13,24 @@ public class UnitBlocks : MonoBehaviour
     {
         unit_Placed = placeUnit;
         CanPlace = placeUnit == null ? true : false;
+        if(placeUnit == null)
+        {
+            return;
+        }
+        placeUnit.Init();
+        /*
+        if(!placeUnit.ud.isBuy)
+        {
+            return;
+        }
+        */
+        if (isWating)
+        {
+            InGameUI.instance.SetSynergy(placeUnit.ud.element_type, false);
+        }
+        else
+        {
+            InGameUI.instance.SetSynergy(placeUnit.ud.element_type, true);
+        }
     }
 }

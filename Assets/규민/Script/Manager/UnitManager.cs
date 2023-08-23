@@ -18,8 +18,10 @@ public class UnitManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        /*
         if (pv.IsMine)
             Unit_Instantiate_Start("FireWizzard", startBlock);    
+        */
     }
 
     // Update is called once per frame

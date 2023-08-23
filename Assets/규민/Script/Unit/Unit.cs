@@ -18,6 +18,7 @@ public abstract class  Unit : MonoBehaviour
         public float attack;
         public float maxMana;
         public float curMana;
+        public bool isBuy;
     }
     public unit_Data ud;
     #endregion

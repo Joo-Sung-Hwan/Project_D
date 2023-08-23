@@ -51,7 +51,8 @@ public class InGameUI : MonoBehaviourPunCallbacks
     public Synergy[] Synergy_prefab;
     public Transform Synergy_parent;
 
-    
+
+
     [SerializeField] private Image not_NextPlay;
     [SerializeField] private Image not_Executive;
     bool[] ischeck_array = new bool[4];
@@ -59,8 +60,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
     PhotonView photonview;
     //bool gamestart = false;
 
-    [HideInInspector] public Dictionary<Element_Type, Synergy> synergy_list = new Dictionary<Element_Type, Synergy>();
-    [HideInInspector] public List<Element_Type> e_list = new List<Element_Type>();
+    [HideInInspector] public Dictionary<string, Synergy> synergy_list = new Dictionary<string, Synergy>();
 
     private void Awake()
     {
@@ -81,10 +81,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        foreach (Element_Type item in System.Enum.GetValues(typeof(Element_Type)))
-        {
-            e_list.Add(item);
-        }
+        
         LeftBtn.onClick.AddListener(OnclickLeftRoom);
         photonview = GetComponent<PhotonView>();
         ready_ui.SetActive(true);
@@ -111,15 +108,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
     {
         SetUserName();
         SetGoldUI();
-        int rand = Random.Range(1, Synergy_prefab.Length+1);
-        if (Input.GetKeyDown(KeyCode.F10))
-        {
-            SetSynergy(e_list[rand], true);
-        }
-        if (Input.GetKeyDown(KeyCode.F11))
-        {
-            SetSynergy(e_list[rand], false);
-        }
+        
         if (chat_input.text == string.Empty)
         {
             return;
@@ -144,24 +133,25 @@ public class InGameUI : MonoBehaviourPunCallbacks
     {
         if(isAdd)
         {
-            if (!synergy_list.ContainsKey(e_type))
+            if (!synergy_list.ContainsKey(e_type.ToString()))
             {
-                Synergy sp = Instantiate(Synergy_prefab[(int)e_type - 1], Synergy_parent);
+                Synergy sp = Instantiate(Synergy_prefab[(int)e_type], Synergy_parent);
                 sp.count += 1;
-                synergy_list.Add(sp.s_type, sp);
+                synergy_list.Add((sp.s_type).ToString(), sp);
+                Debug.Log(synergy_list[(sp.s_type).ToString()].count);
             }
             else
             {
-                synergy_list[e_type].count += 1;
+                synergy_list[e_type.ToString()].count += 1;
             }
         }
         else
         {
-            synergy_list[e_type].count -= 1;
-            if(synergy_list[e_type].count <= 0)
+            synergy_list[e_type.ToString()].count -= 1;
+            if(synergy_list[e_type.ToString()].count <= 0)
             {
-                Destroy(synergy_list[e_type].gameObject);
-                synergy_list.Remove(e_type);
+                Destroy(synergy_list[e_type.ToString()].gameObject);
+                synergy_list.Remove(e_type.ToString());
             }
         }
         /*
