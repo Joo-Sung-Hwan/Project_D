@@ -149,8 +149,6 @@ public abstract class ParticleController : MonoBehaviour
         Element_Type md_et = monster.md.element_Type;
         switch (pd.element_type)
         {
-            case Element_Type.none:
-                return 1;
             case Element_Type.water:
                 return md_et == Element_Type.wind ? 0.75f
                     : md_et == Element_Type.fire ? 1.25f

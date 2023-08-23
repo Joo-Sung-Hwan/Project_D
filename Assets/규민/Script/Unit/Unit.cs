@@ -45,7 +45,7 @@ public abstract class  Unit : MonoBehaviour
     #endregion
 
     #region Init
-    protected virtual void Init()
+    public virtual void Init()
     {
         MapManager.instance.unitManager.AddUnits(this);
         mpBar = Instantiate(mpBar_Prf, MapManager.instance.uiManager_ingame.canvas_hp.transform);
@@ -87,7 +87,7 @@ public abstract class  Unit : MonoBehaviour
             return;
 
         if (ud.curMana >= ud.maxMana)
-            StartCoroutine(UseSkill());
+            StartCoroutine(Skill());
 
 
         if (canAttack)
@@ -176,13 +176,15 @@ public abstract class  Unit : MonoBehaviour
         if (ud.mana_type == Mana_Type.attack)
             ManaRestore_Attack();
         canAttack = false;
+
+        transform.LookAt(first_mob.transform);
         anim.SetBool("attack", true);
         yield return new WaitForSeconds(ud.atkDelay);
         canAttack = true;
         anim.SetBool("attack", false);
     }
     #region Attack - 부속함수
-    Monster FindTarget()
+    protected Monster FindTarget()
     {
         float first = 0;
         Collider[] monsters = Physics.OverlapSphere(transform.position, 2);
@@ -272,7 +274,7 @@ public abstract class  Unit : MonoBehaviour
         canManaRestore = true;
     }
 
-    // public abstract IEnumerator Skill(Attack_Type attack_Type, Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.none, float debuff_Time = 0f);
+    public abstract IEnumerator Skill();
 
     IEnumerator ManaRestore_Auto()
     {

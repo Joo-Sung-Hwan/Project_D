@@ -19,13 +19,16 @@ public class UnitManager : MonoBehaviourPunCallbacks
     void Start()
     {
         if (pv.IsMine)
-            Unit_Instantiate_Start("FireWizzard", startBlock);
+            Unit_Instantiate_Start("FireWizzard", startBlock);    
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (pv.IsMine && Input.GetKeyDown(KeyCode.Q))
+        {
+            Unit_Instantiate_Waiting("dragon_skin");
+        }
     }
 
     public bool Unit_Instantiate_Waiting(string unit_name)
@@ -35,7 +38,7 @@ public class UnitManager : MonoBehaviourPunCallbacks
             if (waitingBlocks[i].CanPlace)
             {
                 UnitBlocks ub = waitingBlocks[i];
-                PhotonNetwork.Instantiate(unit_name, ub.transform.position + Vector3.up * 0.25f, ub.transform.rotation);
+                PhotonNetwork.Instantiate(unit_name, ub.transform.position + Vector3.up * 0.25f, Quaternion.Euler(0, -90, 0));
                 return true;
             }
         }

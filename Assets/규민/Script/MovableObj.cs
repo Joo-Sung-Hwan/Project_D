@@ -14,6 +14,7 @@ public class MovableObj : MonoBehaviour
     [SerializeField] Unit unit;
 
     [HideInInspector]public UnitBlocks block;
+    bool preBlock_IsWating;
     float clickedTime = 0f;
 
 
@@ -31,10 +32,21 @@ public class MovableObj : MonoBehaviour
         if (Physics.Raycast(ray, out hitdata, 1.5f, 1 << layerNum))
         {
             if(block)
+            {
                 block.SetUnit();
+                preBlock_IsWating = block.isWating;
+            }
             block = hitdata.collider.GetComponent<UnitBlocks>();
             block.SetUnit(unit);
         }
+
+        /*
+        //시너지 활성/비활성화
+        if (!block.isWating && preBlock_IsWating)
+            InGameUI.instance.SetSynergy(unit.ud.element_type, true);
+        else
+            InGameUI.instance.SetSynergy(unit.ud.element_type, false);
+        */
     }
 
     void Update()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Test_Unit_firewizzard : Unit
 {
-    protected override void Init()
+    public override void Init()
     {
         base.Init();
         ud.element_type = Element_Type.fire;
@@ -24,5 +24,22 @@ public class Test_Unit_firewizzard : Unit
     void Start()
     {
         Init();
+    }
+
+    public override IEnumerator Skill()
+    {
+        ud.curMana = 0;
+        float skillTime = 3f;
+        float preDelay = ud.atkDelay;
+        canManaRestore = false;
+        ud.atkDelay /= 2;
+        while (skillTime > 0)
+        {
+            yield return new WaitForEndOfFrame();
+            skillTime -= Time.deltaTime;
+            mpBar.mpbar.fillAmount = skillTime / 3f;
+        }
+        ud.atkDelay = preDelay;
+        canManaRestore = true;
     }
 }
