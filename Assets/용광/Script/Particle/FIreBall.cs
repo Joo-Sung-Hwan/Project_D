@@ -15,7 +15,7 @@ public class FIreBall : ParticleController
         pd.atkdelay = 0.3f;
         pd.damage = 5f;
         pd.element_const = 0.9f;
-        pd.debufftime = 0.5f;
+        pd.debufftime = 1f;
     }
 
     void Start()

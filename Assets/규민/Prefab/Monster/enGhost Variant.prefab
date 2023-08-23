@@ -308,6 +308,10 @@ PrefabInstance:
       value: enGhost Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7147f095f23b55d44afe984398e58410, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7147f095f23b55d44afe984398e58410, type: 3}
       propertyPath: m_TagString
       value: Monster
       objectReference: {fileID: 0}
@@ -453,6 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5610b90392b27844ca7dc9e6691301e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateSpeed: 0
   moved: 0
   hpBar_Prf: {fileID: 2208916345214765374, guid: daefbd967b7f3514abd58e30f46c5138, type: 3}
   anim: {fileID: 5019650076747954503}

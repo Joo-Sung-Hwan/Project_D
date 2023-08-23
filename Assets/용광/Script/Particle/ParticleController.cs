@@ -57,32 +57,10 @@ public abstract class ParticleController : MonoBehaviour
         if (attNextDelay != -1)
             Invoke("NextAction", attNextDelay);
 
-        switch (pd.eft_type)
-        {
-            case Effect_Type.ball:
-                ballps.Stop();
-                efttype.SetActive(false);
-                P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
-                ps.Stop();
-                break;
-            case Effect_Type.thrower:
-                P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
-                break;
-            case Effect_Type.spawn:
-                P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
-                break;
-            case Effect_Type.strike:
-                P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
-                ps.Stop();
-                break;
-            default:
-                break;
-        }
     }
 
     public void EffStop()
     {
-        ps.Stop();
     }
 
     void NextAction()
@@ -104,7 +82,28 @@ public abstract class ParticleController : MonoBehaviour
         {
             if (pd.atkdelay <= delaytime)
             {
-                EffTest(ps.startLifetime);
+                switch (pd.eft_type)
+                {
+                    case Effect_Type.ball:
+                        ballps.Stop();
+                        efttype.SetActive(false);
+                        P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
+                        ps.Stop();
+                        break;
+                    case Effect_Type.thrower:
+                        P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
+                        break;
+                    case Effect_Type.spawn:
+                        P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
+                        break;
+                    case Effect_Type.strike:
+                        P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
+                        ps.Stop();
+                        break;
+                    default:
+                        break;
+                }
+
                 delaytime = 0;
             }
             monster = null;
