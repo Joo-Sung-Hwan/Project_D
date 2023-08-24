@@ -60,7 +60,25 @@ public class MovableObj : MonoBehaviour
     {
         if (pv.IsMine)
         {
-            pv.RPC("RPCOnMouseDrag" , RpcTarget.All);
+            if (!block.isWating && MapManager.instance.monsterManager.isWave)
+            {
+                transform.position = prePos;
+                return;
+            }
+
+            int layer_DragBox = 1 << LayerMask.NameToLayer("Movable");
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out rayHit, Mathf.Infinity, layer_DragBox))
+            {
+                float y = transform.position.y;
+
+                //dis = 클릭한 마우스 위치와 클릭된 오브젝트 위치의 차이
+                if (dis == Vector3.zero)
+                    dis = new Vector3(transform.position.x - rayHit.point.x, 0, transform.position.z - rayHit.point.z);
+
+                transform.position = new Vector3(rayHit.point.x, y, rayHit.point.z) + dis;
+            }
+            //pv.RPC("RPCOnMouseDrag" , RpcTarget.All);
         }
         
         clickedTime += Time.deltaTime;
@@ -69,24 +87,7 @@ public class MovableObj : MonoBehaviour
     [PunRPC]
     void RPCOnMouseDrag()
     {
-        if (!block.isWating && MapManager.instance.monsterManager.isWave)
-        {
-            transform.position = prePos;
-            return;
-        }
-
-        int layer_DragBox = 1 << LayerMask.NameToLayer("Movable");
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out rayHit, Mathf.Infinity, layer_DragBox))
-        {
-            float y = transform.position.y;
-
-            //dis = 클릭한 마우스 위치와 클릭된 오브젝트 위치의 차이
-            if (dis == Vector3.zero)
-                dis = new Vector3(transform.position.x - rayHit.point.x, 0, transform.position.z - rayHit.point.z);
-
-            transform.position = new Vector3(rayHit.point.x, y, rayHit.point.z) + dis;
-        }
+        
     }
     #endregion
 

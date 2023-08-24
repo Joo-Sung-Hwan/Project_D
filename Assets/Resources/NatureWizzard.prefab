@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: -1430837964202966228}
   - component: {fileID: 2291706470427997743}
   - component: {fileID: -4951030213822987200}
+  - component: {fileID: 8608859846376672680}
   m_Layer: 0
   m_Name: NatureWizzard
   m_TagString: Untagged
@@ -339,6 +340,7 @@ MonoBehaviour:
   movable: {fileID: 1298758167189553774}
   pv: {fileID: -4951030213822987200}
   anim: {fileID: 1728217134288134247}
+  isBuy: 0
   level: 1
 --- !u!65 &-1430837964202966228
 BoxCollider:
@@ -387,10 +389,27 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 8608859846376672680}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &8608859846376672680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067166518945037020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &2131094908719611353
 GameObject:
   m_ObjectHideFlags: 0

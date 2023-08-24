@@ -60,7 +60,7 @@ public class UnitManager : MonoBehaviourPunCallbacks
     {
         if (units.Contains(unit))
             return;
-        unit.transform.SetParent(transform);
+        //unit.transform.SetParent(transform);
         units.Add(unit);
     }
 

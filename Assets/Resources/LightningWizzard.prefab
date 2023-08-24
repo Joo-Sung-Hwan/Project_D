@@ -714,7 +714,7 @@ GameObject:
   - component: {fileID: 2215318288644051661}
   - component: {fileID: 5967124358423417476}
   - component: {fileID: -5827297667852859758}
-  - component: {fileID: -5359293564424060631}
+  - component: {fileID: 317017680050797393}
   m_Layer: 0
   m_Name: LightningWizzard
   m_TagString: Untagged
@@ -792,6 +792,7 @@ MonoBehaviour:
   movable: {fileID: -5052022943627983913}
   pv: {fileID: -5827297667852859758}
   anim: {fileID: 5406477005260928031}
+  isBuy: 0
   level: 1
 --- !u!65 &2215318288644051661
 BoxCollider:
@@ -841,11 +842,11 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: -5359293564424060631}
+  - {fileID: 317017680050797393}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-5359293564424060631
+--- !u!114 &317017680050797393
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

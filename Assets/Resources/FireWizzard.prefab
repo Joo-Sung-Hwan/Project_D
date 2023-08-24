@@ -1127,8 +1127,8 @@ GameObject:
   - component: {fileID: -7018217960261200738}
   - component: {fileID: -1560838366183778160}
   - component: {fileID: -7297474336279698945}
-  - component: {fileID: 5620671528427106917}
   - component: {fileID: 5521632269754972698}
+  - component: {fileID: -5974458780113670561}
   m_Layer: 0
   m_Name: FireWizzard
   m_TagString: Untagged
@@ -1206,6 +1206,7 @@ MonoBehaviour:
   movable: {fileID: 222491209262862712}
   pv: {fileID: -7297474336279698945}
   anim: {fileID: 8486855876634139161}
+  isBuy: 0
   level: 1
 --- !u!65 &-1560838366183778160
 BoxCollider:
@@ -1239,26 +1240,10 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 5620671528427106917}
+  - {fileID: -5974458780113670561}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &5620671528427106917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8486855876634139162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!54 &5521632269754972698
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1275,6 +1260,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &-5974458780113670561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486855876634139162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &8705384510856600420
 GameObject:
   m_ObjectHideFlags: 0
