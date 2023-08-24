@@ -103,7 +103,7 @@ public class MonsterManager : MonoBehaviourPunCallbacks
 
     IEnumerator C_Wave_1()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(10);
         SetIsWave(true);
         canClear = false;
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 5, 1f));

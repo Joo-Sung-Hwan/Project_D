@@ -134,7 +134,7 @@ public class MovableObj : MonoBehaviour
             }
             else if (!ub.CanPlace)
             {
-                if (ub.unit_Placed && ub.unit_Placed.level == unit.level && ub.unit_Placed.ud.element_type == unit.ud.element_type)
+                if (ub.unit_Placed && unit.level != 2 && ub.unit_Placed.level == unit.level && ub.unit_Placed.ud.element_type == unit.ud.element_type)
                 {
                     ub.unit_Placed.LevelUp_Test();
                     unit.DestroyUnit();

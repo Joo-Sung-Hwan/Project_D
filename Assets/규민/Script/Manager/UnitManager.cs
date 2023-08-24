@@ -31,6 +31,10 @@ public class UnitManager : MonoBehaviourPunCallbacks
         {
             Unit_Instantiate_Waiting("dragon_skin");
         }
+        if(pv.IsMine && Input.GetKeyDown(KeyCode.W))
+        {
+            Unit_Instantiate_Waiting("Golem");
+        }
     }
 
     public bool Unit_Instantiate_Waiting(string unit_name)
@@ -54,6 +58,8 @@ public class UnitManager : MonoBehaviourPunCallbacks
 
     public void AddUnits(Unit unit)
     {
+        if (units.Contains(unit))
+            return;
         unit.transform.SetParent(transform);
         units.Add(unit);
     }

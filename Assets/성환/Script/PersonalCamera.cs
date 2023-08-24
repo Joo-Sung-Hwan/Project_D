@@ -34,13 +34,13 @@ public class PersonalCamera : MonoBehaviour
             case 1:
                 break;
             case 2:
-                main_camera.transform.position += Vector3.forward * 17;
+                main_camera.transform.position += new Vector3(0, 0, 17);
                 break;
             case 3:
-                main_camera.transform.position += Vector3.right * 17;
+                main_camera.transform.position += new Vector3(17, 0, 0);
                 break;
             case 4:
-                main_camera.transform.position += (Vector3.forward + Vector3.right) * 17;
+                main_camera.transform.position += new Vector3(17, 0, 17);
                 break;
             default:
                 break;

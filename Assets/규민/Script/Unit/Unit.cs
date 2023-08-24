@@ -38,11 +38,12 @@ public abstract class  Unit : MonoBehaviour
     [Header("자기 자신")]
     [SerializeField] MovableObj movable;
     [SerializeField] PhotonView pv;
+    public Animator anim;
+
+    [HideInInspector] public bool isBuy;
     public int level = 1;
     protected bool canAttack = true;
     protected bool union;
-
-    public Animator anim;
     #endregion
 
     #region Init
@@ -139,7 +140,7 @@ public abstract class  Unit : MonoBehaviour
         {
             case 2:
                 ud.attack *= 1.5f;
-                ud.atk_type = Attack_Type.splash;
+                //ud.atk_type = Attack_Type.splash;
                 break;
 
             default:

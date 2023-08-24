@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 604901425644209546}
   - component: {fileID: 229360362646331185}
   - component: {fileID: 4722864475523233517}
-  - component: {fileID: 2380976436784675166}
+  - component: {fileID: 4156048834455649606}
   - component: {fileID: -3411240988855789623}
   - component: {fileID: 2313294783875142258}
   - component: {fileID: 7537477485525154597}
@@ -106,9 +106,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pv: {fileID: 7537477485525154597}
-  unit: {fileID: 2380976436784675166}
+  unit: {fileID: 4156048834455649606}
   block: {fileID: 0}
---- !u!114 &2380976436784675166
+--- !u!114 &4156048834455649606
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,14 +117,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 229360362646331184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b36cee765e47e84fa32fa5f2a71b4f4, type: 3}
+  m_Script: {fileID: 11500000, guid: c1e34f844a0fe954cb713ab9c4351d6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mpBar_Prf: {fileID: -220029315280484533, guid: 0782a40f84a0e5248b91e0975b5e4528, type: 3}
   movable: {fileID: 4722864475523233517}
   pv: {fileID: 7537477485525154597}
-  level: 1
   anim: {fileID: 229360362646331185}
+  level: 1
 --- !u!65 &-3411240988855789623
 BoxCollider:
   m_ObjectHideFlags: 0
