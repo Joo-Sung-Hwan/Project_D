@@ -17,20 +17,21 @@ public class UnitBlocks : MonoBehaviour
         {
             return;
         }
-        placeUnit.Init();
-        /*
-        if(!placeUnit.ud.isBuy)
+        if(placeUnit.isBuy == false)
         {
+            placeUnit.isBuy = true;
             return;
-        }
-        */
-        if (isWating)
-        {
-            InGameUI.instance.SetSynergy(placeUnit.ud.element_type, false);
         }
         else
         {
-            InGameUI.instance.SetSynergy(placeUnit.ud.element_type, true);
+            if (isWating)
+            {
+                InGameUI.instance.SetSynergy(placeUnit.ud.element_type, false);
+            }
+            else
+            {
+                InGameUI.instance.SetSynergy(placeUnit.ud.element_type, true);
+            }
         }
     }
 }
