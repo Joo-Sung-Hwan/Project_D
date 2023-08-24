@@ -3256,7 +3256,6 @@ MonoBehaviour:
   Synergy_parent: {fileID: 1442406635}
   not_NextPlay: {fileID: 1942065582}
   not_Executive: {fileID: 651021841}
-  e_list: 
 --- !u!4 &484130926
 Transform:
   m_ObjectHideFlags: 0

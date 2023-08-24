@@ -195,6 +195,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
             player[i].transform.GetChild(0).GetComponent<TMP_Text>().text = PhotonNetwork.PlayerList[i].NickName;
             ready_Image[i].transform.GetChild(0).GetComponent<TMP_Text>().text = PhotonNetwork.PlayerList[i].NickName;
         }
+        player[GetBtnIndex()].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
     }
 
     /// <summary>
@@ -367,7 +368,6 @@ public class InGameUI : MonoBehaviourPunCallbacks
         }
         else if(changedProps.ContainsKey("Gold") || changedProps.ContainsKey("Monster_Left") || changedProps.ContainsKey("Life"))
         {
-            Debug.Log("À¸¾Ç");
             for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
             {
                 if(targetPlayer.NickName == PhotonNetwork.PlayerList[i].NickName)
@@ -381,7 +381,6 @@ public class InGameUI : MonoBehaviourPunCallbacks
         }
         else
         {
-            Debug.Log("¾È´ë");
             return;
         }
         
