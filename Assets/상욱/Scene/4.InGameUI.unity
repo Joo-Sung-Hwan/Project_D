@@ -3216,6 +3216,7 @@ MonoBehaviour:
   - {fileID: 8825433777109861678, guid: 30e3ce8350c600545933947b7d4cad75, type: 3}
   - {fileID: 3813162464200223369, guid: b1616e363f3e9f24a84fde41d2e382fc, type: 3}
   - {fileID: 7898711990683638509, guid: 1c12a68dc1a19d446ae2d5c8b3b6ac86, type: 3}
+  - {fileID: 2765301248869766765, guid: ce1a9c06ef3c465489f082ea63ca13be, type: 3}
   parent:
   - {fileID: 1276034306}
   - {fileID: 385777593}

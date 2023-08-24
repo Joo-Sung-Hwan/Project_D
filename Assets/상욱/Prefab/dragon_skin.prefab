@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2765301248869766754}
   - component: {fileID: 2765301248869766752}
+  - component: {fileID: -6027827433662426311}
   - component: {fileID: 2765301248869766755}
   - component: {fileID: 2765301248869766753}
   m_Layer: 5
-  m_Name: CharacterImage5
+  m_Name: dragon_skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,6 +48,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2765301248869766765}
   m_CullTransparentMesh: 1
+--- !u!114 &-6027827433662426311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2765301248869766765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae9e85b64271ca947916e67f9103351b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_name: dragon_skin
+  is_instantiate: 0
 --- !u!114 &2765301248869766755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +82,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5659b073e19871d4da7394b6456da365, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3c9c0484476d80545b67e89b0fcbac51, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -121,8 +136,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
+      - m_Target: {fileID: -6027827433662426311}
+        m_TargetAssemblyTypeName: BottomImage, Assembly-CSharp
         m_MethodName: OnCharacterImage
         m_Mode: 1
         m_Arguments:
