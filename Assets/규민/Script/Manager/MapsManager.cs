@@ -7,8 +7,6 @@ using Photon.Pun;
 public class MapsManager : MonoBehaviour
 {
     public static MapsManager instance = null;
-    [SerializeField] List<PhotonView> pvs;
-    [SerializeField] GameObject map;
     [HideInInspector] public GameObject map_list;
 
     private void Awake()
