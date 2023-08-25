@@ -1507,9 +1507,9 @@ MonoBehaviour:
   movable: {fileID: -8396427686326412191}
   pv: {fileID: 6435110276269770965}
   anim: {fileID: 7780734850809061861}
+  particle: {fileID: 5777998336100869885}
   isBuy: 0
   level: 1
-  earthShatter: {fileID: 5777998336100869885}
 --- !u!114 &-8396427686326412191
 MonoBehaviour:
   m_ObjectHideFlags: 0

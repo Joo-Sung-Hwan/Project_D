@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Golem : Unit
 {
-    [SerializeField] ParticleController earthShatter;
 
     public override void Init()
     {
@@ -33,8 +32,8 @@ public class Golem : Unit
         if (!target)
             yield break;
         transform.LookAt(FindTarget().transform);
-        earthShatter.gameObject.SetActive(true);
-        earthShatter.EffStart(1, 1, null);
+        particle.gameObject.SetActive(true);
+        particle.EffStart(1, 1, null);
         Debug.Log("SKILL");
         ud.curMana = 0;
         yield break;

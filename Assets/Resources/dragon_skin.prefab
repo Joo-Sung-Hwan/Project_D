@@ -787,9 +787,9 @@ MonoBehaviour:
   movable: {fileID: -2109034924006419219}
   pv: {fileID: 5406257575911532947}
   anim: {fileID: 1153351969406274484}
+  particle: {fileID: 7533489107708946821}
   isBuy: 0
   level: 1
-  flameThrower: {fileID: 7533489107708946821}
 --- !u!114 &-2109034924006419219
 MonoBehaviour:
   m_ObjectHideFlags: 0

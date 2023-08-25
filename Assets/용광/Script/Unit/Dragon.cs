@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Dragon : Unit
 {
-    [SerializeField] ParticleController flameThrower;
-
     public override void Init()
     {
         base.Init();
@@ -14,7 +12,7 @@ public class Dragon : Unit
         ud.mana_type = Mana_Type.auto;
         ud.atkDelay = 1f;
         ud.attack = 30f;
-        ud.maxMana = 1f;
+        ud.maxMana = 2f;
         ud.curMana = 0f;
     }
     void Start()
@@ -24,7 +22,7 @@ public class Dragon : Unit
 
     protected override void Attack()
     {
-        
+        StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic));
     }  
 
     public override IEnumerator Skill()
@@ -33,8 +31,8 @@ public class Dragon : Unit
         if (!target)
             yield break;
         transform.LookAt(FindTarget().transform);
-        flameThrower.gameObject.SetActive(true);
-        flameThrower.EffStart(1,1,null);
+        particle.gameObject.SetActive(true);
+        particle.EffStart(1,1,null);
         Debug.Log("SKILL");
         ud.curMana = 0;
         yield break;

@@ -35,6 +35,10 @@ public class UnitManager : MonoBehaviourPunCallbacks
         {
             Unit_Instantiate_Waiting("Golem");
         }
+        if (pv.IsMine&&Input.GetKeyDown(KeyCode.E))
+        {
+            Unit_Instantiate_Waiting("Wolf");
+        }
     }
 
     public bool Unit_Instantiate_Waiting(string unit_name)
