@@ -275,9 +275,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067166518945037020}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 3, y: 0.1, z: 2}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1947925793239422288}
@@ -285,7 +285,7 @@ Transform:
   - {fileID: 3427212206167487418}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &1728217134288134247
 Animator:
   serializedVersion: 5
@@ -321,8 +321,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mpBar_Prf: {fileID: -220029315280484533, guid: 0782a40f84a0e5248b91e0975b5e4528, type: 3}
   movable: {fileID: 1298758167189553774}
-  level: 1
+  pv: {fileID: 0}
   anim: {fileID: 1728217134288134247}
+  isBuy: 0
+  level: 1
 --- !u!114 &1298758167189553774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,6 +337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a216f65e0ce9ce488e66ac979ac628e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pv: {fileID: 0}
+  unit: {fileID: 0}
   block: {fileID: 0}
 --- !u!65 &-1430837964202966228
 BoxCollider:
