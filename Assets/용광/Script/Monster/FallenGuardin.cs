@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FallenGuardin : Monster
 {
+
     public override void Init()
     {
         base.Init();
@@ -19,4 +20,5 @@ public class FallenGuardin : Monster
     {
         Init();
     }
+
 }

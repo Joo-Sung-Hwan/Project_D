@@ -293,8 +293,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2174230473299069864}
+  - component: {fileID: -7715144942397200412}
+  - component: {fileID: -3233590754087016857}
   - component: {fileID: 2214231403382043041}
   - component: {fileID: 3672145083605665556}
+  - component: {fileID: 928422515097238281}
+  - component: {fileID: -7350846032779484878}
+  - component: {fileID: -1311605030323836268}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -311,13 +316,47 @@ Transform:
   m_GameObject: {fileID: 1542407779541733650}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5785383779815861096}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &-7715144942397200412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542407779541733650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaa02824756410d42b7d9b57bd0c0dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mpBar_Prf: {fileID: -220029315280484533, guid: 0782a40f84a0e5248b91e0975b5e4528, type: 3}
+  movable: {fileID: -3233590754087016857}
+  pv: {fileID: -7350846032779484878}
+  anim: {fileID: 3672145083605665556}
+  particle: {fileID: 0}
+  isBuy: 0
+  level: 1
+--- !u!114 &-3233590754087016857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542407779541733650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a216f65e0ce9ce488e66ac979ac628e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pv: {fileID: -7350846032779484878}
+  unit: {fileID: -7715144942397200412}
+  block: {fileID: 0}
 --- !u!65 &2214231403382043041
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -352,6 +391,61 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!54 &928422515097238281
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542407779541733650}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &-7350846032779484878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542407779541733650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: -1311605030323836268}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &-1311605030323836268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542407779541733650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &1701167238439403961
 GameObject:
   m_ObjectHideFlags: 0
