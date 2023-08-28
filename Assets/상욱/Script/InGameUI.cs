@@ -50,7 +50,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
     [Header("Synergy")]
     public Synergy[] Synergy_prefab;
     public Transform Synergy_parent;
-    Dictionary<string, int> unit_dic = new Dictionary<string, int>();
+    [HideInInspector] public Dictionary<string, int> unit_dic = new Dictionary<string, int>();
     [HideInInspector] public Dictionary<string, Synergy> synergy_list = new Dictionary<string, Synergy>();
 
 

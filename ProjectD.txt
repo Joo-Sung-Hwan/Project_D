@@ -57,7 +57,7 @@ Cell 크기 정해야함.
 지 - Golem, NatureWizzard, Snake - 3 / #92F1B7
 화 - dragon_skin, FireWizzard, Parrot - 3 / #EB6060
 광 - King, Knight - 2
-암 - Fallen_guardin, Skeleton_KingBoss - 2
+암 - Fallen_guardin, Skeleton_KingBoss - 2 / #292626
 몬 - Demon_imp, Ghost, Orc_Grunt, Orc_LordBoss, Orc_shaman, Orcpeon_Heavy, SnowMonster - 7
 보스 - IceElementalBoss - 1
 
