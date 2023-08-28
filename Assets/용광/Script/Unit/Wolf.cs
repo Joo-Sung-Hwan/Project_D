@@ -25,20 +25,20 @@ public class Wolf : Unit
         StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic));
     }
 
-    /// <summary>
-    /// 구현 필요
-    /// </summary>
-    /// <returns></returns>
-    public override IEnumerator Skill()
+    //스킬 애니메이션 시작할 때 호출
+    public void ESkill_Start()
     {
-        Monster target = FindTarget();
-        if (!target)
-            yield break;
-        transform.LookAt(FindTarget().transform);
+        transform.LookAt(target.transform);
         particle.gameObject.SetActive(true);
         particle.EffStart(1, 1, null);
-        Debug.Log("SKILL");
         ud.curMana = 0;
+        canAttack = false;
+        canManaRestore = false;
+    }
+
+    public override IEnumerator Skill()
+    {
+        anim.SetBool("skill", true);
         yield break;
     }
 }

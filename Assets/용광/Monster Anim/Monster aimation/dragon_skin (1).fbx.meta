@@ -19,7 +19,8 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: Event EAttack_End has a time (0.800000) outside the
+      clip's valid range (0.000000..0.700000). It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -114,7 +115,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: EAttack_Start
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 6607b80c070791a41ab4cf9e6cbb1ece, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: EAttack_End
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 6607b80c070791a41ab4cf9e6cbb1ece, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -172,7 +187,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ESkill_Start
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 6607b80c070791a41ab4cf9e6cbb1ece, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: ESkill_End
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 6607b80c070791a41ab4cf9e6cbb1ece, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

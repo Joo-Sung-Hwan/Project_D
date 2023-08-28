@@ -29,6 +29,7 @@ public class FireWizzard : Unit
 
     public override IEnumerator Skill()
     {
+        Debug.Log(123);
         ud.curMana = 0;
         float skillTime = 3f;
         float preDelay = ud.atkDelay;

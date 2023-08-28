@@ -43,9 +43,12 @@ public abstract class  Unit : MonoBehaviour
     public ParticleController particle;
     [HideInInspector] public bool isBuy;
     public int level = 1;
+    protected Monster target;
     protected bool canSkill = true;
+    protected bool isSkill = false;
     protected bool canAttack = true;
     protected bool union;
+
     #endregion
 
     #region Init
@@ -90,14 +93,22 @@ public abstract class  Unit : MonoBehaviour
         if (movable.block.isWating || !MapManager.instance.monsterManager.isWave)
             return;
 
-        if (ud.curMana >= ud.maxMana && canSkill)
-            StartCoroutine(Skill());
-        else if (canAttack)
-            Attack();
+        target = FindTarget();
+        if (target != null)
+        {
+            if (ud.curMana >= ud.maxMana && canSkill)
+            {
+                canSkill = false;
+                StartCoroutine(Skill());
+            }
+                
+            else if (canAttack && !isSkill)
+                Attack();
+        }
+        
 
         if (ud.mana_type == Mana_Type.auto && !isManaRestore)
             StartCoroutine(ManaRestore_Auto());
-
     }
 
     public void DestroyUnit()
@@ -156,12 +167,7 @@ public abstract class  Unit : MonoBehaviour
 
     protected IEnumerator C_Attack(Attack_Type attack_Type, Damage_Type damage_Type, Debuff_Type debuff_Type = Debuff_Type.none, float debuff_Time = 0f)
     {
-        Monster first_mob = FindTarget();
-        if (first_mob == null)
-        {
-            anim.SetBool("attack", false);
-            yield break;
-        }
+        Monster first_mob = target;
 
         #region 데미지 들어가는 부분 (파티클 스크립트로 이동?)
         //이동시 이 함수의 인수도 인계 필요, 투사체 발사나 애니메이션은 이 함수에
@@ -182,9 +188,7 @@ public abstract class  Unit : MonoBehaviour
             ManaRestore_Attack();
         canAttack = false;
         transform.LookAt(first_mob.transform);
-        anim.SetBool("attack", true);
-        canSkill = false;
-        StartCoroutine(C_CheckAnim());
+        anim.SetTrigger("attack");
         yield return new WaitForSeconds(ud.atkDelay);
         canAttack = true;
     }
@@ -258,26 +262,6 @@ public abstract class  Unit : MonoBehaviour
         }
     }
     #endregion
-
-    public IEnumerator C_CheckAnim()
-    {
-        int temp = 0;
-        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f && temp < 999)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        canSkill = true;
-        if (temp >999)
-        {
-            Debug.Log("1`123");
-        }
-    }
-
-    //공격 애니메이션 끝날 때 호출
-    public void EAttack_End()
-    {
-        canSkill = true;
-    }
     #endregion
 
     #region 스킬
@@ -337,13 +321,6 @@ public abstract class  Unit : MonoBehaviour
         }
         mpBar.mpbar.fillAmount = ud.curMana / ud.maxMana;
     }
-
-    //스킬 애니메이션 끝날 때 호출
-    public void ESkill_End()
-    {
-        canAttack = true;
-        canManaRestore = true;
-    }
     #endregion
 
 
@@ -370,5 +347,25 @@ public abstract class  Unit : MonoBehaviour
     }
     */
     #endregion
-    
+
+    #region 애니메이션 event
+    //공격 애니메이션 시작할 때 호출
+    public void EAttack_Start()
+    {
+        canSkill = false;
+    }
+
+    //공격 애니메이션 끝날 때 호출
+    public void EAttack_End()
+    {
+        canSkill = true;
+    }
+
+    //스킬 애니메이션 끝날 때 호출
+    public void ESkill_End()
+    {
+        isSkill = false;
+        canManaRestore = true;
+    }
+    #endregion
 }

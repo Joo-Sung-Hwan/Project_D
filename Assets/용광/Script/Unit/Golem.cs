@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Golem : Unit
 {
-
     public override void Init()
     {
         base.Init();
@@ -13,7 +12,7 @@ public class Golem : Unit
         ud.mana_type = Mana_Type.auto;
         ud.atkDelay = 3f;
         ud.attack = 35f;
-        ud.maxMana = 10f;
+        ud.maxMana = 3f;
         ud.curMana = 0f;
     }
     void Start()
@@ -26,16 +25,21 @@ public class Golem : Unit
         StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic));
     }
 
-    public override IEnumerator Skill()
+    //스킬 애니메이션 시작할 때 호출
+    public void ESkill_Start()
     {
-        Monster target = FindTarget();
-        if (!target)
-            yield break;
-        transform.LookAt(FindTarget().transform);
+        isSkill = true;
+        transform.LookAt(target.transform);
         particle.gameObject.SetActive(true);
         particle.EffStart(1, 1, null);
-        Debug.Log("SKILL");
         ud.curMana = 0;
+        canAttack = false;
+        canManaRestore = false;
+    }
+
+    public override IEnumerator Skill()
+    {
+        anim.SetTrigger("skill");
         yield break;
     }
 }

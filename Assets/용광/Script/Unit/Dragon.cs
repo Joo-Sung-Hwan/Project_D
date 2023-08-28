@@ -23,18 +23,23 @@ public class Dragon : Unit
     protected override void Attack()
     {
         StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic));
-    }  
+    }
+
+    //스킬 애니메이션 시작할 때 호출
+    public void ESkill_Start()
+    {
+        isSkill = true;
+        transform.LookAt(target.transform);
+        particle.gameObject.SetActive(true);
+        particle.EffStart(1, 1, null);
+        ud.curMana = 0;
+        canAttack = false;
+        canManaRestore = false;
+    }
 
     public override IEnumerator Skill()
     {
-        Monster target = FindTarget();
-        if (!target)
-            yield break;
-        transform.LookAt(FindTarget().transform);
-        particle.gameObject.SetActive(true);
-        particle.EffStart(1,1,null);
-        Debug.Log("SKILL");
-        ud.curMana = 0;
+        anim.SetTrigger("skill");
         yield break;
     }
 }
