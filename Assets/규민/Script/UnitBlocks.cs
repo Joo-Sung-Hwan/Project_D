@@ -9,8 +9,9 @@ public class UnitBlocks : MonoBehaviour
     public bool isWating;
     [HideInInspector] public Unit unit_Placed;
 
-    public void SetUnit(Unit placeUnit = null)
+    public void SetUnit(bool ischeck, Unit placeUnit = null)
     {
+        
         unit_Placed = placeUnit;
         CanPlace = placeUnit == null ? true : false;
         if(placeUnit == null)
@@ -24,13 +25,32 @@ public class UnitBlocks : MonoBehaviour
         }
         else
         {
-            if (isWating)
+            if (ischeck)
             {
-                InGameUI.instance.SetSynergy(placeUnit.ud.element_type, false);
+                if (isWating)
+                {
+                    Debug.Log("필드에서 대기석으로");
+                    InGameUI.instance.SetSynergy(placeUnit, false);
+                    return;
+                }
+                else
+                {
+                    Debug.Log("필드에서 필드로");
+                    return;
+                }
             }
             else
             {
-                InGameUI.instance.SetSynergy(placeUnit.ud.element_type, true);
+                if (isWating)
+                {
+                    Debug.Log("대기석에서 대기석으로");
+                    return;
+                }
+                else
+                {
+                    Debug.Log("대기석에서 필드로");
+                    InGameUI.instance.SetSynergy(placeUnit, true);
+                }
             }
         }
     }

@@ -13,7 +13,7 @@ public class MovableObj : MonoBehaviour
     [SerializeField] PhotonView pv;
     [SerializeField] Unit unit;
 
-    [HideInInspector]public UnitBlocks block;
+    [HideInInspector] public UnitBlocks block;
     bool preBlock_IsWating;
     float clickedTime = 0f;
 
@@ -33,11 +33,11 @@ public class MovableObj : MonoBehaviour
         {
             if(block)
             {
-                block.SetUnit();
+                block.SetUnit(true);
                 preBlock_IsWating = block.isWating;
             }
             block = hitdata.collider.GetComponent<UnitBlocks>();
-            block.SetUnit(unit);
+            block.SetUnit(!preBlock_IsWating, unit);
         }
 
         /*
@@ -139,7 +139,7 @@ public class MovableObj : MonoBehaviour
                 {
                     ub.unit_Placed.LevelUp_Test();
                     unit.DestroyUnit();
-                    block.SetUnit();
+                    block.SetUnit(true);
                 }
                 else
                     transform.position = prePos;
