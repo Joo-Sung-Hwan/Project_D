@@ -50,6 +50,8 @@ public class InGameUI : MonoBehaviourPunCallbacks
     [Header("Synergy")]
     public Synergy[] Synergy_prefab;
     public Transform Synergy_parent;
+    Dictionary<string, int> unit_dic = new Dictionary<string, int>();
+    [HideInInspector] public Dictionary<string, Synergy> synergy_list = new Dictionary<string, Synergy>();
 
 
 
@@ -60,7 +62,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
     PhotonView photonview;
     //bool gamestart = false;
 
-    [HideInInspector] public Dictionary<string, Synergy> synergy_list = new Dictionary<string, Synergy>();
+    
 
     private void Awake()
     {
@@ -129,58 +131,51 @@ public class InGameUI : MonoBehaviourPunCallbacks
     /// </summary>
     /// <param name="e_type"></param>
     /// <param name="isAdd"></param>
-    public void SetSynergy(Element_Type e_type, bool isAdd)
+
+    
+    public void SetSynergy(Unit unit, bool isAdd)
     {
-        if(isAdd)
+        
+        if (isAdd)
         {
-            if (!synergy_list.ContainsKey(e_type.ToString()))
+            if (unit_dic.ContainsKey(unit.name))
             {
-                Synergy sp = Instantiate(Synergy_prefab[(int)e_type], Synergy_parent);
-                sp.count += 1;
-                synergy_list.Add((sp.s_type).ToString(), sp);
-                Debug.Log(synergy_list[(sp.s_type).ToString()].count);
+                Debug.Log("중복");
+                unit_dic[unit.name] += 1;
+                return;
             }
             else
             {
-                synergy_list[e_type.ToString()].count += 1;
+                if (!synergy_list.ContainsKey(unit.ud.element_type.ToString()))
+                {
+                    Synergy sp = Instantiate(Synergy_prefab[(int)unit.ud.element_type], Synergy_parent);
+                    sp.count += 1;
+                    synergy_list.Add((sp.s_type).ToString(), sp);
+                    unit_dic.Add(unit.name, 1);
+                }
+                else
+                {
+                    synergy_list[unit.ud.element_type.ToString()].count += 1;
+                    unit_dic.Add(unit.name, 1);
+                }
             }
+            
         }
         else
         {
-            synergy_list[e_type.ToString()].count -= 1;
-            if(synergy_list[e_type.ToString()].count <= 0)
+            unit_dic[unit.name] -= 1;
+            if (unit_dic[unit.name] <= 0)
             {
-                Destroy(synergy_list[e_type.ToString()].gameObject);
-                synergy_list.Remove(e_type.ToString());
-            }
-        }
-        /*
-        var hash = PhotonNetwork.LocalPlayer.CustomProperties;
-        hash[e_type.ToString()] = synergy_list[e_type].count;
-        PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
-        */
-    }
-
-    /*
-    public void ShowSynergy(int num)
-    {
-        var hash = PhotonNetwork.PlayerList[num].CustomProperties;
-        for (int j = 1; j < System.Enum.GetValues(typeof(Element_Type)).Length; j++)
-        {
-            if (hash.ContainsKey(e_list[j]))
-            {
-                Debug.Log("있다");
-                //Synergy sp = Instantiate(Synergy_prefab[0], Synergy_parent);
-                Synergy sp = Instantiate(Synergy_prefab[j-1], Synergy_parent);
-                sp.count = (int)(hash[j-1]);
-            }
-            else
-            {
-                //Debug.Log("없다");
+                unit_dic.Remove(unit.name);
+                synergy_list[unit.ud.element_type.ToString()].count -= 1;
+                if (synergy_list[unit.ud.element_type.ToString()].count <= 0)
+                {
+                    Destroy(synergy_list[unit.ud.element_type.ToString()].gameObject);
+                    synergy_list.Remove(unit.ud.element_type.ToString());
+                }
             }
         }
     }
-    */
 
     // 스코어판 player 이름 적용함수
     public void SetUserName()

@@ -7516,8 +7516,16 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1943708105064647544, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
+      propertyPath: m_Padding.m_Top
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1943708105064647544, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
       propertyPath: m_ChildAlignment
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1943708105064647544, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
+      propertyPath: m_Padding.m_Left
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1943708105064647547, guid: e9f97220585b0b84db717e4a1608b260, type: 3}
       propertyPath: m_SizeDelta.y
