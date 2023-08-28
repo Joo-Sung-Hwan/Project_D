@@ -2575,7 +2575,7 @@ Transform:
   m_GameObject: {fileID: 7916970907305136030}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1309165806399999440}
@@ -3135,15 +3135,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7304059104007293668, guid: 7e9b4c32d05255d41a14c9caf7ead38c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.18414764
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7304059104007293668, guid: 7e9b4c32d05255d41a14c9caf7ead38c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.034576666
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7304059104007293668, guid: 7e9b4c32d05255d41a14c9caf7ead38c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.045161463
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7304059104007293668, guid: 7e9b4c32d05255d41a14c9caf7ead38c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3171,6 +3171,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7304059104007293668, guid: 7e9b4c32d05255d41a14c9caf7ead38c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463568547834281712, guid: 7e9b4c32d05255d41a14c9caf7ead38c, type: 3}
+      propertyPath: CollisionModule.radiusScale
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463568547834281712, guid: 7e9b4c32d05255d41a14c9caf7ead38c, type: 3}
+      propertyPath: CollisionModule.colliderForce
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
