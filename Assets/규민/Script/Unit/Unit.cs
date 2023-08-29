@@ -69,8 +69,7 @@ public abstract class  Unit : MonoBehaviour
         else
         {
             mpBar.gameObject.SetActive(false);
-            ud.curMana = 0;
-            mpBar.mpbar.fillAmount = 0;
+            SetMana(0);
         }   
     }
 
@@ -81,8 +80,7 @@ public abstract class  Unit : MonoBehaviour
         else
         {
             mpBar.gameObject.SetActive(false);
-            ud.curMana = 0;
-            mpBar.mpbar.fillAmount = 0;
+            SetMana(0);
         }
     }
     #endregion
@@ -184,7 +182,7 @@ public abstract class  Unit : MonoBehaviour
         }
         #endregion
         
-        if (ud.mana_type == Mana_Type.attack)
+        if (ud.mana_type == Mana_Type.attack && canManaRestore)
             ManaRestore_Attack();
         canAttack = false;
         transform.LookAt(first_mob.transform);
@@ -319,6 +317,12 @@ public abstract class  Unit : MonoBehaviour
             else
                 ud.curMana += amount;
         }
+        mpBar.mpbar.fillAmount = ud.curMana / ud.maxMana;
+    }
+
+    protected void SetMana(float mp)
+    {
+        ud.curMana = mp;
         mpBar.mpbar.fillAmount = ud.curMana / ud.maxMana;
     }
     #endregion

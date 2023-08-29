@@ -10,7 +10,7 @@ public class Golem : Unit
         ud.element_type = Element_Type.earth;
         ud.atk_type = Attack_Type.splash;
         ud.mana_type = Mana_Type.auto;
-        ud.atkDelay = 3f;
+        ud.atkDelay = 2.5f;
         ud.attack = 35f;
         ud.maxMana = 3f;
         ud.curMana = 0f;
@@ -33,7 +33,6 @@ public class Golem : Unit
         particle.gameObject.SetActive(true);
         particle.EffStart(1, 1, null);
         ud.curMana = 0;
-        canAttack = false;
         canManaRestore = false;
     }
 

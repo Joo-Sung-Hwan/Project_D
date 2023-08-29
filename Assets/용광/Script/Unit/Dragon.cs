@@ -33,7 +33,6 @@ public class Dragon : Unit
         particle.gameObject.SetActive(true);
         particle.EffStart(1, 1, null);
         ud.curMana = 0;
-        canAttack = false;
         canManaRestore = false;
     }
 
