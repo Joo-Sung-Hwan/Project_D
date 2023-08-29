@@ -83,9 +83,8 @@ public class InGameUI : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        
-        LeftBtn.onClick.AddListener(OnclickLeftRoom);
         photonview = GetComponent<PhotonView>();
+        LeftBtn.onClick.AddListener(OnclickLeftRoom);
         ready_ui.SetActive(true);
         for (int i = 0; i < ischeck_array.Length; i++)
         {
@@ -135,7 +134,6 @@ public class InGameUI : MonoBehaviourPunCallbacks
     
     public void SetSynergy(Unit unit, bool isAdd)
     {
-        
         if (isAdd)
         {
             if (unit_dic.ContainsKey(unit.name))
@@ -159,7 +157,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
                     unit_dic.Add(unit.name, 1);
                 }
             }
-            
+
         }
         else
         {
@@ -175,6 +173,8 @@ public class InGameUI : MonoBehaviourPunCallbacks
                 }
             }
         }
+        
+       
     }
 
     // 스코어판 player 이름 적용함수

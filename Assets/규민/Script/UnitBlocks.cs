@@ -11,47 +11,53 @@ public class UnitBlocks : MonoBehaviour
 
     public void SetUnit(bool ischeck, Unit placeUnit = null)
     {
-        
         unit_Placed = placeUnit;
         CanPlace = placeUnit == null ? true : false;
-        if(placeUnit == null)
+        if (placeUnit == null)
         {
-            return;
-        }
-        if(placeUnit.isBuy == false)
-        {
-            placeUnit.isBuy = true;
             return;
         }
         else
         {
-            if (ischeck)
+            if (placeUnit.pv.IsMine)
             {
-                if (isWating)
+                if (placeUnit.isBuy == false)
                 {
-                    Debug.Log("필드에서 대기석으로");
-                    InGameUI.instance.SetSynergy(placeUnit, false);
+                    placeUnit.isBuy = true;
                     return;
                 }
                 else
                 {
-                    Debug.Log("필드에서 필드로");
-                    return;
-                }
-            }
-            else
-            {
-                if (isWating)
-                {
-                    Debug.Log("대기석에서 대기석으로");
-                    return;
-                }
-                else
-                {
-                    Debug.Log("대기석에서 필드로");
-                    InGameUI.instance.SetSynergy(placeUnit, true);
+                    if (ischeck)
+                    {
+                        if (isWating)
+                        {
+                            Debug.Log("필드에서 대기석으로");
+                            InGameUI.instance.SetSynergy(placeUnit, false);
+                            return;
+                        }
+                        else
+                        {
+                            Debug.Log("필드에서 필드로");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        if (isWating)
+                        {
+                            Debug.Log("대기석에서 대기석으로");
+                            return;
+                        }
+                        else
+                        {
+                            Debug.Log("대기석에서 필드로");
+                            InGameUI.instance.SetSynergy(placeUnit, true);
+                        }
+                    }
                 }
             }
         }
     }
+        
 }

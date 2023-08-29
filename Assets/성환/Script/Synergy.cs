@@ -14,14 +14,31 @@ public class Synergy : MonoBehaviour
 
     public void Update()
     {
-        count_text.text = $"{count} / 3";
-        if(count >= 3)
+        if(s_type == Element_Type.dark || s_type == Element_Type.light)
         {
-            active_image.gameObject.SetActive(true);
+            count_text.text = $"{count} / 2";
+            if (count >= 2)
+            {
+                active_image.gameObject.SetActive(true);
+                //MapManager.instance.unitManager.ActiveSynergy(s_type);
+            }
+            else
+            {
+                active_image.gameObject.SetActive(false);
+            }
         }
         else
         {
-            active_image.gameObject.SetActive(false);
+            count_text.text = $"{count} / 3";
+            if (count >= 3)
+            {
+                active_image.gameObject.SetActive(true);
+                //MapManager.instance.unitManager.ActiveSynergy(s_type);
+            }
+            else
+            {
+                active_image.gameObject.SetActive(false);
+            }
         }
     }
 }

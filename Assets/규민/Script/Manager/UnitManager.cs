@@ -22,6 +22,7 @@ public class UnitManager : MonoBehaviourPunCallbacks
         if (pv.IsMine)
             Unit_Instantiate_Start("FireWizzard", startBlock);    
         */
+        
     }
 
     // Update is called once per frame
@@ -76,5 +77,32 @@ public class UnitManager : MonoBehaviourPunCallbacks
         }
     }
 
+    public void ActiveSynergy(Element_Type type)
+    {
+        foreach(var item in units)
+        {
+            switch (type)
+            {
+                case Element_Type.water:
+                    item.ud.attack *= 1.2f;
+                    break;
+                case Element_Type.wind:
+                    item.ud.attack *= 1.2f;
+                    break;
+                case Element_Type.earth:
+                    item.ud.attack *= 1.2f;
+                    break;
+                case Element_Type.fire:
+                    item.ud.attack *= 1.2f;
+                    break;
+                case Element_Type.light:
+                    item.ud.attack *= 1.2f;
+                    break;
+                case Element_Type.dark:
+                    item.ud.attack *= 1.2f;
+                    break;
+            }
+        }
+    }
     
 }

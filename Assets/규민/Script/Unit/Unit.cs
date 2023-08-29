@@ -37,7 +37,7 @@ public abstract class  Unit : MonoBehaviour
 
     [Header("자기 자신")]
     [SerializeField] MovableObj movable;
-    [SerializeField] PhotonView pv;
+    public PhotonView pv;
     public Animator anim;
 
     public ParticleController particle;
@@ -113,7 +113,7 @@ public abstract class  Unit : MonoBehaviour
     public void DestroyUnit()
     {
         MapManager.instance.unitManager.units.Remove(this);
-        PhotonNetwork.Destroy(gameObject);
+        Destroy(gameObject);
         Destroy(mpBar);
     }
 
@@ -139,6 +139,7 @@ public abstract class  Unit : MonoBehaviour
     #region 유닛 레벨업
     public void LevelUp_Test()
     {
+        if(pv.IsMine)
         pv.RPC("RPC_LevelUp", RpcTarget.All);
     }
     

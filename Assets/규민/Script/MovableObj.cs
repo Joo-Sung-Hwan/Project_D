@@ -121,7 +121,7 @@ public class MovableObj : MonoBehaviour
     {
         if (!block.isWating && MapManager.instance.monsterManager.isWave)
             return;
-        
+
         dis = Vector3.zero;
         int layer_Ground = 1 << LayerMask.NameToLayer("Ground");
         Ray ray = new Ray(transform.position, Vector3.down);
@@ -135,8 +135,22 @@ public class MovableObj : MonoBehaviour
             }
             else if (!ub.CanPlace)
             {
+
                 if (ub.unit_Placed && unit.level != 2 && ub.unit_Placed.level == unit.level && ub.unit_Placed.ud.element_type == unit.ud.element_type)
                 {
+                    if (unit.pv.IsMine)
+                    {
+                        if (preBlock_IsWating)
+                        {
+                            Debug.Log("필드에서 합치기");
+                            InGameUI.instance.unit_dic[unit.name] -= 1;
+
+                        }
+                        else
+                        {
+                            Debug.Log("대기석에서 합치기");
+                        }
+                    }
                     ub.unit_Placed.LevelUp_Test();
                     unit.DestroyUnit();
                     block.SetUnit(true);

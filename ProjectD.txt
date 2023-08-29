@@ -56,7 +56,7 @@ Cell 크기 정해야함.
 풍 - LightningWizzard, ThreeTailedWolf, Piranha_GreenM - 3 / #D291F4
 지 - Golem, NatureWizzard, Snake - 3 / #92F1B7
 화 - dragon_skin, FireWizzard, Parrot - 3 / #EB6060
-광 - King, Knight - 2
+광 - King, Knight - 2 / #CBD58E
 암 - Fallen_guardin, Skeleton_KingBoss - 2 / #292626
 몬 - Demon_imp, Ghost, Orc_Grunt, Orc_LordBoss, Orc_shaman, Orcpeon_Heavy, SnowMonster - 7
 보스 - IceElementalBoss - 1
