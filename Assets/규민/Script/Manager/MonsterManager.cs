@@ -97,7 +97,7 @@ public class MonsterManager : MonoBehaviourPunCallbacks
         }
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 1, 1));
+            StartCoroutine(C_Spawn((int)Monsters_Index.orc_grunt, 1, 1));
         }
     }
 
@@ -107,7 +107,7 @@ public class MonsterManager : MonoBehaviourPunCallbacks
         SetIsWave(true);
         canClear = false;
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 5, 1f));
-        //yield return StartCoroutine(C_Spawn((int)Monsters_Index.wolf, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_grunt, 5, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
         //yield return StartCoroutine(C_Spawn((int)Monsters_Index.snowman, 5, 1f));
         //yield return StartCoroutine(C_Spawn((int)Monsters_Index.snake, 5, 1f));

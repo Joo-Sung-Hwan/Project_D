@@ -5,6 +5,7 @@ using UnityEngine;
 public enum Monsters_Index
 {
     ghost,
+    orc_grunt,
     wolf,
     snowman,
     snake,
@@ -17,7 +18,6 @@ public enum Monsters_Index
     orc_heavy,
     orc_shaman,
     orc_lord,
-    orc_grunt,
     knight,
     king,
     ice_minion,

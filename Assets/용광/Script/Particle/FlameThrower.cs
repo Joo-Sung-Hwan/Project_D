@@ -12,7 +12,7 @@ public class FlameThrower : ParticleController
         pd.element_type = Element_Type.fire;
         pd.atk_type = Attack_Type.splash;
         pd.eft_type = Effect_Type.thrower;
-        pd.atkdelay = 0.2f;
+        pd.atkdelay = 0.1f;
         pd.damage = 2f;
         pd.element_const = 0.6f;
         pd.debufftime = 0.2f;
