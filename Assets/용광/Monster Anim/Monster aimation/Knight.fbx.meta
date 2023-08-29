@@ -19,7 +19,10 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: Event ESkill_End has a time (1.400000) outside the clip's
+      valid range (0.000000..1.000000). It will never be firedEvent ESkill_End has
+      a time (1.066667) outside the clip's valid range (0.000000..1.000000). It will
+      never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -143,17 +146,31 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: EAttack_Start
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: aaa02824756410d42b7d9b57bd0c0dff, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: EAttack_End
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: aaa02824756410d42b7d9b57bd0c0dff, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: K,P attack 1
-      takeName: K,P attack 1
+      name: Start (1)
+      takeName: Start
       internalID: -2080539983832139358
       firstFrame: 0
-      lastFrame: 25
+      lastFrame: 42
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -172,7 +189,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ESkill_Start
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: aaa02824756410d42b7d9b57bd0c0dff, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: ESkill_End
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: aaa02824756410d42b7d9b57bd0c0dff, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -230,7 +261,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ESkill_Start
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: aaa02824756410d42b7d9b57bd0c0dff, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: ESkill_End
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: aaa02824756410d42b7d9b57bd0c0dff, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

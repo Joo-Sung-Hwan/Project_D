@@ -22,7 +22,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -3185562776737283162, guid: 0b8aa580827cec6478e973c0be53f19d, type: 3}
+  m_Motion: {fileID: -7763396324728249650, guid: 0b8aa580827cec6478e973c0be53f19d, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -58,7 +58,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: comeon
-  m_Speed: 1
+  m_Speed: 2.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6312482342583479998}
