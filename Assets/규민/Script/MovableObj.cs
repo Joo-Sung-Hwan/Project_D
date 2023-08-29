@@ -21,7 +21,7 @@ public class MovableObj : MonoBehaviour
     void Start()
     {
         dis = Vector3.zero;
-        InitBlock();
+        //InitBlock();
     }
 
     public void InitBlock()

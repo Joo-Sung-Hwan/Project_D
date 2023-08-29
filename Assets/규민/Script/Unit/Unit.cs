@@ -58,6 +58,7 @@ public abstract class  Unit : MonoBehaviour
         mpBar = Instantiate(mpBar_Prf, MapManager.instance.uiManager_ingame.canvas_hp.transform);
         mpBar.transform.SetParent(MapManager.instance.uiManager_ingame.bar_Parent);
         mpBar.unit = this;
+        movable.InitBlock();
         Init_Mp();
         anim = GetComponent<Animator>();
     }

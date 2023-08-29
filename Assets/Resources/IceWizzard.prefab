@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 2313294783875142258}
   - component: {fileID: 7537477485525154597}
   - component: {fileID: 2848846862369497331}
+  - component: {fileID: 6211822178878988126}
   m_Layer: 0
   m_Name: IceWizzard
   m_TagString: Untagged
@@ -196,6 +197,22 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &6211822178878988126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229360362646331184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
 --- !u!1 &504101897298516367
 GameObject:
   m_ObjectHideFlags: 0
