@@ -22,7 +22,6 @@ public class UnitManager : MonoBehaviourPunCallbacks
         if (pv.IsMine)
             Unit_Instantiate_Start("FireWizzard", startBlock);    
         */
-        
     }
 
     // Update is called once per frame
@@ -77,32 +76,59 @@ public class UnitManager : MonoBehaviourPunCallbacks
         }
     }
 
-    public void ActiveSynergy(Element_Type type)
+    public void ActiveSynergy(Element_Type type, bool indamaged)
     {
-        foreach(var item in units)
+        foreach (var item in units)
         {
-            switch (type)
+            if (indamaged)
             {
-                case Element_Type.water:
-                    item.ud.attack *= 1.2f;
-                    break;
-                case Element_Type.wind:
-                    item.ud.attack *= 1.2f;
-                    break;
-                case Element_Type.earth:
-                    item.ud.attack *= 1.2f;
-                    break;
-                case Element_Type.fire:
-                    item.ud.attack *= 1.2f;
-                    break;
-                case Element_Type.light:
-                    item.ud.attack *= 1.2f;
-                    break;
-                case Element_Type.dark:
-                    item.ud.attack *= 1.2f;
-                    break;
+                switch (type)
+                {
+                    case Element_Type.water:
+                        item.ud.attack *= 1.2f;
+                        break;
+                    case Element_Type.wind:
+                        item.ud.attack *= 1.2f;
+                        break;
+                    case Element_Type.earth:
+                        item.ud.attack *= 1.2f;
+                        break;
+                    case Element_Type.fire:
+                        item.ud.attack *= 1.2f;
+                        break;
+                    case Element_Type.light:
+                        item.ud.attack *= 1.2f;
+                        break;
+                    case Element_Type.dark:
+                        item.ud.attack *= 1.2f;
+                        break;
+                }
             }
+            else
+            {
+                switch (type)
+                {
+                    case Element_Type.water:
+                        item.ud.attack /= 1.2f;
+                        break;
+                    case Element_Type.wind:
+                        item.ud.attack /= 1.2f;
+                        break;
+                    case Element_Type.earth:
+                        item.ud.attack /= 1.2f;
+                        break;
+                    case Element_Type.fire:
+                        item.ud.attack /= 1.2f;
+                        break;
+                    case Element_Type.light:
+                        item.ud.attack /= 1.2f;
+                        break;
+                    case Element_Type.dark:
+                        item.ud.attack /= 1.2f;
+                        break;
+                }
+            }
+            
         }
     }
-    
 }

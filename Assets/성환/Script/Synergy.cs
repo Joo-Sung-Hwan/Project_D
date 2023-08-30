@@ -20,7 +20,6 @@ public class Synergy : MonoBehaviour
             if (count >= 2)
             {
                 active_image.gameObject.SetActive(true);
-                //MapManager.instance.unitManager.ActiveSynergy(s_type);
             }
             else
             {
@@ -33,7 +32,7 @@ public class Synergy : MonoBehaviour
             if (count >= 3)
             {
                 active_image.gameObject.SetActive(true);
-                //MapManager.instance.unitManager.ActiveSynergy(s_type);
+
             }
             else
             {
