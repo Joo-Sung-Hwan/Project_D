@@ -7,12 +7,12 @@ public class Pirate_Warrior : Monster
     public override void Init()
     {
         base.Init();
-        md.index = Monsters_Index.pirate_Warrior;
-        md.maxHP = 100;
+        md.index = Monsters_Index.pirate_warrior;
+        md.maxHP = 150;
         md.curHP = md.maxHP;
         md.speed = 1;
         md.speed_origin = md.speed;
-        md.armor = 40;
+        md.armor = 20;
     }
 
     void Start()

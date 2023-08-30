@@ -103,14 +103,152 @@ public class MonsterManager : MonoBehaviourPunCallbacks
 
     IEnumerator C_Wave_1()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(20);
         SetIsWave(true);
         canClear = false;
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 5, 1f));
-        yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_grunt, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.pirate_warrior, 10, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
-        //yield return StartCoroutine(C_Spawn((int)Monsters_Index.snowman, 5, 1f));
-        //yield return StartCoroutine(C_Spawn((int)Monsters_Index.snake, 5, 1f));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.pirate_warrior, 10, 1f));
+        yield return c_wait = StartCoroutine(C_WaitTime(5));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.pirate_warrior, 10, 1f));
+        canClear = true;
+        if (canClear == true)
+        {
+            StartCoroutine("C_Wave_2");
+        }
+    }
+    IEnumerator C_Wave_2()
+    {
+        yield return new WaitForSeconds(20);
+        SetIsWave(true);
+        canClear = false;
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_shaman, 10, 1f));
+        yield return c_wait = StartCoroutine(C_WaitTime(5));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_shaman, 10, 1f));
+        yield return c_wait = StartCoroutine(C_WaitTime(5));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_shaman, 10, 1f));
+        canClear = true;
+        if (canClear == true)
+        {
+            StartCoroutine("C_Wave_3");
+        }
+    }
+    IEnumerator C_Wave_3()
+    {
+        yield return new WaitForSeconds(20);
+        SetIsWave(true);
+        canClear = false;
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_heavy, 10, 1f));
+        yield return c_wait = StartCoroutine(C_WaitTime(5));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_heavy, 10, 1f));
+        yield return c_wait = StartCoroutine(C_WaitTime(5));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_heavy, 10, 1f));
+        canClear = true;
+        if (canClear == true)
+        {
+            StartCoroutine("C_Wave_4");
+        }
+    }
+    IEnumerator C_Wave_4()
+    {
+        yield return new WaitForSeconds(20);
+        SetIsWave(true);
+        canClear = false;
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_grunt, 10, 1f));
+        yield return c_wait = StartCoroutine(C_WaitTime(5));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_grunt, 10, 1f));
+        yield return c_wait = StartCoroutine(C_WaitTime(5));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_grunt, 10, 1f));
+        canClear = true;
+        if (canClear == true)
+        {
+            StartCoroutine("C_Wave_5");
+        }
+    }
+    IEnumerator C_Wave_5()
+    {
+        yield return new WaitForSeconds(20);
+        SetIsWave(true);
+        canClear = false;
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_lord, 3, 15f));
+        yield return c_wait = StartCoroutine(C_WaitTime(150));
+        canClear = true;
+        if (canClear == true)
+        {
+            StartCoroutine("C_Wave_6");
+        }
+    }
+    IEnumerator C_Wave_6()
+    {
+        yield return new WaitForSeconds(20);
+        SetIsWave(true);
+        canClear = false;
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.snowman, 10, 1f));
+        yield return c_wait = StartCoroutine(C_WaitTime(5));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.snowman, 10, 1f));
+        yield return c_wait = StartCoroutine(C_WaitTime(5));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.snowman, 10, 1f));
+        canClear = true;
+        if (canClear == true)
+        {
+            StartCoroutine("C_Wave_7");
+        }
+    }
+    IEnumerator C_Wave_7()
+    {
+        yield return new WaitForSeconds(20);
+        SetIsWave(true);
+        canClear = false;
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.demon, 10, 1f));
+        yield return c_wait = StartCoroutine(C_WaitTime(5));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.demon, 10, 1f));
+        yield return c_wait = StartCoroutine(C_WaitTime(5));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.demon, 10, 1f));
+        canClear = true;
+        if (canClear == true)
+        {
+            StartCoroutine("C_Wave_8");
+        }
+    }
+    IEnumerator C_Wave_8()
+    {
+        yield return new WaitForSeconds(20);
+        SetIsWave(true);
+        canClear = false;
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.imp, 10, 1f));
+        yield return c_wait = StartCoroutine(C_WaitTime(5));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.imp, 10, 1f));
+        yield return c_wait = StartCoroutine(C_WaitTime(5));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.imp, 10, 1f));
+        canClear = true;
+        if (canClear == true)
+        {
+            StartCoroutine("C_Wave_9");
+        }
+    }
+    IEnumerator C_Wave_9()
+    {
+        yield return new WaitForSeconds(20);
+        SetIsWave(true);
+        canClear = false;
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 10, 1f));
+        yield return c_wait = StartCoroutine(C_WaitTime(5));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 10, 1f));
+        yield return c_wait = StartCoroutine(C_WaitTime(5));
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 10, 1f));
+        canClear = true;
+        if (canClear == true)
+        {
+            StartCoroutine("C_Wave_10");
+        }
+    }
+    IEnumerator C_Wave_10()
+    {
+        yield return new WaitForSeconds(30);
+        SetIsWave(true);
+        canClear = false;
+        yield return StartCoroutine(C_Spawn((int)Monsters_Index.ice_elementalboss, 3, 15f));
+        yield return c_wait = StartCoroutine(C_WaitTime(150));
         canClear = true;
     }
 

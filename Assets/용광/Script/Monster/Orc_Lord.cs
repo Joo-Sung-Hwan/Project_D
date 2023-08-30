@@ -8,11 +8,11 @@ public class Orc_Lord : Monster
     {
         base.Init();
         md.index = Monsters_Index.orc_lord;
-        md.maxHP = 100;
+        md.maxHP = 1500;
         md.curHP = md.maxHP;
-        md.speed = 1;
+        md.speed = 0.6f;
         md.speed_origin = md.speed;
-        md.armor = 40;
+        md.armor = 50;
     }
 
     void Start()

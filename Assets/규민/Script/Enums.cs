@@ -4,29 +4,16 @@ using UnityEngine;
 
 public enum Monsters_Index
 {
-    ghost,
-    orc_grunt,
-    wolf,
-    snowman,
-    snake,
-    skeleton_king,
-    shooterFish,
-    seaTitan,
-    pirate_Warrior,
-    piranha,
-    parrot,
-    orc_heavy,
+    pirate_warrior,
     orc_shaman,
+    orc_heavy,
+    orc_grunt,
     orc_lord,
-    knight,
-    king,
-    ice_minion,
-    ice_elementalboss,
-    golem,
-    dragon,
+    snowman,
     demon,
     imp,
-    guardin,
+    ghost,
+    ice_elementalboss
 }
 
 public enum Element_Type

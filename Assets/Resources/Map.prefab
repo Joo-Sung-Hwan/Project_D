@@ -267,8 +267,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas_Hp: {fileID: 6418301836422394100}
   monsters:
-  - {fileID: 758881666106950321, guid: ffc019dbb1fb3c5468ea47c8a5cca9eb, type: 3}
+  - {fileID: 3330846433293225904, guid: c868c7ae787eef944aa111f7ab380277, type: 3}
+  - {fileID: 464597392862102579, guid: 0ba073539c7daca4ebe184cad6e85303, type: 3}
+  - {fileID: 8744850936034877730, guid: 07ea06a6057768f4984807c7118cc20f, type: 3}
   - {fileID: 2081716638702540749, guid: 5092ff12e4e0a86448c0a334aa20093d, type: 3}
+  - {fileID: 6964259708357043675, guid: 09711821282a9354c9e7b7543c8ba3b1, type: 3}
+  - {fileID: 7408548332917370183, guid: 2737fe755de8b5b48b72a18f1c8646b9, type: 3}
+  - {fileID: 846399467759072708, guid: 986892dd67a586c45a715beb17cc3f92, type: 3}
+  - {fileID: -1151497962513584350, guid: 9acdac9752d82944898e119f1c43c78c, type: 3}
+  - {fileID: 758881666106950321, guid: ffc019dbb1fb3c5468ea47c8a5cca9eb, type: 3}
+  - {fileID: 8044632582565907931, guid: 103c3268e9fedcf418e05d190cd872be, type: 3}
   isWave: 0
   killed: 0
 --- !u!1 &6418301835715544080
