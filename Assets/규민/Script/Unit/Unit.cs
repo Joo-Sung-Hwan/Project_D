@@ -40,7 +40,7 @@ public abstract class  Unit : MonoBehaviour
     public PhotonView pv;
     public Animator anim;
 
-    public ParticleController particle;
+    public ParticleController particle_Prf;
     [HideInInspector] public bool isBuy;
     public int level = 1;
     protected Monster target;

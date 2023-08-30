@@ -27,7 +27,7 @@ public class Information : MonoBehaviour
         elemental_Type.text = $"속성 : {Translate_Elemental_Type(unit.ud.element_type)}";
         attack_Type.text = $"공격 대상 : {Translate_Atk_Type(unit.ud.atk_type)}";
         attack.text = $"공격력 : {unit.ud.attack}";
-        mana.text = $"마나 : {unit.ud.curMana} / {unit.ud.maxMana}";
+        mana.text = $"마나 : {(int)unit.ud.curMana} / {unit.ud.maxMana}";
     }
 
     string Translate_Elemental_Type(Element_Type et)

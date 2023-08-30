@@ -19,7 +19,8 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: Event NewEvent has a time (1.066667) outside the clip's
+      valid range (0.000000..0.933333). It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -143,7 +144,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: EAttack_Start
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 614129fdfbdb2de4e90fa92311537da9, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: EAttack_End
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 614129fdfbdb2de4e90fa92311537da9, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

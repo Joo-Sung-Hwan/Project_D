@@ -9,7 +9,7 @@ public class ShooterFish : Unit
         base.Init();
         ud.element_type = Element_Type.water;
         ud.atk_type = Attack_Type.normal;
-        ud.attack = 30f;
+        ud.attack = 50f;
         ud.atkDelay = 1f;
         ud.mana_type = Mana_Type.attack;
         ud.maxMana = 5f;
@@ -27,20 +27,28 @@ public class ShooterFish : Unit
         StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic));
     }
 
-    //스킬 애니메이션 시작할 때 호출
-    public void ESkill_Start()
-    {
-        isSkill = true;
-        transform.LookAt(target.transform);
-        particle.gameObject.SetActive(true);
-        particle.EffStart(1, 1, null);
-        ud.curMana = 0;
-        canManaRestore = false;
-    }
-
     public override IEnumerator Skill()
     {
-        anim.SetTrigger("skill");
-        yield break;
+        ud.curMana = 0;
+        canManaRestore = false;
+        anim.SetBool("skill", true);
+        float preAttack = ud.attack;
+        float preDelay = ud.atkDelay;
+        ud.attack *= 1.35f;
+        ud.atkDelay *= 1.2f;
+        ud.atk_type = Attack_Type.splash;
+        float skillTime = 0;
+        while (skillTime <= 5)
+        {
+            skillTime += Time.deltaTime;
+            mpBar.mpbar.fillAmount = (5 - skillTime) / 5f;
+            yield return new WaitForEndOfFrame();
+        }
+        canManaRestore = true;
+        anim.SetBool("skill", false);
+        ud.attack = preAttack;
+        ud.atkDelay = preDelay;
+        ud.atk_type = Attack_Type.normal;
+        SetMana(0);
     }
 }

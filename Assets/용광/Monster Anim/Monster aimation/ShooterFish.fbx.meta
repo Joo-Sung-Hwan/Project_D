@@ -128,7 +128,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: EAttack_Start
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: fb0a477879a0a3249b702c8745f5c0fa, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: EAttack_End
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: fb0a477879a0a3249b702c8745f5c0fa, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -157,7 +171,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: EAttack_Start
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: fb0a477879a0a3249b702c8745f5c0fa, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: EAttack_End
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: fb0a477879a0a3249b702c8745f5c0fa, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

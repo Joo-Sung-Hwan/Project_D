@@ -32,8 +32,8 @@ public class King : Unit
     {
         isSkill = true;
         transform.LookAt(target.transform);
-        particle.gameObject.SetActive(true);
-        particle.EffStart(1, 1, null);
+        particle_Prf.gameObject.SetActive(true);
+        particle_Prf.EffStart(1, 1, null);
         ud.curMana = 0;
         canManaRestore = false;
     }

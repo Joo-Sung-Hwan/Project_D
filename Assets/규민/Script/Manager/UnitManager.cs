@@ -29,11 +29,11 @@ public class UnitManager : MonoBehaviourPunCallbacks
     {
         if (pv.IsMine && Input.GetKeyDown(KeyCode.Q))
         {
-            Unit_Instantiate_Waiting("dragon_skin");
+            Unit_Instantiate_Waiting("ShooterFish");
         }
         if(pv.IsMine && Input.GetKeyDown(KeyCode.W))
         {
-            Unit_Instantiate_Waiting("Golem");
+            Unit_Instantiate_Waiting("Fallen_guardin");
         }
         if (pv.IsMine&&Input.GetKeyDown(KeyCode.E))
         {
