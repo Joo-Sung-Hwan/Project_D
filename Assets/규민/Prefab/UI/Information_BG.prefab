@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7781616973683982367}
   - component: {fileID: 786884138753717615}
   - component: {fileID: 319290089533453647}
-  - component: {fileID: 6402986549865290414}
+  - component: {fileID: 6171774904817336681}
   m_Layer: 5
-  m_Name: 'Button : Skill_UI'
+  m_Name: 'Button : Sell'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6402986549865290414
+--- !u!114 &6171774904817336681
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 87183494546301709}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -102,8 +102,8 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -119,13 +119,9 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 319290089533453647}
-  toggleTransition: 1
-  graphic: {fileID: 0}
-  m_Group: {fileID: 0}
-  onValueChanged:
+  m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 0
 --- !u!1 &1078307940550336701
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,7 +269,7 @@ GameObject:
   - component: {fileID: 6698435541829632599}
   - component: {fileID: 2996493867046945925}
   m_Layer: 5
-  m_Name: 'Text : Skill_iform'
+  m_Name: 'Text : Sell'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -327,7 +323,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC2A4\uD0AC \uC124\uBA85"
+  m_text: "\uD310\uB9E4\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b31cdd0824492a74aa607b9c538c4462, type: 2}
   m_sharedMaterial: {fileID: 4185114828617532660, guid: b31cdd0824492a74aa607b9c538c4462, type: 2}
@@ -644,6 +640,7 @@ MonoBehaviour:
   attack_Type: {fileID: 5869843014735769512}
   attack: {fileID: 5381872598797079156}
   mana: {fileID: 1462308452058147835}
+  sellbtn: {fileID: 6171774904817336681}
 --- !u!1 &7737722376799230221
 GameObject:
   m_ObjectHideFlags: 0

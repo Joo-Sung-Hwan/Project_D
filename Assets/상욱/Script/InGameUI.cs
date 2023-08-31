@@ -110,7 +110,6 @@ public class InGameUI : MonoBehaviourPunCallbacks
     {
         SetUserName();
         SetGoldUI();
-        
         if (chat_input.text == string.Empty)
         {
             return;
@@ -172,6 +171,13 @@ public class InGameUI : MonoBehaviourPunCallbacks
                 {
                     Destroy(synergy_list[unit.ud.element_type.ToString()].gameObject);
                     synergy_list.Remove(unit.ud.element_type.ToString());
+                    foreach (var item in s_list)
+                    {
+                        if(item.s_type == unit.ud.element_type)
+                        {
+                            s_list.Remove(item);
+                        }
+                    }
                 }
             }
         }
@@ -256,11 +262,16 @@ public class InGameUI : MonoBehaviourPunCallbacks
     public void OnRefresh()
     {
         Debug.Log("새로고침");
+        if(GameManager.instance.playermanager.Gold < 2)
+        {
+            return;
+        }
         for (int i = 0; i < parent.Length; i++)
         {
             Destroy(parent[i].transform.GetChild(0).gameObject);
         }
         SetBottomImage();
+        GameManager.instance.playermanager.SetGold(2, false);
     }
 
     // 스코어보드 열었다 닫았다 하는 함수

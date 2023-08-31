@@ -49,18 +49,21 @@ public class UnitManager : MonoBehaviourPunCallbacks
             {
                 UnitBlocks ub = waitingBlocks[i];
                 Unit u = PhotonNetwork.Instantiate(unit_name, ub.transform.position + Vector3.up * 0.25f, Quaternion.Euler(0, -90, 0)).GetComponent<Unit>();
-                u.Init();
+                Debug.Log(InGameUI.instance.s_list.Count);
                 for (int j = 0; j < InGameUI.instance.s_list.Count; j++)
                 {
                     Debug.Log(InGameUI.instance.s_list[j].s_type == u.ud.element_type);
-                    if(InGameUI.instance.s_list[j].s_type == u.ud.element_type)
+                    if (InGameUI.instance.s_list[j].s_type == u.ud.element_type)
                     {
-                        Debug.Log(InGameUI.instance.s_list[j].transform.GetChild(0).gameObject);
-                        if (InGameUI.instance.s_list[j].transform.GetChild(0).gameObject.activeInHierarchy)
+                        if (InGameUI.instance.s_list[j].gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
                         {
                             Debug.Log("시너지 활성화되어있음");
                             u.ud.attack *= 1.2f;
                         }
+                    }
+                    else
+                    {
+                        return true;
                     }
                 }
                 return true;

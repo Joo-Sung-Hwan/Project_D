@@ -45,4 +45,5 @@ public class InGameUIManager : MonoBehaviour
     {
         information.gameObject.SetActive(false);
     }
+    
 }

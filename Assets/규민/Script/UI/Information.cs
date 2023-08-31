@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Information : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Information : MonoBehaviour
     [SerializeField] TMP_Text attack_Type;
     [SerializeField] TMP_Text attack;
     [SerializeField] TMP_Text mana;
+    public Button sellbtn;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +62,42 @@ public class Information : MonoBehaviour
                 return "범위";
             default:
                 return "Atk_type 확인";
+        }
+    }
+
+    public void OnSellUnit(Unit unit)
+    {
+        if(unit.GetComponent<MovableObj>().block.isWating == false)
+        {
+            InGameUI.instance.unit_dic[unit.name] -= 1;
+            if (InGameUI.instance.unit_dic[unit.name] <= 0)
+            {
+                InGameUI.instance.unit_dic.Remove(unit.name);
+                InGameUI.instance.synergy_list[unit.ud.element_type.ToString()].count -= 1;
+                if (InGameUI.instance.synergy_list[unit.ud.element_type.ToString()].count <= 0)
+                {
+                    Destroy(InGameUI.instance.synergy_list[unit.ud.element_type.ToString()].gameObject);
+                    InGameUI.instance.synergy_list.Remove(unit.ud.element_type.ToString());
+                    for(int i = 0; i < InGameUI.instance.s_list.Count; i++)
+                    {
+                        if(InGameUI.instance.s_list[i].s_type == unit.ud.element_type)
+                        {
+                            InGameUI.instance.s_list.RemoveAt(i);
+                        }
+                    }
+                    
+                }
+            }
+            MapManager.instance.unitManager.units.Remove(unit);
+            unit.GetComponent<MovableObj>().block.SetUnit(true);
+            unit.DestroyUnit();
+            GameManager.instance.playermanager.SetGold(1, true);
+        }
+        else
+        {
+            MapManager.instance.unitManager.units.Remove(unit);
+            unit.GetComponent<MovableObj>().block.SetUnit(true);
+            unit.DestroyUnit();
         }
     }
 }
