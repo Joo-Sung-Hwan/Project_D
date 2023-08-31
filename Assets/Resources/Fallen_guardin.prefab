@@ -700,6 +700,7 @@ MonoBehaviour:
   pv: {fileID: 1690420377564107754}
   anim: {fileID: 284050547817746962}
   particle_Prf: {fileID: 7006974259957712466, guid: 7f18b836b7251d549864d3eceecde1f9, type: 3}
+  ptc: {fileID: 0}
   isBuy: 0
   level: 1
 --- !u!114 &-1394182479805066640

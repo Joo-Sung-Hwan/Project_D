@@ -23,10 +23,8 @@ public abstract class ParticleController : MonoBehaviour
     public Particle_Data pd;
     #endregion
     ParticleSystem ps;
-    [SerializeField]ParticleSystem ballps;
     UnityAction action;
     Monster monster;
-    [SerializeField] GameObject efttype;
     float delaytime;
 
     #endregion
@@ -40,8 +38,6 @@ public abstract class ParticleController : MonoBehaviour
     public virtual void Init()
     {
         ps = GetComponent<ParticleSystem>();
-        if (ballps != null)
-            ballps.Play();
     }
     public void EffTest(float dis)
     {
@@ -85,8 +81,6 @@ public abstract class ParticleController : MonoBehaviour
                 switch (pd.eft_type)
                 {
                     case Effect_Type.ball:
-                        ballps.Stop();
-                        efttype.SetActive(false);
                         P_Attack(pd.atk_type, pd.damage_type, pd.debuff_type, pd.debufftime);
                         ps.Stop();
                         break;

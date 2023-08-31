@@ -788,7 +788,8 @@ MonoBehaviour:
   movable: {fileID: -2109034924006419219}
   pv: {fileID: 5406257575911532947}
   anim: {fileID: 1153351969406274484}
-  particle_Prf: {fileID: 0}
+  particle_Prf: {fileID: 7533489107708946821}
+  ptc: {fileID: 0}
   isBuy: 0
   level: 1
 --- !u!114 &-2109034924006419219
@@ -3620,6 +3621,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlameThrower
       objectReference: {fileID: 0}
+    - target: {fileID: 2576791612245796444, guid: 1ab1967068e2ad44cb73ea5c41526ce2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2581869891565251802, guid: 1ab1967068e2ad44cb73ea5c41526ce2, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3642,7 +3647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2581869891565251802, guid: 1ab1967068e2ad44cb73ea5c41526ce2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.06
+      value: -0.22
       objectReference: {fileID: 0}
     - target: {fileID: 2581869891565251802, guid: 1ab1967068e2ad44cb73ea5c41526ce2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3678,6 +3683,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ab1967068e2ad44cb73ea5c41526ce2, type: 3}
+--- !u!114 &7533489107708946821 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2581869891565251801, guid: 1ab1967068e2ad44cb73ea5c41526ce2, type: 3}
+  m_PrefabInstance: {fileID: 5429353857551549788}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe9fb276136000469d2d74c9acd2bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7533489107708946822 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2581869891565251802, guid: 1ab1967068e2ad44cb73ea5c41526ce2, type: 3}

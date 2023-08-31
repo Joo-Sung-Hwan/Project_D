@@ -19,7 +19,8 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: Event ESkill_End has a time (2.133333) outside the clip's
+      valid range (0.000000..2.033334). It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -95,7 +96,7 @@ ModelImporter:
       takeName: swim_fast_bite
       internalID: 283022271212651134
       firstFrame: 0
-      lastFrame: 92
+      lastFrame: 26
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -114,7 +115,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: EAttack_Start
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: a9e0e1333bbae1a4fa486c1f6a745bc6, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: EAttack_End
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: a9e0e1333bbae1a4fa486c1f6a745bc6, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -143,7 +158,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ESkill_Start
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: a9e0e1333bbae1a4fa486c1f6a745bc6, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: ESkill_End
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: a9e0e1333bbae1a4fa486c1f6a745bc6, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

@@ -793,7 +793,8 @@ MonoBehaviour:
   movable: {fileID: -5052022943627983913}
   pv: {fileID: -5827297667852859758}
   anim: {fileID: 5406477005260928031}
-  particle: {fileID: 0}
+  particle_Prf: {fileID: 0}
+  ptc: {fileID: 0}
   isBuy: 0
   level: 1
 --- !u!65 &2215318288644051661

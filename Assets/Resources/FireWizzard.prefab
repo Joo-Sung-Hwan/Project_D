@@ -1208,6 +1208,7 @@ MonoBehaviour:
   pv: {fileID: -7297474336279698945}
   anim: {fileID: 8486855876634139161}
   particle_Prf: {fileID: 0}
+  ptc: {fileID: 0}
   isBuy: 0
   level: 1
 --- !u!65 &-1560838366183778160

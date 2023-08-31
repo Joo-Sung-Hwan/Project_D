@@ -2612,7 +2612,8 @@ MonoBehaviour:
   movable: {fileID: 660347637699610446}
   pv: {fileID: 5239535005404363700}
   anim: {fileID: 908081382064212028}
-  particle: {fileID: 0}
+  particle_Prf: {fileID: 0}
+  ptc: {fileID: 0}
   isBuy: 0
   level: 1
 --- !u!114 &660347637699610446
@@ -2669,7 +2670,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -8462516457654738338}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2703,8 +2705,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
-  m_SynchronizeParameters: []
-  m_SynchronizeLayers: []
+  m_SynchronizeParameters:
+  - Type: 9
+    SynchronizeType: 0
+    Name: attack
+  - Type: 9
+    SynchronizeType: 0
+    Name: skill
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &8122533080304825811
 GameObject:
   m_ObjectHideFlags: 0

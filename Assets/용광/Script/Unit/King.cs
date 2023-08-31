@@ -17,11 +17,6 @@ public class King : Unit
         ud.isBuy = false;
     }
 
-    void Start()
-    {
-        Init();
-    }
-
     protected override void Attack()
     {
         StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic));
@@ -32,8 +27,6 @@ public class King : Unit
     {
         isSkill = true;
         transform.LookAt(target.transform);
-        particle_Prf.gameObject.SetActive(true);
-        particle_Prf.EffStart(1, 1, null);
         ud.curMana = 0;
         canManaRestore = false;
     }

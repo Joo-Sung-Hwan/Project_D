@@ -30,10 +30,6 @@ public class FallenGuardin : Unit
     {
         isSkill = true;
         transform.LookAt(target.transform);
-        ParticleController ptc = Instantiate(particle_Prf, target.transform);
-        //ptc.transform.SetParent(particle_parent);
-        ptc.gameObject.SetActive(true);
-        ptc.EffStart(1, 1, null);
         ud.curMana = 0;
         canManaRestore = false;
     }

@@ -12,6 +12,8 @@ public class MapManager : MonoBehaviour
     public UnitManager unitManager;
     public PhotonView pv;
 
+    public Transform particle_parent;
+
     private void Awake()
     {
         instance = this;

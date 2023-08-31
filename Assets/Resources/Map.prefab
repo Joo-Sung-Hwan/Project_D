@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4866613877833478046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4142958119712754454}
+  m_Layer: 7
+  m_Name: Particle_Parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4142958119712754454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4866613877833478046}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6418301836561530810}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6216883954607697689
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +501,7 @@ MonoBehaviour:
   uiManager_ingame: {fileID: 6418301835838722121}
   unitManager: {fileID: 6418301835482718611}
   pv: {fileID: 6418301836035908818}
+  particle_parent: {fileID: 4142958119712754454}
 --- !u!114 &6418301836035908818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,6 +784,7 @@ Transform:
   - {fileID: 6418301835942010310}
   - {fileID: 6418301837151055589}
   - {fileID: 6418301836585803848}
+  - {fileID: 4142958119712754454}
   m_Father: {fileID: 6418301836343539614}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

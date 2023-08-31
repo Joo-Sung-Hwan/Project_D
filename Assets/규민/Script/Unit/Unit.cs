@@ -41,6 +41,8 @@ public abstract class  Unit : MonoBehaviour
     public Animator anim;
 
     public ParticleController particle_Prf;
+    [HideInInspector] public ParticleController ptc;
+
     [HideInInspector] public bool isBuy;
     public int level = 1;
     protected Monster target;
@@ -374,4 +376,17 @@ public abstract class  Unit : MonoBehaviour
         canManaRestore = true;
     }
     #endregion
+
+    public void ESkill_Particle()
+    {
+        if (ptc == null)
+            ptc = Instantiate(particle_Prf, target.transform);
+        else
+            ptc.transform.position = target.transform.position;
+
+        ptc.Init();
+        ptc.transform.SetParent(MapManager.instance.particle_parent);
+        ptc.transform.localScale = Vector3.one;
+        ptc.EffStart(1, 1, null);
+    }
 }

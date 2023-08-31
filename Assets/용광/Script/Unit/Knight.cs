@@ -25,10 +25,14 @@ public class Knight : Unit
     //스킬 애니메이션 시작할 때 호출
     public void ESkill_Start()
     {
+        ptc = particle_Prf;
         isSkill = true;
         transform.LookAt(target.transform);
-        particle_Prf.gameObject.SetActive(true);
-        particle_Prf.EffStart(1, 1, null);
+        ptc.Init();
+        //ptc.transform.SetParent(MapManager.instance.particle_parent);
+        ptc.transform.localScale = Vector3.one;
+        ptc.transform.LookAt(target.transform);
+        ptc.EffStart(1, 1, null);
         ud.curMana = 0;
         canManaRestore = false;
     }
