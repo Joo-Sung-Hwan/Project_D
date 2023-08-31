@@ -13,8 +13,8 @@ public class HolleyExplosion : ParticleController
         pd.atk_type = Attack_Type.splash;
         pd.eft_type = Effect_Type.strike;
         pd.atkdelay = 0.3f;
-        pd.damage = 30f;
-        pd.element_const = 0.9f;
+        pd.damage = 50f;
+        pd.element_const = 1f;
         pd.debufftime = 1f;
     }
 

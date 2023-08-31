@@ -8,11 +8,11 @@ public class Pirate_Warrior : Monster
     {
         base.Init();
         md.index = Monsters_Index.pirate_warrior;
-        md.maxHP = 300;
+        md.maxHP = 100;
         md.curHP = md.maxHP;
         md.speed = 1;
         md.speed_origin = md.speed;
-        md.armor = 30;
+        md.armor = 20;
     }
 
     void Start()

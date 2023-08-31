@@ -13,9 +13,9 @@ public class SandBall : ParticleController
         pd.atk_type = Attack_Type.splash;
         pd.eft_type = Effect_Type.ball;
         pd.atkdelay = 0.3f;
-        pd.damage = 10;
-        pd.element_const = 0.9f;
-        pd.debufftime = 1f;
+        pd.damage = 50;
+        pd.element_const = 1f;
+        pd.debufftime = 0.5f;
     }
 
     void Start()

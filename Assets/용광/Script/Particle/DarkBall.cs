@@ -13,8 +13,8 @@ public class DarkBall : ParticleController
         pd.atk_type = Attack_Type.splash;
         pd.eft_type = Effect_Type.ball;
         pd.atkdelay = 0.3f;
-        pd.damage = 35f;
-        pd.element_const = 0.9f;
+        pd.damage = 50;
+        pd.element_const = 1f;
         pd.debufftime = 1f;
     }
 

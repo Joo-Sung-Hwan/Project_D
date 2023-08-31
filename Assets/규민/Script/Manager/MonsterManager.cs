@@ -111,7 +111,7 @@ public class MonsterManager : MonoBehaviourPunCallbacks
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.pirate_warrior, 10, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.pirate_warrior, 10, 1f));
-        yield return c_wait = StartCoroutine(C_WaitTime(20));
+        yield return c_wait = StartCoroutine(C_WaitTime(30));
         canClear = true;
         if (canClear == true)
         {
@@ -128,7 +128,7 @@ public class MonsterManager : MonoBehaviourPunCallbacks
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_shaman, 10, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_shaman, 10, 1f));
-        yield return c_wait = StartCoroutine(C_WaitTime(20));
+        yield return c_wait = StartCoroutine(C_WaitTime(30));
         canClear = true;
         if (canClear == true)
         {
@@ -145,7 +145,7 @@ public class MonsterManager : MonoBehaviourPunCallbacks
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_heavy, 10, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_heavy, 10, 1f));
-        yield return c_wait = StartCoroutine(C_WaitTime(20));
+        yield return c_wait = StartCoroutine(C_WaitTime(30));
         canClear = true;
         if (canClear == true)
         {
@@ -162,7 +162,7 @@ public class MonsterManager : MonoBehaviourPunCallbacks
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_grunt, 10, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.orc_grunt, 10, 1f));
-        yield return c_wait = StartCoroutine(C_WaitTime(20));
+        yield return c_wait = StartCoroutine(C_WaitTime(30));
         canClear = true;
         if (canClear == true)
         {
@@ -192,7 +192,7 @@ public class MonsterManager : MonoBehaviourPunCallbacks
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.snowman, 10, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.snowman, 10, 1f));
-        yield return c_wait = StartCoroutine(C_WaitTime(20));
+        yield return c_wait = StartCoroutine(C_WaitTime(30));
         canClear = true;
         if (canClear == true)
         {
@@ -209,7 +209,7 @@ public class MonsterManager : MonoBehaviourPunCallbacks
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.demon, 10, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.demon, 10, 1f));
-        yield return c_wait = StartCoroutine(C_WaitTime(20));
+        yield return c_wait = StartCoroutine(C_WaitTime(30));
         canClear = true;
         if (canClear == true)
         {
@@ -226,7 +226,7 @@ public class MonsterManager : MonoBehaviourPunCallbacks
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.imp, 10, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.imp, 10, 1f));
-        yield return c_wait = StartCoroutine(C_WaitTime(20));
+        yield return c_wait = StartCoroutine(C_WaitTime(30));
         canClear = true;
         if (canClear == true)
         {
@@ -243,7 +243,7 @@ public class MonsterManager : MonoBehaviourPunCallbacks
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 10, 1f));
         yield return c_wait = StartCoroutine(C_WaitTime(5));
         yield return StartCoroutine(C_Spawn((int)Monsters_Index.ghost, 10, 1f));
-        yield return c_wait = StartCoroutine(C_WaitTime(20));
+        yield return c_wait = StartCoroutine(C_WaitTime(30));
         canClear = true;
         if (canClear == true)
         {

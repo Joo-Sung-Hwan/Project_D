@@ -10,9 +10,9 @@ public class Orc_shaman : Monster
         md.index = Monsters_Index.orc_shaman;
         md.maxHP = 200;
         md.curHP = md.maxHP;
-        md.speed = 1.3f;
+        md.speed = 1f;
         md.speed_origin = md.speed;
-        md.armor = 20;
+        md.armor = 25;
     }
 
     void Start()

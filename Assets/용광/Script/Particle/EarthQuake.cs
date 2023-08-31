@@ -14,9 +14,9 @@ public class EarthQuake : ParticleController
         pd.atk_type = Attack_Type.splash;
         pd.eft_type = Effect_Type.strike;
         pd.atkdelay = 0.1f;
-        pd.damage = 30;
-        pd.element_const = 0.8f;
-        pd.debufftime = 0.1f;
+        pd.damage = 50;
+        pd.element_const = 1f;
+        pd.debufftime = 0.2f;
     }
 
     void Start()

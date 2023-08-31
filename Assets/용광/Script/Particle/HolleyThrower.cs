@@ -10,12 +10,12 @@ public class HolleyThrower : ParticleController
         pd.debuff_type = Debuff_Type.none;
         pd.damage_type = Damage_Type.magic;
         pd.element_type = Element_Type.light;
-        pd.atk_type = Attack_Type.splash;
+        pd.atk_type = Attack_Type.normal;
         pd.eft_type = Effect_Type.thrower;
-        pd.atkdelay = 0.2f;
+        pd.atkdelay = 0.1f;
         pd.damage = 4f;
-        pd.element_const = 0.6f;
-        pd.debufftime = 0.2f;
+        pd.element_const = 1f;
+        pd.debufftime = 0f;
     }
 
     void Start()

@@ -13,8 +13,8 @@ public class FIreBall : ParticleController
         pd.atk_type = Attack_Type.splash;
         pd.eft_type = Effect_Type.ball;
         pd.atkdelay = 0.3f;
-        pd.damage = 5f;
-        pd.element_const = 0.9f;
+        pd.damage = 50f;
+        pd.element_const = 1f;
         pd.debufftime = 1f;
     }
 

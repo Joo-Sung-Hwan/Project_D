@@ -10,11 +10,11 @@ public class Ghost : Monster
         base.Init();
         md.index = Monsters_Index.ghost;
         md.element_Type = Element_Type.wind;
-        md.maxHP = 900;
+        md.maxHP = 1400;
         md.curHP = md.maxHP;
         md.speed = 1;
         md.speed_origin = md.speed;
-        md.armor = 50;
+        md.armor = 25;
     }
 
     void Start()

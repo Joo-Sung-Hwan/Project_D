@@ -11,7 +11,7 @@ public class Wolf : Unit
         ud.atk_type = Attack_Type.normal;
         ud.mana_type = Mana_Type.attack;
         ud.atkDelay = 0.6f;
-        ud.attack = 35f;
+        ud.attack = 50f;
         ud.maxMana = 2f;
         ud.curMana = 0f;
     }
