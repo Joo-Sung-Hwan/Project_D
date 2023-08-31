@@ -22,11 +22,6 @@ public class LightningWizzard : Unit
         StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic, Debuff_Type.slow, 2f));
     }
 
-    void Start()
-    {
-        Init();
-    }
-
     public override IEnumerator Skill()
     {
         ud.curMana = 0;

@@ -18,11 +18,6 @@ public class Wolf : Unit
 
     bool isSkillActive = false;
 
-    void Start()
-    {
-        Init();
-    }
-
     protected override void Attack()
     {
         if (isSkillActive)

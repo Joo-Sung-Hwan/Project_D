@@ -52,6 +52,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
     public Transform Synergy_parent;
     [HideInInspector] public Dictionary<string, int> unit_dic = new Dictionary<string, int>();
     [HideInInspector] public Dictionary<string, Synergy> synergy_list = new Dictionary<string, Synergy>();
+    [HideInInspector] public List<Synergy> s_list = new List<Synergy>();
 
 
 
@@ -148,6 +149,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
                 {
                     Synergy sp = Instantiate(Synergy_prefab[(int)unit.ud.element_type], Synergy_parent);
                     sp.count += 1;
+                    s_list.Add(sp);
                     synergy_list.Add((sp.s_type).ToString(), sp);
                     unit_dic.Add(unit.name, 1);
                 }

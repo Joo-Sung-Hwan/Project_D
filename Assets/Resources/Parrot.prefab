@@ -449,7 +449,7 @@ MonoBehaviour:
   movable: {fileID: -1166822402899691159}
   pv: {fileID: 2393847231259273442}
   anim: {fileID: 4927265914344054243}
-  particle: {fileID: 4865858950780559392}
+  particle_Prf: {fileID: 0}
   isBuy: 0
   level: 1
 --- !u!114 &-1166822402899691159
@@ -995,17 +995,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a43abc1b075adcf4292442be1500ea51, type: 3}
---- !u!114 &4865858950780559392 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2665517499528629113, guid: a43abc1b075adcf4292442be1500ea51, type: 3}
-  m_PrefabInstance: {fileID: 7456504011463846745}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb51f97f4f5fa5b49a1adeb322912dea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &4866785851485699331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2661795700452382298, guid: a43abc1b075adcf4292442be1500ea51, type: 3}

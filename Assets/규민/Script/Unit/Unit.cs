@@ -109,7 +109,7 @@ public abstract class  Unit : MonoBehaviour
         if (ud.mana_type == Mana_Type.auto && !isManaRestore)
             StartCoroutine(ManaRestore_Auto());
     }
-
+    
     public void DestroyUnit()
     {
         MapManager.instance.unitManager.units.Remove(this);

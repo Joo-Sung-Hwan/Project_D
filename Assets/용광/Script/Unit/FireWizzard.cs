@@ -22,10 +22,6 @@ public class FireWizzard : Unit
         StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic, Debuff_Type.slow, 2f));
     }
 
-    void Start()
-    {
-        Init();
-    }
 
     public override IEnumerator Skill()
     {

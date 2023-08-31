@@ -15,10 +15,6 @@ public class Dragon : Unit
         ud.maxMana = 2f;
         ud.curMana = 0f;
     }
-    void Start()
-    {
-        Init();
-    }
 
     protected override void Attack()
     {

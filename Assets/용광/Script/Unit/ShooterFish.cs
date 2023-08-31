@@ -17,11 +17,6 @@ public class ShooterFish : Unit
         ud.isBuy = false;
     }
 
-    void Start()
-    {
-        Init();
-    }
-
     protected override void Attack()
     {
         StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic));

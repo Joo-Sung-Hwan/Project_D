@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SynergyIcon : MonoBehaviour
 {
-    
-
     private void OnEnable()
     {
         MapManager.instance.unitManager.ActiveSynergy(transform.parent.GetComponent<Synergy>().s_type, true);
