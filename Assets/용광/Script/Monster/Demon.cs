@@ -8,7 +8,7 @@ public class Demon : Monster
     {
         base.Init();
         md.index = Monsters_Index.demon;
-        md.maxHP = 100;
+        md.maxHP = 500;
         md.curHP = md.maxHP;
         md.speed = 1;
         md.speed_origin = md.speed;

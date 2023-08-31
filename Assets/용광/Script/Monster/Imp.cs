@@ -8,7 +8,7 @@ public class Imp : Monster
     {
         base.Init();
         md.index = Monsters_Index.imp;
-        md.maxHP = 100;
+        md.maxHP = 600;
         md.curHP = md.maxHP;
         md.speed = 1;
         md.speed_origin = md.speed;

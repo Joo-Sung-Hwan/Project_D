@@ -12,7 +12,7 @@ public class IceElementalBoss : Monster
         md.curHP = md.maxHP;
         md.speed = 0.7f;
         md.speed_origin = md.speed;
-        md.armor = 60;
+        md.armor = 45f;
     }
 
     void Start()

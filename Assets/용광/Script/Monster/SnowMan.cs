@@ -8,7 +8,7 @@ public class SnowMan : Monster
     {
         base.Init();
         md.index = Monsters_Index.snowman;
-        md.maxHP = 100;
+        md.maxHP = 800;
         md.curHP = md.maxHP;
         md.speed = 1;
         md.speed_origin = md.speed;
