@@ -133,6 +133,7 @@ public abstract class  Unit : MonoBehaviour
         if (clickTime < 0.2f)
         {
             MapManager.instance.uiManager_ingame.SetActiveInform(transform, this);
+            MapManager.instance.uiManager_ingame.information.GetComponent<Information>().sellbtn.onClick.AddListener(() => MapManager.instance.uiManager_ingame.information.GetComponent<Information>().OnSellUnit(this));
         }
     }
 
