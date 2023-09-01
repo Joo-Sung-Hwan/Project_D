@@ -13,7 +13,7 @@ public class FlameThrower : ParticleController
         pd.atk_type = Attack_Type.normal;
         pd.eft_type = Effect_Type.thrower;
         pd.atkdelay = 0.1f;
-        pd.damage = 3f;
+        pd.damage = 7f;
         pd.element_const = 1f;
         pd.debufftime = 0.2f;
     }

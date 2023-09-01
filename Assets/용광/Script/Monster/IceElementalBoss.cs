@@ -8,9 +8,9 @@ public class IceElementalBoss : Monster
     {
         base.Init();
         md.index = Monsters_Index.ice_elementalboss;
-        md.maxHP = 3000;
+        md.maxHP = 20000;
         md.curHP = md.maxHP;
-        md.speed = 0.5f;
+        md.speed = 0.7f;
         md.speed_origin = md.speed;
         md.armor = 35f;
     }

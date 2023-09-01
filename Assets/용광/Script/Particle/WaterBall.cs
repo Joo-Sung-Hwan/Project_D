@@ -14,7 +14,7 @@ public class WaterBall : ParticleController
         pd.eft_type = Effect_Type.ball;
         pd.atkdelay = 0.3f;
         pd.damage = 10f;
-        pd.element_const = 0.9f;
+        pd.element_const = 1;
         pd.debufftime = 1f;
     }
 

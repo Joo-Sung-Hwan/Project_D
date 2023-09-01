@@ -12,8 +12,8 @@ public class Flakes : ParticleController
         pd.element_type = Element_Type.dark;
         pd.atk_type = Attack_Type.splash;
         pd.eft_type = Effect_Type.spawn;
-        pd.atkdelay = 0.2f;
-        pd.damage = 5f;
+        pd.atkdelay = 0.1f;
+        pd.damage = 15f;
         pd.element_const = 1;
         pd.debufftime = 0.3f;
     }

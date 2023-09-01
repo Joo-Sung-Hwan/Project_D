@@ -14,7 +14,7 @@ public class IceLanceball : ParticleController
         pd.eft_type = Effect_Type.spawn;
         pd.atkdelay = 0.1f;
         pd.damage = 20;
-        pd.element_const = 0.8f;
+        pd.element_const = 1;
         pd.debufftime = 0.25f;
     }
 
