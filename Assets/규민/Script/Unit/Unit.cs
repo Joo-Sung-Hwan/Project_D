@@ -115,7 +115,7 @@ public abstract class  Unit : MonoBehaviour
     public void DestroyUnit()
     {
         MapManager.instance.unitManager.units.Remove(this);
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
         Destroy(mpBar);
     }
 

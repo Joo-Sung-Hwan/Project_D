@@ -65,6 +65,7 @@ public class Information : MonoBehaviour
         }
     }
 
+    
     public void OnSellUnit(Unit unit)
     {
         if(unit.GetComponent<MovableObj>().block.isWating == false)
@@ -98,6 +99,8 @@ public class Information : MonoBehaviour
             MapManager.instance.unitManager.units.Remove(unit);
             unit.GetComponent<MovableObj>().block.SetUnit(true);
             unit.DestroyUnit();
+            GameManager.instance.playermanager.SetGold(1, true);
+
         }
     }
 }

@@ -376,6 +376,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
         }
         else if(changedProps.ContainsKey("Gold") || changedProps.ContainsKey("Monster_Left") || changedProps.ContainsKey("Life"))
         {
+            
             for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
             {
                 if(targetPlayer.NickName == PhotonNetwork.PlayerList[i].NickName)
@@ -450,6 +451,8 @@ public class InGameUI : MonoBehaviourPunCallbacks
         gold_ui.text = GameManager.instance.playermanager.Gold.ToString();
 
     }
+
+    
     /*
     public override void OnMasterClientSwitched(Player newMasterClient)
     {
