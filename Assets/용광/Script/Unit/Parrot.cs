@@ -16,7 +16,10 @@ public class Parrot : Unit
         ud.curMana = 0f;
         ud.isBuy = false;
     }
-    
+    private void Awake()
+    {
+        Init();
+    }
     protected override void Attack()
     {
         //StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic, Debuff_Type.slow, 2f));

@@ -16,6 +16,10 @@ public class King : Unit
         ud.curMana = 0f;
         ud.isBuy = false;
     }
+    private void Awake()
+    {
+        Init();
+    }
 
     protected override void Attack()
     {

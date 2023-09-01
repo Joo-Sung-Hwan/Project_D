@@ -16,7 +16,10 @@ public class Test_Unit_firewizzard : Unit
         ud.maxMana = 10f;
         ud.curMana = 0f;
     }
-
+    private void Awake()
+    {
+        Init();
+    }
     protected override void Attack()
     {
         StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic, Debuff_Type.slow, 2f));

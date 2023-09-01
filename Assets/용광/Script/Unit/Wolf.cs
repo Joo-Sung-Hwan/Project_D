@@ -16,6 +16,11 @@ public class Wolf : Unit
         ud.curMana = 0f;
     }
 
+    private void Awake()
+    {
+        Init();
+    }
+
     bool isSkillActive = false;
 
     protected override void Attack()

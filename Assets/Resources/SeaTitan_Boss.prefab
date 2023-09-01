@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: -5078484675419006770}
   - component: {fileID: -433598659811246849}
   m_Layer: 0
-  m_Name: SeaTitan
+  m_Name: SeaTitan_Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

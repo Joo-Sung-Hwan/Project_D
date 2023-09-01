@@ -15,6 +15,10 @@ public class Golem : Unit
         ud.maxMana = 3f;
         ud.curMana = 0f;
     }
+    private void Awake()
+    {
+        Init();
+    }
 
     protected override void Attack()
     {

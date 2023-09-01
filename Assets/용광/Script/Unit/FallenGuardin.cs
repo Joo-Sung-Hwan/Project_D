@@ -17,7 +17,7 @@ public class FallenGuardin : Unit
         ud.isBuy = false;
     }
 
-    void Start()
+    private void Awake()
     {
         Init();
     }

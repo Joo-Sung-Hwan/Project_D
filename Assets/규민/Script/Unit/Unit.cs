@@ -380,6 +380,8 @@ public abstract class  Unit : MonoBehaviour
 
     public void ESkill_Particle()
     {
+        if (target == null)
+            return;
         if (ptc == null)
             ptc = Instantiate(particle_Prf, target.transform);
         else
