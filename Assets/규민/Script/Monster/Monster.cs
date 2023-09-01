@@ -43,7 +43,7 @@ public abstract class Monster : MonoBehaviour
     #endregion
 
     public Animator anim;
-
+    [HideInInspector] public MonsterManager monsterManager;
     #endregion
 
     void Update()
@@ -183,7 +183,7 @@ public abstract class Monster : MonoBehaviour
     {
         //StopAllCoroutines();
         gameObject.SetActive(false);
-        Dictionary<Monsters_Index, Queue<Monster>> dm = MapManager.instance.monsterManager.d_monsters;
+        Dictionary<Monsters_Index, Queue<Monster>> dm = monsterManager.d_monsters;
         if (!dm.ContainsKey(md.index))
             dm.Add(md.index, new Queue<Monster>());
 

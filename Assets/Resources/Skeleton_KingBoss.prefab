@@ -1066,7 +1066,7 @@ GameObject:
   - component: {fileID: 4235873198606380556}
   - component: {fileID: 3205127419128233714}
   m_Layer: 0
-  m_Name: Skeleton_King
+  m_Name: Skeleton_KingBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

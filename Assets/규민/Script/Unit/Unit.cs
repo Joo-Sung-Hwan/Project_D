@@ -376,7 +376,6 @@ public abstract class  Unit : MonoBehaviour
         isSkill = false;
         canManaRestore = true;
     }
-    #endregion
 
     public void ESkill_Particle()
     {
@@ -392,4 +391,7 @@ public abstract class  Unit : MonoBehaviour
         ptc.transform.localScale = Vector3.one;
         ptc.EffStart(1, 1, null);
     }
+    #endregion
+
+
 }

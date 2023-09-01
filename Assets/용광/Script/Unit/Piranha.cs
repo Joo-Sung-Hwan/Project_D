@@ -28,9 +28,12 @@ public class Piranha : Unit
     //스킬 애니메이션 시작할 때 호출
     public void ESkill_Start()
     {
+        float preAtk = ud.attack;
+        ud.attack *= 2f;
         isSkill = true;
         transform.LookAt(target.transform);
-        ESkill_Particle();
+        StartCoroutine(C_Attack(Attack_Type.normal, Damage_Type.trueType));
+        ud.attack = preAtk;
         ud.curMana = 0;
         canManaRestore = false;
     }

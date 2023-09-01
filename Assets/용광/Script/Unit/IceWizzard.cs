@@ -23,7 +23,7 @@ public class IceWizzard : Unit
 
     protected override void Attack()
     {
-        StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic, Debuff_Type.slow, 2f));
+        StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic));
     }
 
     public override IEnumerator Skill()
@@ -41,5 +41,6 @@ public class IceWizzard : Unit
         }
         ud.atkDelay = preDelay;
         canManaRestore = true;
+        canSkill = true;
     }
 }

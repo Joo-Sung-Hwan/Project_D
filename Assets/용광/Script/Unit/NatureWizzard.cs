@@ -20,9 +20,10 @@ public class NatureWizzard : Unit
     {
         Init();
     }
+
     protected override void Attack()
     {
-        StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic, Debuff_Type.slow, 2f));
+        StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic));
     }
 
     public override IEnumerator Skill()
@@ -40,5 +41,6 @@ public class NatureWizzard : Unit
         }
         ud.atkDelay = preDelay;
         canManaRestore = true;
+        canSkill = true;
     }
 }

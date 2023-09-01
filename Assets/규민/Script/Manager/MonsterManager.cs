@@ -59,7 +59,11 @@ public class MonsterManager : MonoBehaviourPunCallbacks
                 temp_monster.gameObject.SetActive(true);
             }
             else
-                Instantiate(monsters[index], transform).rotateSpeed = rotateSpeed;
+            {
+                temp_monster = Instantiate(monsters[index], transform);
+                temp_monster.rotateSpeed = rotateSpeed;
+                temp_monster.monsterManager = this;
+            }
 
             spawned++;
             GameManager.instance.playermanager.SetMonsterLeft(true);

@@ -23,12 +23,11 @@ public class FireWizzard : Unit
 
     protected override void Attack()
     {
-        StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic, Debuff_Type.slow, 2f));
+        StartCoroutine(C_Attack(ud.atk_type, Damage_Type.physic));
     }
 
     public override IEnumerator Skill()
     {
-        Debug.Log(123);
         ud.curMana = 0;
         float skillTime = 3f;
         float preDelay = ud.atkDelay;
@@ -42,5 +41,6 @@ public class FireWizzard : Unit
         }
         ud.atkDelay = preDelay;
         canManaRestore = true;
+        canSkill = true;
     }
 }
