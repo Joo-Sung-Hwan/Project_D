@@ -400,7 +400,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
     public void CheckAllPlayersReady()
     {
         var players = PhotonNetwork.PlayerList;
-        /*
+        
         if(players.Length == 4)
         {
             if (players.All(p => p.CustomProperties.ContainsKey("Ready") && (bool)p.CustomProperties["Ready"] == false))
@@ -421,7 +421,6 @@ public class InGameUI : MonoBehaviourPunCallbacks
         {
             Debug.Log("인원이 부족합니다.");
         }
-        */
         if (players.All(p => p.CustomProperties.ContainsKey("Ready") && (bool)p.CustomProperties["Ready"] == false))
         {
             Debug.Log("All players are ready!");
