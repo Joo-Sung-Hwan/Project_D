@@ -303,7 +303,8 @@ public class InGameUI : MonoBehaviourPunCallbacks
             if (chat_parent.GetComponent<RectTransform>().anchoredPosition.y >= prev_content - scrollview.sizeDelta.y)
             {
                 //5. 추가된 높이만큼 content y값을 변경하겠다. (지금은 이미 추가 된 상태인거임)
-                chat_parent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, chat_parent.GetComponent<RectTransform>().sizeDelta.y - scrollview.sizeDelta.y);
+                chat_parent.GetComponent<RectTransform>().anchoredPosition
+                    = new Vector2(0, chat_parent.GetComponent<RectTransform>().sizeDelta.y - scrollview.sizeDelta.y);
             }
         }
     }

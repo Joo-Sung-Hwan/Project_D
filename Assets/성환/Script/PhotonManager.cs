@@ -129,14 +129,16 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     }
 
     
+    // Photon의 RoomInfo의 값이 변하면 자동으로 Update 되는 함수
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
         int roomCount = roomList.Count;
         for(int i = 0; i < roomCount; i++)
         {   
-            
+            // RemovedFromList : Romminfo가 포함된 리스트에서 제거됬는지 안됬는지 확인하는 함수
             if (!roomList[i].RemovedFromList)
             {
+                // roomList가 myList에 포함되어있지 않다면 방 리스트 생성
                 if (!myList.Contains(roomList[i]))
                 {
                     myList.Add(roomList[i]);
@@ -145,6 +147,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                     roomlist.transform.GetChild(0).GetComponent<Image>().color = Color.green;
                     prefabList.Add(roomlist);
                 }
+                // 방 리스트가 있다면 생성하지 않음
                 else
                 {
                     myList[myList.IndexOf(roomList[i])] = roomList[i];
@@ -163,6 +166,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                     }
                 }
             }
+            // 예외 처리
             else if(myList.IndexOf(roomList[i]) != -1)
             {
                 for(int k = 0; k < parent.childCount; k++)
@@ -175,8 +179,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                 }
                 myList.RemoveAt(myList.IndexOf(roomList[i]));
             }
-
-            
         }
     }
     
